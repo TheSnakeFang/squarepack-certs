@@ -1,50 +1,147 @@
 # squarepack-certs
 
-Exact certificates for packings of n unit squares in a square of side S < ⌈√n⌉, i.e. upper bounds
-s(n) ≤ S. Each folder holds one packing in three formats (Evan Daniel's text, SQUISH json, David
-Ellsworth's centre-origin text), a drawing, the output of two independent checkers, and
-checksums. `verify.py` is a standalone exact checker (Python 3.8+, standard library only).
+Exact certificates, checkers and the gluing program behind the note *Packing n² − n + 1 unit
+squares in a square of side less than n, for every n ≥ 15* (Kevin Fang, draft v0.3,
+2026-10-12). Every packing the proof uses is here as a rational certificate, or, for the one
+piece without a licence, fetched by a script from a pinned commit and checked by hash. Three
+independently written exact checkers run on every certificate; `VERIFICATION.md` has the outcome.
 
-| n | S (rounded up; exact value in the certificate) | best known before | status |
+Write s(n) for the side of the smallest square containing n unit squares with pairwise disjoint
+interiors. The note proves:
+
+**Theorem 1.** $s(n^2 - n + 1) < n$ for every integer $n \ge 15$.
+
+**Theorem 2.** $s\big(n^2 - n + \lfloor (n + 1)/16 \rfloor\big) < n$ for every integer $n \ge 15$.
+
+The proof glues a squeezable 17 × 16 rectangle R onto a square packing (Lemma 3 of the note) and
+inducts on n in steps of 16, starting from finitely many certificates. Where each one lives:
+
+| ingredient in the note | file(s) |
+|---|---|
+| R: 257 squares in (17 − δ) × (16 − δ), δ ≥ 7.436 · 10⁻⁴ (Proposition 4) | `rectangles/r17x16_n0257/` |
+| n = 15: de Winter's 211 squares in side < 15 | not copied; `third_party/fetch_unlicensed.sh` |
+| n = 16, 17: 241 and 273 squares (Arslanov, Mustafin, Shangitbayev; Ellsworth, Stead) | `third_party/daniel/n-241.cert`, `n-273.cert` |
+| n = 18: 307 squares in side < 18 | implied by `n0308/` (308 squares in side < 18) |
+| n = 19, …, 26: n² − n + 1 squares in side < n (Section 3) | `n0343/`, `n0381/`, `n0421/`, `n0463/`, `n0507/`, `n0553/`, `n0601/`, `n0651/` |
+| m² − m squares in side < m for m = 11, …, 15 (Proposition 5) | `third_party/daniel/n-110.cert`, `n-132`, `n-156`, `n-182`, `n-210` |
+| the four further rectangles (Section 4) | `rectangles/r18x17_n0290/`, `r19x18_n0325/`, `r21x20_n0401/`, `r22x21_n0442/` |
+| the 230 composites of Section 5, best j for 27 ≤ n ≤ 64 | `composites/` |
+
+## Direct square packings
+
+| folder | n | form | S, rounded up (exact value in the certificate) |
 |---|---|---|---|
-| 308 | 17.999309855162748 | 18, the grid (held by both registers) | not yet submitted |
-| 343 | 18.994903529220497 | none, n > 324 (not on either register) | not yet submitted |
-| 344 | 18.995489275430816 | none, n > 324 (not on either register) | not yet submitted |
+| `n0308/` | 308 | 18² − 18 + 2 | 17.999309855162748 |
+| `n0343/` | 343 | 19² − 19 + 1 | 18.994903529220497 |
+| `n0344/` | 344 | 19² − 19 + 2 | 18.995489275430816 |
+| `n0380/` | 380 | 20² − 20 | 19.976775433974195 |
+| `n0381/` | 381 | 20² − 20 + 1 | 19.976969740405508 |
+| `n0421/` | 421 | 21² − 21 + 1 | 20.986150316947159 |
+| `n0463/` | 463 | 22² − 22 + 1 | 21.986880406196935 |
+| `n0507/` | 507 | 23² − 23 + 1 | 22.997807183348823 |
+| `n0553/` | 553 | 24² − 24 + 1 | 23.998811020144984 |
+| `n0601/` | 601 | 25² − 25 + 1 | 24.998914572427130 |
+| `n0651/` | 651 | 26² − 26 + 1 | 25.991547815274380 |
 
-## Verify
+308, 343 and 344 were published here on 2026-10-09 and submitted to the Squares Project
+(jlevy/squares#484), whose exact implementations confirmed them; Evan Daniel has since improved
+all three by local search from them (`third_party/daniel/hunt3_n*.cert`, jlevy/squares#489).
 
-```bash
-python3 verify.py n0308/n0308.cert --strict        # or n0308/n0308.cert.json; exit 0 iff valid
-(cd n0308 && shasum -a 256 -c SHA256SUMS)
+## Layout
+
+```
+README.md, ATTRIBUTION.md, CHANGELOG.md, VERIFICATION.md, LICENSE, MANIFEST.sha256
+verify.py                     exact checker for square certificates (stdlib only)
+tools/
+  rectcheck.py                exact checker for square and rectangle certificates (stdlib only)
+  verify_cert_daniel.py       Evan Daniel's exact checker, unchanged (MIT, NOTICE-verify_cert_daniel)
+  glue.py                     Lemma 3 of the note in exact arithmetic (stdlib only)
+nNNNN/                        one direct square packing per folder:
+  nNNNN.cert                  certificate, Daniel's text format
+  nNNNN.cert.json             the same, SQUISH json
+  nNNNN.txt                   David Ellsworth's centre-origin decimal format, 40 digits
+  nNNNN.svg                   drawing (blue: tilted by 1 degree or more)
+  verify_output.txt           squarepack.verify --strict (research repo; same code as verify.py)
+  check_packing_output.txt    Ellsworth's check_packing.py on nNNNN.txt
+  NOTES.md, SHA256SUMS        seed and date; hashes of the folder
+rectangles/rAxB_nNNNN/        one squeezable rectangle per folder: .cert (header n W H), .cert.json
+                              (W, H keys), .svg, verify_output.txt, rectcheck_output.txt,
+                              NOTES.md (box, count, waste, exact squeeze d), SHA256SUMS
+composites/
+  nNNN_jJ_COUNT.cert          38 composites: the largest j for each n, 27 <= n <= 64
+  TABLE.md, table.csv         all 230 composites: n, count, j, side, A, B, sha256, shipped or not
+  REPRODUCE.md, reproduce.sh  how to regenerate all 230 and check their hashes
+  inputs/                     two B pieces used only by the composites
+third_party/
+  daniel/                     Daniel's certificates used as B pieces, plus hunt3_n308/343/344,
+                              LICENSE (MIT) and NOTICE
+  SOURCES.md                  pinned URL and SHA-256 of every third-party file
+  fetch_unlicensed.sh         downloads de Winter's 211 and Daniel's n-211.cert, checks SHA-256
 ```
 
-`verify.py` uses exact rational arithmetic: every square is a rational centre (x, y) and a
-rational t = tan(θ/2), containment and pairwise separation are checked by separating axes, and
-`--strict` requires every margin to be > 0. `check_packing_output.txt` is the output of
-Ellsworth's `check_packing.py` (https://github.com/Davidebyzero/packing_squares_in_squares__tools)
-on `nNNNN.txt` at 40 digits.
+The folders `n0308/`, `n0343/`, `n0344/` are as published on 2026-10-09 and are never edited; a
+new packing for an n already here would go in a new dated folder `nNNNN-YYYY-MM-DD/`.
 
-## Construction
+## Certificates
 
-All three belong to the k² − k + 1 family: two wedges of squares tilted by about 19° in opposite
-corners (rows along the bottom wall, columns along the left wall), everything else axis-parallel.
-They were grown from the Kingbird packings of Ellsworth and Stead (n = 273 for 308 = 18² − 18 + 2;
-n = 307 for 343 = 19² − 19 + 1 and 344 = 19² − 19 + 2) by cutting once through each wedge's full
-stack and adding a square to every line the cut crosses, then squeezed with a penalty method. The
-result was rounded to rationals and repaired exactly: centres scaled by the smallest factor that
-clears every overlap, then S raised by 2⁻⁶⁴ so every margin is strictly positive.
+A certificate is a text file: line 1 `n S` for a square container (`n W H` for a rectangle),
+then one line `x y t` per unit square, all exact rationals: centre (x, y), rotation θ with
+t = tan(θ/2), so cos θ = (1 − t²)/(1 + t²) and sin θ = 2t/(1 + t²) are rational. Lines starting
+with `#` are comments. A certificate is valid when every square lies in the open box (all wall
+margins > 0) and every pair of squares is strictly separated along one of the four edge normals
+of the two squares (pairs with centres more than √2 apart are disjoint anyway). That is the strict
+convention of Daniel's checker; every certificate here meets it.
 
-## Lineage and credit
+## Checking
 
-The family is due to Arslanov, Mustafin and Shangitbayev (EJC 2021, doi 10.37236/8586), who gave
-it for k = 16, 17, 18. The seed packings for n = 241, 273, 307 are David Ellsworth's and Tej
-Stead's on the Kingbird table. The text certificate format and strict convention are Evan
-Daniel's; the json layout is SQUISH's (Nate Chaoweeraprasit). Details in ATTRIBUTION.md.
+Three exact programs, written separately, all Python 3.8+ with the standard library only:
+
+| checker | reads | checks |
+|---|---|---|
+| `verify.py` | square certificates (text or json) | walls and close pairs by separating axes; `--strict` for positive margins |
+| `tools/verify_cert_daniel.py` | square certificates | the same test, strict; on a rectangle it reads only `n W` and checks the W × W square |
+| `tools/rectcheck.py` | square and rectangle certificates | all four walls against W and H, pairs by separating axes, strict |
+
+They share the method (rational half-angle representation, separating axes) but not code. To run
+all of them on everything (a few CPU-minutes for the small files, about an hour for the composites):
+
+```bash
+for f in n0*/n0*.cert third_party/daniel/*.cert composites/inputs/*.cert composites/n0*.cert; do
+  python3 verify.py "$f" --strict >/dev/null && python3 tools/verify_cert_daniel.py "$f" >/dev/null \
+    && python3 tools/rectcheck.py "$f" >/dev/null && echo "ok   $f" || echo "FAIL $f"
+done
+for f in rectangles/*/*.cert; do python3 tools/rectcheck.py "$f" | tail -1; done
+shasum -a 256 -c MANIFEST.sha256 --quiet && echo "manifest ok"
+```
+
+Single files: `python3 verify.py n0381/n0381.cert --strict` (exit 0 iff valid),
+`python3 tools/verify_cert_daniel.py n0381/n0381.cert`, `python3 tools/rectcheck.py
+rectangles/r17x16_n0257/r17x16_n0257.cert`. The square folders also carry the output of
+Ellsworth's decimal checker (https://github.com/Davidebyzero/packing_squares_in_squares__tools,
+`check_packing.py`) on the 40-digit `.txt` file.
+
+## Reproducing
+
+- Composites: `sh composites/reproduce.sh` regenerates all 230 with `tools/glue.py` from the files
+  here and checks every SHA-256 against `composites/table.csv`. Details and single-file commands in
+  `composites/REPRODUCE.md`. A composite is `python3 tools/glue.py --rect A.cert --second B.cert
+  --out C.cert`: A in the top-left corner, two integer blocks, B in the bottom-right corner, all
+  squeezed by d = min(d_A, d_B, 1/2), then scaled by 1 + 2⁻⁶⁴ so every margin is positive.
+- n = 15 base case: `sh third_party/fetch_unlicensed.sh`, then `python3 verify.py
+  third_party/unlicensed/n-211.cert --strict`.
+- Direct packings and rectangles: found by a time-budgeted penalty search from two-wedge seeds
+  (Section 6 of the note); the search is not bit-reproducible, which is why the certificates are
+  shipped and checked on their own. Seeds and dates are in each folder's `NOTES.md`.
+
+## Licences
+
+- Code (`verify.py`, `tools/glue.py`, `tools/rectcheck.py`, the shell scripts): MIT, see `LICENSE`.
+- Our certificates, text files, tables and drawings (`nNNNN/`, `rectangles/`, `composites/`): CC0 1.0.
+- `third_party/daniel/` and `tools/verify_cert_daniel.py`: Evan Daniel's, MIT, unchanged; licence
+  and notice in `third_party/daniel/` and `tools/NOTICE-verify_cert_daniel`.
+- De Winter's n = 211 packing and Daniel's certificate of it: no licence, not copied; fetched by
+  `third_party/fetch_unlicensed.sh` from pinned commits and checked by hash.
+
+Credit for the construction, seeds, format and checkers: `ATTRIBUTION.md`.
 
 Search, verifier and this bundle were written and run with Claude (Anthropic) as a coding and research agent, directed and reviewed by Kevin Fang.
-
-## Conventions
-
-Folders are never edited after submission. A new packing for an n already here goes in a new
-dated folder, `nNNNN-YYYY-MM-DD/`. In the drawings, blue squares are tilted by 1° or more.
-`verify.py` is MIT (LICENSE); the certificates and drawings are CC0.
