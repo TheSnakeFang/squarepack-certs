@@ -103,7 +103,8 @@ Three exact programs, written separately, all Python 3.8+ with the standard libr
 | `tools/rectcheck.py` | square and rectangle certificates | all four walls against W and H, pairs by separating axes, strict |
 
 They share the method (rational half-angle representation, separating axes) but not code. To run
-all of them on everything (a few CPU-minutes for the small files, about an hour for the composites):
+all of them on everything (seconds for the small files; the 38 composites take about an hour per
+checker):
 
 ```bash
 for f in n0*/n0*.cert third_party/daniel/*.cert composites/inputs/*.cert composites/n0*.cert; do
