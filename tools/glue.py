@@ -6,7 +6,7 @@ Standalone, standard library only (Python 3.8+). Same layout, count and strictif
 squarepack/glue.py in the research repo; on every certificate in this bundle the output is
 identical to it apart from the `#` comment line.
 
-    python3 tools/glue.py --rect A.cert --second B.cert --out C.cert [--closed]
+    python3 tools/glue.py --rect A.cert --second B.cert --out C.cert [--closed] [--d 1/10000]
 
 A: rectangle certificate `n W H` with box a x b = ceil W x ceil H, a > b, squeeze
    d_A = min(a - W, b - H) > 0.
@@ -25,6 +25,13 @@ and the count is n^2 - waste_A - waste_B (asserted). The integer blocks touch ea
 the composite at side n - d is valid only in the closed sense; by default every centre and the
 side are scaled by 1 + 2^-64 about the origin, which makes every margin strictly positive while
 the side stays below n (asserted: 2^-64 < d / (n - d)). --closed writes the side n - d instead.
+
+--d D (a rational such as 1/10000) uses the squeeze D instead of min(d_A, d_B, 1/2); it needs
+0 < D <= min(d_A, d_B, 1/2), so both pieces fit in their boxes shrunk by D, and a piece squeezed
+by more than D sits flush in the corner of its box as above. The side is then exactly n - D
+(--closed) or (1 + 2^-64)(n - D). Gluing closed with one common D at every step of a chain and
+scaling once at the end (centres and side by 1 + D / (2(n - D)), side n - D/2) is the uniform
+construction behind the theorem.
 
 Nothing is verified here beyond the layout: run `python3 verify.py C.cert --strict` (and
 tools/verify_cert_daniel.py, tools/rectcheck.py) on the output.
@@ -105,8 +112,9 @@ def block(x0, y0, cols, rows):
 
 
 # ---- Lemma 3 -----------------------------------------------------------------------------------
-def glue(A, B, strict=True):
-    """(certificate, info). Raises GlueError if the hypotheses of Lemma 3 fail."""
+def glue(A, B, strict=True, d=None):
+    """(certificate, info). Raises GlueError if the hypotheses of Lemma 3 fail. d: the squeeze to
+    use (default min(d_A, d_B, 1/2)); a given d needs 0 < d <= min(d_A, d_B, 1/2)."""
     a, b = math.ceil(A.W), math.ceil(A.H)
     if a <= b:
         raise GlueError(f"need a > b for the rectangle A, got a = {a}, b = {b}")
@@ -119,9 +127,15 @@ def glue(A, B, strict=True):
             raise GlueError(f"need W_B > H_B and a' > b' for a rectangle B, got a' = {a2}, b' = {b2}")
         d_B = min(a2 - B.W, b2 - B.H)
     d_A = min(a - A.W, b - A.H)
-    d = min(d_A, d_B, HALF)
-    if d <= 0:
-        raise GlueError(f"need d = min(d_A, d_B, 1/2) > 0, got d_A = {float(d_A):.3e}, d_B = {float(d_B):.3e}")
+    if d is None:
+        d = min(d_A, d_B, HALF)
+        if d <= 0:
+            raise GlueError(f"need d = min(d_A, d_B, 1/2) > 0, got d_A = {float(d_A):.3e}, d_B = {float(d_B):.3e}")
+    else:
+        d = Fr(d)
+        if not 0 < d <= min(d_A, d_B, HALF):
+            raise GlueError(f"need 0 < d <= min(d_A, d_B, 1/2) for the given d = {d}, got d_A = {float(d_A):.3e}, "
+                            f"d_B = {float(d_B):.3e}")
     n = b + b2
     c = n - a2
     if n < a:
@@ -157,10 +171,12 @@ def main(argv=None):
     ap.add_argument("--second", required=True, help="certificate B: a square, or a rectangle a' x b' with a' > b'")
     ap.add_argument("--out", required=True)
     ap.add_argument("--closed", action="store_true", help="write side n - d exactly (closed-valid only)")
+    ap.add_argument("--d", type=Fr, default=None,
+                    help="squeeze to use, a rational such as 1/10000 (default min(d_A, d_B, 1/2))")
     o = ap.parse_args(argv)
     A, B = read_cert(o.rect), read_cert(o.second)
     try:
-        cert, info = glue(A, B, strict=not o.closed)
+        cert, info = glue(A, B, strict=not o.closed, d=o.d)
     except GlueError as e:
         print(f"glue: refused: {e}", file=sys.stderr)
         return 2
@@ -173,7 +189,8 @@ def main(argv=None):
         fh.write(cert_text(cert, comment))
     print(f"count = {info['count']} = {n}^2 - {info['waste_A']} - {info['waste_B']} = {n}^2 - {n} + {j}"
           f"  (A box {info['a']} x {info['b']}, B box {info['a2']} x {info['b2']}, c = {info['c']})")
-    print(f"d = min(d_A, d_B, 1/2) = {float(d):.15f}, side = {float(cert.W):.15f} = {side}")
+    dsrc = "min(d_A, d_B, 1/2)" if o.d is None else "--d"
+    print(f"d = {dsrc} = {float(d):.15f}, side = {float(cert.W):.15f} = {side}")
     print(f"wrote {o.out}")
     return 0
 
