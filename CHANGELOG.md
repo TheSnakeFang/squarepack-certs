@@ -22,3 +22,10 @@ n ≥ 15" (draft v0.3).
 
 Certificates for s(308) < 18, s(343) < 19 and s(344) < 19 (`n0308/`, `n0343/`, `n0344/`), with the
 standalone exact verifier `verify.py`. Submitted to the Squares Project as jlevy/squares#484.
+
+## 2026-10-13
+
+- Added six direct packings of n² − n + 2 squares below side n: `n0382/` (seeded from Evan Daniel's improved 343), `n0422/`, `n0464/`, `n0508/`, `n0758/`, `n0814/` (parametric seeds).
+- Added `rectangles/r22x21_n0443/`: 443 squares strictly inside (22 − d) × (21 − d), d ≥ 0.0094, waste 19 = b − 2. With Lemma 3 this gives the step j(n) ≥ j(n − 21) + 2.
+- Every new file passes verify.py (strict), tools/rectcheck.py and Daniel's verify_cert.py (width only for the rectangle); see VERIFICATION.md.
+

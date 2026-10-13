@@ -45,3 +45,7 @@ composites) pass all three checkers. CPU time: verify.py 53 min, Daniel's 53 min
 - `sh third_party/fetch_unlicensed.sh`: both hashes OK; the fetched `n-211.cert` passes `verify.py --strict`,
   Daniel's checker and `rectcheck.py` (it is not part of this repository).
 
+## Addendum 2026-10-13
+
+Files added after the 2026-10-12 pass: n0382, n0422, n0464, n0508, n0758, n0814 (square certificates) and rectangles/r22x21_n0443. Each square certificate: `verify.py --strict` VALID, `tools/verify_cert_daniel.py` VALID, `tools/rectcheck.py` STRICT VALID (6/6 each). The rectangle: `squarepack.verify --strict` VALID (output shipped), `tools/rectcheck.py` STRICT VALID (both dimensions, output shipped), Daniel's checker VALID as a width check. Ellsworth's `check_packing.py` on the six `.txt` files: VALID (outputs shipped). SHA256SUMS OK in all seven folders.
+

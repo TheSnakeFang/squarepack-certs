@@ -24,7 +24,8 @@ inducts on n in steps of 16, starting from finitely many certificates. Where eac
 | n = 18: 307 squares in side < 18 | implied by `n0308/` (308 squares in side < 18) |
 | n = 19, …, 26: n² − n + 1 squares in side < n (Section 3) | `n0343/`, `n0381/`, `n0421/`, `n0463/`, `n0507/`, `n0553/`, `n0601/`, `n0651/` |
 | m² − m squares in side < m for m = 11, …, 15 (Proposition 5) | `third_party/daniel/n-110.cert`, `n-132`, `n-156`, `n-182`, `n-210` |
-| the four further rectangles (Section 4) | `rectangles/r18x17_n0290/`, `r19x18_n0325/`, `r21x20_n0401/`, `r22x21_n0442/` |
+| the four further rectangles with waste b − 1 (Section 4) | `rectangles/r18x17_n0290/`, `r19x18_n0325/`, `r21x20_n0401/`, `r22x21_n0442/` |
+| the 22 × 21 rectangle with waste b − 2 = 19 (443 squares, d ≥ 0.0094; added 2026-10-13) | `rectangles/r22x21_n0443/` |
 | the 230 composites of Section 5, best j for 27 ≤ n ≤ 64 | `composites/` |
 
 ## Direct square packings
@@ -42,6 +43,12 @@ inducts on n in steps of 16, starting from finitely many certificates. Where eac
 | `n0553/` | 553 | 24² − 24 + 1 | 23.998811020144984 |
 | `n0601/` | 601 | 25² − 25 + 1 | 24.998914572427130 |
 | `n0651/` | 651 | 26² − 26 + 1 | 25.991547815274380 |
+| `n0382/` | 382 | 20² − 20 + 2 | 19.989479729399675 |
+| `n0422/` | 422 | 21² − 21 + 2 | 20.988436524095744 |
+| `n0464/` | 464 | 22² − 22 + 2 | 21.991709536768996 |
+| `n0508/` | 508 | 23² − 23 + 2 | 22.994733849702143 |
+| `n0758/` | 758 | 28² − 28 + 2 | 27.996346242823117 |
+| `n0814/` | 814 | 29² − 29 + 2 | 28.999873603982716 |
 
 308, 343 and 344 were published here on 2026-10-09 and submitted to the Squares Project
 (jlevy/squares#484), whose exact implementations confirmed them; Evan Daniel has since improved
