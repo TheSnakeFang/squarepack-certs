@@ -49,3 +49,7 @@ composites) pass all three checkers. CPU time: verify.py 53 min, Daniel's 53 min
 
 Files added after the 2026-10-12 pass: n0382, n0422, n0464, n0508, n0758, n0814 (square certificates) and rectangles/r22x21_n0443. Each square certificate: `verify.py --strict` VALID, `tools/verify_cert_daniel.py` VALID, `tools/rectcheck.py` STRICT VALID (6/6 each). The rectangle: `squarepack.verify --strict` VALID (output shipped), `tools/rectcheck.py` STRICT VALID (both dimensions, output shipped), Daniel's checker VALID as a width check. Ellsworth's `check_packing.py` on the six `.txt` files: VALID (outputs shipped). SHA256SUMS OK in all seven folders.
 
+## Addendum 2026-10-13 (theorem inventory)
+
+`theorem/n0NN_F*.cert` (50 files) and `theorem/best/*.cert` (26 files): `squarepack.verify --strict` VALID 76/76 and the closed versions `squarepack.verify` VALID 76/76 (recorded in `theorem/inventory.tsv` and `theorem/best.tsv`, columns strict_ok / closed_ok), `tools/rectcheck.py` STRICT VALID 76/76, `tools/verify_cert_daniel.py` VALID 76/76 (re-run on the shipped files). Every count equals n² − n + F(n) (theorem files) or the excess stated in best.tsv, and every side is exactly (20000n − 1)/20000.
+

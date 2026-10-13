@@ -29,3 +29,9 @@ standalone exact verifier `verify.py`. Submitted to the Squares Project as jlevy
 - Added `rectangles/r22x21_n0443/`: 443 squares strictly inside (22 − d) × (21 − d), d ≥ 0.0094, waste 19 = b − 2. With Lemma 3 this gives the step j(n) ≥ j(n − 21) + 2.
 - Every new file passes verify.py (strict), tools/rectcheck.py and Daniel's verify_cert.py (width only for the rectangle); see VERIFICATION.md.
 
+## 2026-10-13 (second entry)
+
+- Added `theorem/`: for every n = 15..64 the certificate of n² − n + F(n) squares in side n − 1/20000 built by the proof of Theorem 2 (uniform squeeze d0 = 1/10000 at every gluing step, one strictification at the end), with `inventory.tsv`, `PIECES.md` (every input piece, squeeze, hash, provenance) and 26 best-excess certificates (`best/`, `best.tsv`).
+- `tools/glue.py` gained `--d` (use a given common squeeze instead of min(d_A, d_B, 1/2)).
+- All 76 new certificates pass `verify.py --strict` / `squarepack.verify --strict`, `tools/rectcheck.py` and Daniel's `verify_cert.py`; see VERIFICATION.md.
+

@@ -1,8 +1,8 @@
 # squarepack-certs
 
 Exact certificates, checkers and the gluing program behind the note *Packing n² − n + 1 unit
-squares in a square of side less than n, for every n ≥ 15* (Kevin Fang, draft v0.3,
-2026-10-12). Every packing the proof uses is here as a rational certificate, or, for the one
+squares in a square of side less than n, for every n ≥ 15* (Kevin Fang, draft v0.6,
+2026-10-13). Every packing the proof uses is here as a rational certificate, or, for the one
 piece without a licence, fetched by a script from a pinned commit and checked by hash. Three
 independently written exact checkers run on every certificate; `VERIFICATION.md` has the outcome.
 
@@ -11,7 +11,7 @@ interiors. The note proves:
 
 **Theorem 1.** $s(n^2 - n + 1) < n$ for every integer $n \ge 15$.
 
-**Theorem 2.** $s\big(n^2 - n + \lfloor (n + 1)/16 \rfloor\big) < n$ for every integer $n \ge 15$.
+**Theorem 2.** Let $n \ge 15$ and let $p, q \ge 0$ be integers with $16p + 21q \le n - 15$. Then $n^2 - n + 1 + p + 2q$ unit squares pack in a square of side less than $n$. In particular $s(n^2 - n + F(n)) < n$ with $F(n) = 1 + \max\{p + 2q : 16p + 21q \le n - 15\}$.
 
 The proof glues a squeezable 17 × 16 rectangle R onto a square packing (Lemma 3 of the note) and
 inducts on n in steps of 16, starting from finitely many certificates. Where each one lives:
@@ -27,6 +27,7 @@ inducts on n in steps of 16, starting from finitely many certificates. Where eac
 | the four further rectangles with waste b − 1 (Section 4) | `rectangles/r18x17_n0290/`, `r19x18_n0325/`, `r21x20_n0401/`, `r22x21_n0442/` |
 | the 22 × 21 rectangle with waste b − 2 = 19 (443 squares, d ≥ 0.0094; added 2026-10-13) | `rectangles/r22x21_n0443/` |
 | the 230 composites of Section 5, best j for 27 ≤ n ≤ 64 | `composites/` |
+| the theorem inventory: for every 15 ≤ n ≤ 64 the certificate of n² − n + F(n) squares in side n − 1/20000 built by the proof (uniform squeeze 1/10000), plus 26 best-excess certificates | `theorem/` (see `theorem/README.md`) |
 
 ## Direct square packings
 
@@ -63,6 +64,7 @@ tools/
   rectcheck.py                exact checker for square and rectangle certificates (stdlib only)
   verify_cert_daniel.py       Evan Daniel's exact checker, unchanged (MIT, NOTICE-verify_cert_daniel)
   glue.py                     Lemma 3 of the note in exact arithmetic (stdlib only)
+theorem/                      theorem inventory n = 15..64 (README.md, inventory.tsv, best.tsv, PIECES.md, best/)
 nNNNN/                        one direct square packing per folder:
   nNNNN.cert                  certificate, Daniel's text format
   nNNNN.cert.json             the same, SQUISH json
