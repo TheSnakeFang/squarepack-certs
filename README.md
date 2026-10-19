@@ -1,8 +1,8 @@
 # squarepack-certs
 
 Exact certificates, checkers and the gluing program behind the note *Packing n² − n + 1 unit
-squares in a square of side less than n, for every n ≥ 15* (Kevin Fang, draft v0.8,
-2026-10-18; text in `note/fang-2026-n2-n-1.md`). Lean 4 formalisation of Theorems 1 and 2:
+squares in a square of side less than n, for every n ≥ 15* (Kevin Fang, draft v0.9,
+2026-10-18, https://doi.org/10.5281/zenodo.23463481; text in `note/fang-2026-n2-n-1.md`). Lean 4 formalisation of Theorems 1 and 2:
 https://github.com/TheSnakeFang/squarepack-lean. Every packing the proof uses is here as a rational certificate, or, for the one
 piece without a licence, fetched by a script from a pinned commit and checked by hash. Three
 independently written exact checkers run on every certificate; `VERIFICATION.md` has the outcome.
