@@ -32,7 +32,7 @@ inducts on n in steps of 16, starting from finitely many certificates. Where eac
 
 ## Theorem A (2026-10-24)
 
-`theorem-a/` holds the code, certificates and note for a second result: for every integer k ≥ 6, k² − ⌈√(32k)⌉ − 1 unit squares fit in a square of side less than k (c*(k) < 4√(2k) + 1). It is a construction on Sungjoon Ryu's L-shaped packing with row-filled band ends and an odd band width. See `theorem-a/README.md`.
+`theorem-a/` holds the code, certificates and note (https://doi.org/10.5281/zenodo.23624412) for a second result: for every integer k ≥ 6, k² − ⌈√(32k)⌉ − 1 unit squares fit in a square of side less than k (c*(k) < 4√(2k) + 1). It is a construction on Sungjoon Ryu's L-shaped packing with row-filled band ends and an odd band width. See `theorem-a/README.md`.
 
 ## Direct square packings
 

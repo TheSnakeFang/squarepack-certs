@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-24 (later)
+
+The Theorem A note is on Zenodo, https://doi.org/10.5281/zenodo.23624412. `theorem-a/note/` now has the version with the DOI and the bundle commit b1b3f6b in the front matter, the same text as the Zenodo files. The DOI is also in the README files.
+
 ## 2026-10-24
 
 `theorem-a/`: code, certificates and note for Theorem A (c*(k) < 4√(2k) + 1 for every k ≥ 6).
