@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-24 (v0.2 of the Theorem A note)
+
+`theorem-a/note/` is v0.2 (https://doi.org/10.5281/zenodo.23624565). It credits Evan Daniel's earlier proof of c*(k) ≤ 4⌈√(2k − 7)⌉ − 1, which we had missed. It also drops the v0.1 claim that Theorem A was the smallest explicit bound known. README.md, theorem-a/README.md and ATTRIBUTION.md say the same. Code and certificates unchanged.
+
 ## 2026-10-24 (later)
 
 The Theorem A note is on Zenodo, https://doi.org/10.5281/zenodo.23624412. `theorem-a/note/` now has the version with the DOI and the bundle commit b1b3f6b in the front matter, the same text as the Zenodo files. The DOI is also in the README files.

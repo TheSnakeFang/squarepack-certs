@@ -1,6 +1,8 @@
 # Theorem A: k² − ⌈√(32k)⌉ − 1 unit squares in a square of side less than k
 
-Code and certificates for the note *Packing k² − ⌈√(32k)⌉ − 1 unit squares in a square of side less than k* (Kevin Fang, draft v0.1, 2026-10-24, https://doi.org/10.5281/zenodo.23624412; `note/main.pdf`, source `note/main.tex`).
+Code and certificates for the note *Packing k² − ⌈√(32k)⌉ − 1 unit squares in a square of side less than k* (Kevin Fang, draft v0.2, 2026-10-24, https://doi.org/10.5281/zenodo.23624565; `note/main.pdf`, source `note/main.tex`).
+
+The same idea and constant were found first by Evan Daniel, who proves c*(k) ≤ 4⌈√(2k − 7)⌉ − 1 for every k ≥ 7 in Lean (https://github.com/evand/square-packing, `certificates/k2-minus-c/`, commit aa12b98, 18 October 2026). For k ≥ 89 the two integer bounds differ by at most 2. Theorem A is an independent second proof.
 
 **Theorem A.** For every integer k ≥ 6, k² − ⌈√(32k)⌉ − 1 unit squares fit in a square of side less than k. Equivalently c*(k) < 4√(2k) + 1, where c*(k) is the largest c with s(k² − c) = k.
 

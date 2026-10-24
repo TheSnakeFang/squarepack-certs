@@ -14,7 +14,7 @@ Kevin Fang.
 - Francisco Couzo: the packing of 342 unit squares (https://github.com/franciscouzo/square-packing), whose two eight-line wedges were the seed for n = 381 and 380 and, through 381, for n = 421 and the 21 × 20 rectangle; through 421, also for the 22 × 21 rectangle. Not redistributed here.
 - The Squares Project (J. Levy et al., https://github.com/jlevy/squares): replayed and confirmed the n = 308, 343, 344 certificates with its own exact implementations (jlevy/squares#484), and verified and registered de Winter's 211.
 - SQUISH (Nate Chaoweeraprasit): the json certificate layout.
-- Sungjoon Ryu, "Packing k² − c unit squares: an upper bound of order k^{3/8} for the deficiency", version 1.1, doi 10.5281/zenodo.23278927: the L-shaped packing of `theorem-a/` (his Theorem 1.3) and its end-region framework (his Section 6). The row-filled ends, the odd width and the bound of Theorem A are ours.
+- Sungjoon Ryu, "Packing k² − c unit squares: an upper bound of order k^{3/8} for the deficiency", version 1.1, doi 10.5281/zenodo.23278927: the L-shaped packing of `theorem-a/` (his Theorem 1.3) and its end-region framework (his Section 6). Evan Daniel found the axis-layer filling of the band ends and the bound c*(k) ≤ 4⌈√(2k − 7)⌉ − 1 first (evand/square-packing, `certificates/k2-minus-c/`, 18 October 2026). Theorem A, with its end split, odd width and form 4√(2k) + 2, is an independent second proof.
 
 ## Review
 
