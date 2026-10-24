@@ -53,3 +53,15 @@ Files added after the 2026-10-12 pass: n0382, n0422, n0464, n0508, n0758, n0814 
 
 `theorem/n0NN_F*.cert` (50 files) and `theorem/best/*.cert` (26 files): `squarepack.verify --strict` VALID 76/76 and the closed versions `squarepack.verify` VALID 76/76 (recorded in `theorem/inventory.tsv` and `theorem/best.tsv`, columns strict_ok / closed_ok), `tools/rectcheck.py` STRICT VALID 76/76, `tools/verify_cert_daniel.py` VALID 76/76 (re-run on the shipped files). Every count equals n² − n + F(n) (theorem files) or the excess stated in best.tsv, and every side is exactly (20000n − 1)/20000.
 
+
+## Addendum 2026-10-24 (theorem-a/)
+
+Run on 2026-10-24 on the files of `theorem-a/` (Python 3.14, macOS), one process per command, `python3 -I`. Failures: **0**.
+
+- `theorem-a/certs/k006.cert` … `k040.cert` (35 files). Each was checked on all pairs, unmodified, with `verify.py --strict`, `tools/verify_cert_daniel.py` and `tools/rectcheck.py`: 35/35 VALID under each.
+- All 36 shipped certificates (k = 6..40 and 101) through `theorem-a/windowed_check.py`, which runs `verify.py --strict` and Daniel's checker unchanged on overlapping 4 × 4 windows: 36/36 VALID under both. The windowed and all-pairs least margins agree exactly on the files where both were run.
+- Controls: a square pushed 10⁻³ into its neighbour, and a square flush on a wall (strict), are both rejected by both checkers through the windowed driver.
+- `theorem-a/regenerate.sh`: `lband.py` rebuilds k = 300 (89,902 squares) and k = 600 (359,860 squares), and the SHA-256 match `LARGE.sha256`. Both pass both checkers through the windowed driver.
+- `lband.py` is byte-identical to the research repository's `squarepack.lband --proof` at k = 6, 7, 31, 101, 300 and 600.
+- `python3 theorem-a/lband.py --bound 6 20000`: k² − n < 4√(2k) + 2 at every k, decided exactly. The largest k² − n − 4√(2k) is 1.9219, at k = 19705.
+- `(cd theorem-a/certs && shasum -a 256 -c SHA256SUMS)`: 36/36 OK.

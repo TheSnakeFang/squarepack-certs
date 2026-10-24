@@ -30,6 +30,10 @@ inducts on n in steps of 16, starting from finitely many certificates. Where eac
 | the 230 composites of Section 5, best j for 27 ≤ n ≤ 64 | `composites/` |
 | the theorem inventory: for every 15 ≤ n ≤ 64 the certificate of n² − n + F(n) squares in side n − 1/20000 built by the proof (uniform squeeze 1/10000), plus 26 best-excess certificates | `theorem/` (see `theorem/README.md`) |
 
+## Theorem A (2026-10-24)
+
+`theorem-a/` holds the code, certificates and note for a second result: for every integer k ≥ 6, k² − ⌈√(32k)⌉ − 1 unit squares fit in a square of side less than k (c*(k) < 4√(2k) + 1). It is a construction on Sungjoon Ryu's L-shaped packing with row-filled band ends and an odd band width. See `theorem-a/README.md`.
+
 ## Direct square packings
 
 | folder | n | form | S, rounded up (exact value in the certificate) |
@@ -66,6 +70,7 @@ tools/
   verify_cert_daniel.py       Evan Daniel's exact checker, unchanged (MIT, NOTICE-verify_cert_daniel)
   glue.py                     Lemma 3 of the note in exact arithmetic (stdlib only)
 theorem/                      theorem inventory n = 15..64 (README.md, inventory.tsv, best.tsv, PIECES.md, best/)
+theorem-a/                    Theorem A, c*(k) < 4 sqrt(2k) + 1 (README.md, lband.py, windowed_check.py, certs/, note/)
 nNNNN/                        one direct square packing per folder:
   nNNNN.cert                  certificate, Daniel's text format
   nNNNN.cert.json             the same, SQUISH json

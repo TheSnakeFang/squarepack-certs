@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-24
+
+`theorem-a/`: code, certificates and note for Theorem A (c*(k) < 4√(2k) + 1 for every k ≥ 6).
+- `lband.py`: the construction in exact rationals, stdlib only.
+- `windowed_check.py`: both exact checkers, unchanged, on overlapping windows.
+- 36 strict certificates (k = 6..40 and 101), plus hashes and `regenerate.sh` for k = 300 and 600.
+- The note as PDF and LaTeX.
+
+No existing file changed apart from README.md, ATTRIBUTION.md, VERIFICATION.md and this file.
+
 ## 2026-10-12
 
 Bundle for the note "Packing n² − n + 1 unit squares in a square of side less than n, for every
