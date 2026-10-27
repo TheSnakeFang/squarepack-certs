@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-27 (v0.3 of the Theorem A note)
+
+`theorem-a/note/` is v0.3 (https://doi.org/10.5281/zenodo.23714459), after the Squares Project's review of v0.2 (jlevy/squares#797). It corrects the fixed-squeeze example of Section 6 (the 10⁻⁷ was the target passed to `band_t`; the resulting t is not close) and the comparison sentence of Section 7, labels the sharpness remark as observed, and fixes some wording. The mathematics is unchanged. The Zenodo record of v0.3 also holds the k = 300 and 600 certificates, xz-compressed, matching `LARGE.sha256`. Code and certificates here are unchanged.
+
 ## 2026-10-24 (v0.2 of the Theorem A note)
 
 `theorem-a/note/` is v0.2 (https://doi.org/10.5281/zenodo.23624565). It credits Evan Daniel's earlier proof of c*(k) ≤ 4⌈√(2k − 7)⌉ − 1, which we had missed. It also drops the v0.1 claim that Theorem A was the smallest explicit bound known. README.md, theorem-a/README.md and ATTRIBUTION.md say the same. Code and certificates unchanged.

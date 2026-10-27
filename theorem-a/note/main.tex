@@ -1,5 +1,5 @@
 % Packing k^2 - ceil(sqrt(32k)) - 1 unit squares in a square of side less than k
-% Kevin Fang, 2026-10-24. LaTeX source of the note built from docs/theorem-a.md (v0.3).
+% Kevin Fang, draft v0.3, 2026-10-27. (docs/theorem-a.md is a separate working file with its own version numbers.)
 % Build: tectonic main.tex   (or: pdflatex main.tex; pdflatex main.tex)
 \documentclass[11pt,letterpaper]{amsart}
 
@@ -30,11 +30,11 @@
 \title[Packing $k^2-\lceil\sqrt{32k}\,\rceil-1$ unit squares below side $k$]{Packing $k^2-\lceil\sqrt{32k}\,\rceil-1$ unit squares in a square of side less than $k$}
 \author{Kevin Fang}
 \email{me@kevinfang.tech}
-\date{2026-10-24}
-\thanks{Draft v0.2, 2026-10-24, doi:10.5281/zenodo.23624565; v0.2 credits the earlier result of Daniel \cite{Dan26b} (v0.1: doi:10.5281/zenodo.23624412). Code and certificates: \cite{Fan26b}, folder \texttt{theorem-a/}, commit \hash{b1b3f6b}.}
+\date{2026-10-27}
+\thanks{Draft v0.3, 2026-10-27, doi:10.5281/zenodo.23714459; all versions: doi:10.5281/zenodo.23624411. v0.3 corrects Sections~6 and~7 and some wording after the review \cite{Lev26}; the mathematics is unchanged from v0.2 (doi:10.5281/zenodo.23624565), which credits the earlier result of Daniel \cite{Dan26b}. Code and certificates: \cite{Fan26b}, folder \texttt{theorem-a/}, commit \hash{b1b3f6b}.}
 
 \begin{abstract}
-Let $s(N)$ be the side of the smallest square containing $N$ unit squares with disjoint interiors, and let $\cs(k)$ be the largest $c$ with $s(k^2-c)=k$. We prove $\cs(k)<4\sqrt{2k}+1$ for every integer $k\ge6$, that is, $s(k^2-\lceil\sqrt{32k}\,\rceil-1)<k$. The construction is Ryu's L-shaped packing: an aligned grid and two bands of $b$ tilted rows. Both ends of each band are filled with axis-parallel rows, and $b$ is the odd integer nearest $\sqrt{2k}$. The odd width keeps the rounding loss of each filled end below $3/2$. The same idea and the same constant $4\sqrt2$ were found earlier by Evan Daniel, who proves $\cs(k)\le4\lceil\sqrt{2k-7}\,\rceil-1$ for $k\ge7$ in Lean; for $k\ge89$ the two integer bounds differ by at most $2$. This note is an independent second proof, with a different split of the free length and an odd band width. Exact rational certificates for $k\le600$ are checked by two independently written programs.
+Let $s(N)$ be the side of the smallest square containing $N$ unit squares with disjoint interiors, and let $\cs(k)$ be the largest $c$ with $s(k^2-c)=k$. We prove $\cs(k)<4\sqrt{2k}+1$ for every integer $k\ge6$, that is, $s(k^2-\lceil\sqrt{32k}\,\rceil-1)<k$. The construction is Ryu's L-shaped packing: an aligned grid and two bands of $b$ tilted rows. Both ends of each band are filled with axis-parallel rows, and $b$ is an odd integer within $1$ of $\sqrt{2k}$. The odd width staggers the floors of the two lowest levels of each filled end, which is what the end estimate needs. The same idea and the same constant $4\sqrt2$ were found earlier by Evan Daniel, who proves $\cs(k)\le4\lceil\sqrt{2k-7}\,\rceil-1$ for $k\ge7$ in Lean; for $k\ge89$ the two integer bounds differ by at most $2$, and neither is the smaller at every $k$. This note is an independent second proof, with a different split of the free length and an odd band width. Exact rational certificates for $38$ values of $k$ up to $600$ are checked by two separately written programs.
 \end{abstract}
 
 \maketitle
@@ -45,7 +45,7 @@ For $x>0$ let $N(x)$ be the largest number of unit squares that fit, with pairwi
 \[
 M(k)=\max\{N : s(N)<k\},\qquad w(k)=k^2-M(k),\qquad \cs(k)=\max\{c : s(k^2-c)=k\}.
 \]
-Then $s(k^2-c)<k$ exactly when $M(k)\ge k^2-c$, so $\cs(k)=w(k)-1$.
+Since $s$ is nondecreasing, $s(k^2-c)<k$ exactly when $M(k)\ge k^2-c$, so $\cs(k)=w(k)-1$.
 
 Erd\H{o}s and Graham \cite{EG75} showed that the waste $x^2-N(x)$ is $O(x^{7/11})$, which makes $w(k)$ sublinear. The best exponent is now $3/5$ \cite{Bui25,McC26} (the earlier claim \cite{CG20} contained an error \cite{AB26}). For integer sides approached from below, Ryu \cite{Ryu26} proved, among other things:
 \begin{itemize}
@@ -59,7 +59,7 @@ Daniel \cite{Dan26b} proved in Lean, on 18 October 2026, $\cs(k)\le4\lceil\sqrt{
 For every integer $k\ge6$, $w(k)<4\sqrt{2k}+2$. Equivalently $\cs(k)<4\sqrt{2k}+1$, so $\cs(k)\le\lceil\sqrt{32k}\,\rceil$, and $s(n)<k$ for every integer $n\le k^2-\lceil\sqrt{32k}\,\rceil-1$.
 \end{theorem}
 
-The packing is Ryu's L (his Sections~3--4), and we use his end-region framework (his Section~6): lifted band ends, the far end as the $180^\circ$ image of the near one, and end fills assembled with the rows. Daniel \cite{Dan26b} fills the band ends with axis-parallel layers in the same way. What differs here is the split of the free length (lift $0$ at one end of each band, all of it at the other), the odd band width, and the estimate of Lemma~\ref{lem:fill}, which together give the bound in the form $w(k)<4\sqrt{2k}+2$. To keep the note self-contained, we prove everything we use.
+The packing is Ryu's L (his Sections~3--4), and we use his end-region framework (his Section~6): lifted band ends, the far end as the $180^\circ$ image of the near one, and end fills assembled with the rows. Right-justified axis-parallel layers in a band end already appear in Ryu's Section~7 staircase, after Bui \cite{Bui25}. Daniel \cite{Dan26b}, and this note, fill each band end with such layers alone, at $b\approx\sqrt{2k}$. What differs here is the split of the free length (lift $0$ at one end of each band, all of it at the other), the odd band width, and the estimate of Lemma~\ref{lem:fill}, which together give the bound in the form $w(k)<4\sqrt{2k}+2$. To keep the note self-contained, we prove everything we use.
 
 \section{The band}\label{sec:band}
 
@@ -67,7 +67,7 @@ Fix an integer $b\ge3$ and a rational $t=\tan(\theta/2)>1/b$. Write $c=\cos\thet
 \[
 W=bc+s\quad(\text{band width}),\qquad h=bs+c\quad(\text{row height}).
 \]
-At $t_0=1/b$: $c_0=(b^2-1)/(b^2+1)$, $s_0=2b/(b^2+1)$, $\tau_0=(b^2-1)/(2b)$, $W_0=b$, $h_0=(3b^2-1)/(b^2+1)<3$. Since $dW/d\theta=c-bs<0$ for $\tan\theta>1/b$, and $\theta_0=2\arctan(1/b)>\arctan(1/b)$, we have $W<b$ for every $t>1/b$.
+At $t_0=1/b$: $c_0=(b^2-1)/(b^2+1)$, $s_0=2b/(b^2+1)$, $\tau_0=(b^2-1)/(2b)$, $W_0=b$, $h_0=(3b^2-1)/(b^2+1)<3$. Since $b-W=2t(bt-1)/(1+t^2)$, we have $W<b$ for every $t>1/b$.
 
 Use band coordinates $X\in[0,W]$ (across) and $Y\in[0,L]$ (along). With $(u,v)$ the coordinates along $(c,s)$ and $(-s,c)$, the rectangle $P=\{0\le u\le b,\ 0\le v\le1\}$ is the union of the $b$ unit squares $\{i\le u\le i+1\}$. \emph{Row $j$} is $P$ translated so that its corner $u=v=0$ is at $(s,\,y_0+j\sec)$, for $0\le j<R$.
 
@@ -138,7 +138,7 @@ $bR=b+bc(L-h-F)$. By Lemma~\ref{lem:fill}, $C(L)>bR+(b-1)+2(W-s-2\tau)+2F\tau-1-
 
 \section{Proof of Theorem~\ref{thm:A}}
 
-Let $k\ge6$ and let $b$ be an odd integer with $|b-\sqrt{2k}|\le1$. Then $b\ge3$. For $k\ge8$, $k-b\ge k-\sqrt{2k}-1\ge3>h$ by (d). For $k=6,7$ the only choice is $b=3$, and $k-b\ge3>h$. For close $t$, \eqref{eq:waste} and \eqref{eq:band} with $L=S$ and $L=k-b$ give $k^2-N(t)<H(t)$, where $N(t)$ is the number of squares packed and $H(t)$ is $b(k-S)$ plus the two right sides of \eqref{eq:band}.
+Let $k\ge6$ and let $b$ be an odd integer with $|b-\sqrt{2k}|\le1$. Then $b\ge3$. For $k\ge8$, $k-b\ge k-\sqrt{2k}-1\ge3>h$ by (d). For $k=6,7$ the only choice is $b=3$, and $k-b\ge3>h$. For close $t$, \eqref{eq:waste} and \eqref{eq:band} with $L=S$ and $L=k-b$ give $k^2-n(t)<H(t)$, where $n(t)$ is the number of squares packed and $H(t)$ is $b(k-S)$ plus the two right sides of \eqref{eq:band}.
 
 This holds for each $t$ separately, even though $R$, $F$ and the floors jump with $t$. $H$ is continuous, and as $t\to1/b^+$, $S\to k$ and
 \[
@@ -148,20 +148,20 @@ Now $4kb/(b^2+1)<4k/b$, and $4k/b+2b=4\sqrt{2k}+\frac2b(b-\sqrt{2k})^2\le4\sqrt{
 \[
 B(k)<4\sqrt{2k}+2-2\Bigl(\kappa_b-\frac1b-\frac1{b^2+1}\Bigr),
 \]
-and $b(b^2+1)^2\bigl(\kappa_b-\frac1b-\frac1{b^2+1}\bigr)=6b^4-b^3-2b^2-b>0$. Hence $B(k)<4\sqrt{2k}+2$. Some close $t$ has $H(t)<4\sqrt{2k}+2$, and it gives a packing with $S<k$ and $k^2-N(t)<4\sqrt{2k}+2$. \qed
+and $b(b^2+1)^2\bigl(\kappa_b-\frac1b-\frac1{b^2+1}\bigr)=6b^4-b^3-2b^2-b>0$. Hence $B(k)<4\sqrt{2k}+2$. Some close $t$ has $H(t)<4\sqrt{2k}+2$, and it gives a packing with $S<k$ and $k^2-n(t)<4\sqrt{2k}+2$. \qed
 
-\begin{remark}[Sharpness]
-For odd $b\ge5$ and $k=(b^2-b+8)/2$, the construction at close $t$ has waste exactly $4b$, which is $4\sqrt{2k}+2-31/(2b)+O(b^{-2})$; for example $k=59$, $b=11$, $w=44$. So the additive constant $2$ cannot be lowered for this construction.
+\begin{remark}[Sharpness, observed]
+For odd $b\ge5$ and $k=(b^2-b+8)/2$ the construction appears to have waste exactly $4b$, which is $4\sqrt{2k}+2-31/(2b)+O(b^{-2})$; for example $k=59$, $b=11$, $w=44$. We have no proof for every $b$. It holds at the $t$ our program chooses for every odd $b$ from $5$ to $201$, and the review \cite{Lev26} found it in the limit $t\to1/b^+$ for every odd $b$ from $5$ to $2001$. Where it holds, the additive constant $2$ cannot be lowered for this construction.
 \end{remark}
 
 \section{Checks and certificates}
 
 The construction is implemented in exact rational arithmetic (\texttt{lband.py} in \cite{Fan26b}).
 \begin{itemize}
-\item \emph{Admissibility.} For each $k$ the program chooses the squeeze $k-S$ as $1/(10^6k^3)$, divided by $10$ until (a)--(d) and $H(t)<4\sqrt{2k}+2$ hold. It decides those conditions exactly, so every layout it returns satisfies the theorem's bound by Lemma~\ref{lem:band}.
-\item \emph{A fixed squeeze is not enough.} With a fixed squeeze of $10^{-7}$ the same recipe has waste $1178=4\sqrt{2k}+2$ at $k=43218$, which violates the strict bound.
+\item \emph{Admissibility.} The program takes $t=Q/(bQ-1)$, so $t-1/b=1/(b(bQ-1))$, for a target $e$: it starts at $Q=\lceil2/(b^2e)\rceil$ and halves $Q$ until $k-S=b-W\ge e$. The target starts at $1/(10^6k^3)$ and is divided by $10$ until (a)--(d) and $H(t)<4\sqrt{2k}+2$ hold. It decides those conditions exactly, so every layout it returns satisfies the theorem's bound by Lemma~\ref{lem:band}.
+\item \emph{A fixed target is not enough.} With $e=10^{-7}$ at $k=43218$ the program takes $b=293$ and $t=116/33987$, so $t-1/b\approx1.004\cdot10^{-7}$ and $k-S\approx2.008\cdot10^{-7}$. That $t$ is not close: (c) and (d) fail, while the close interval has width of order $b^{-3}\approx4\cdot10^{-8}$. The waste there is $1178=4\sqrt{2k}+2$, which misses the strict bound. Theorem~\ref{thm:A} says nothing about such $t$.
 \item \emph{Every step checked.} Every inequality in the proof was checked exactly for $6\le k\le20000$, and the bound for $6\le k\le60000$. The least slack $B(k)-w$ is $8019401/78023840599$, at $k=19705$.
-\item \emph{Certificates.} Strict certificates (every wall and pair margin positive) of the construction for $6\le k\le40$ and $k=101,300,600$ pass our checker and Evan Daniel's \cite{Dan26}. The largest has $359860$ squares. A program that is not all-pairs runs both checkers unmodified on overlapping $4\times4$ windows: two unit squares whose centres are more than $\sqrt2$ apart cannot overlap, and both checkers accept such pairs without a separating-axis test.
+\item \emph{Certificates.} Strict certificates (every wall and pair margin positive) of the construction for $6\le k\le40$ and $k=101,300,600$ ($38$ values) pass our checker and Evan Daniel's \cite{Dan26}. The bundle ships $36$ of them and rebuilds the two largest by script against published hashes. Both checkers were written with Claude. The largest has $359860$ squares. A program that is not all-pairs runs both checkers unmodified on overlapping $4\times4$ windows: two unit squares whose centres are more than $\sqrt2$ apart cannot overlap, and both checkers accept such pairs without a separating-axis test.
 \end{itemize}
 
 The construction is not optimized. Searching over $b$, the number of rows and the split of the free length between the two ends gives waste at most $4\sqrt{2k}+1.18$ for $15\le k\le300$; for example $9946$ squares below side $100$. A bounded search for better end and corner pieces by local optimization found gains of one or two squares only (at $k=25,30,40$), not growing with $b$. That is consistent with the heuristic that a boundary between the aligned and the tilted lattice wastes about $1/2$ per unit length.
@@ -176,11 +176,11 @@ The integer form of the theorem is $\cs(k)\le\lceil\sqrt{32k}\,\rceil$.
 \item \emph{\cite{Fan26a}.} Ours is smaller from $k=42$ (tie at $40$, $41$), and larger for $15\le k\le39$.
 \item \emph{Superseded} by Ryu's Theorem~1.2 for $k\ge1.6\cdot10^7$, by his Theorem~1.1 tiers beyond that, and by his computer-assisted values: at $k=10^5,10^6,10^7$ they give $\cs\le1583,3972,10039$, against our $1789,5657,17889$.
 \end{itemize}
-So Theorem~\ref{thm:A} is of the same strength as Daniel's earlier bound, not a new record for any range of $k$.
+So neither integer bound is the smaller at every $k$, and asymptotically Theorem~\ref{thm:A} has the strength of Daniel's earlier bound. Against every bound in the Squares Project register, it is strictly the smallest at $346919$ values of $k$ with $42\le k\le702000$ \cite{Lev26}; we get the same count against Daniel's two bounds, Ryu's Theorem~1.4 and his value at $k=10^5$.
 
 \section*{Acknowledgements and credit}
 
-The L-shaped packing, its end-region framework and most of the bounds compared above are Sungjoon Ryu's. The axis-layer filling of the band ends and the bound $4\lceil\sqrt{2k-7}\,\rceil-1$ were found first by Evan Daniel \cite{Dan26b}, whose certificate format and checker we also use. The Squares Project (Joshua Levy) keeps the register in which these bounds are compared. The construction code, checkers and certificates were written and run with Claude (Anthropic) as a coding and research agent, directed and reviewed by the author. Two blind language-model reviews of the proof (Claude Opus; OpenAI Codex, GPT-6 Astra) found errors that were corrected. That is not an external mathematical review.
+The L-shaped packing, its end-region framework and most of the bounds compared above are Sungjoon Ryu's. The axis-layer filling of the band ends and the bound $4\lceil\sqrt{2k-7}\,\rceil-1$ were found first by Evan Daniel \cite{Dan26b}, whose certificate format and checker we also use. The Squares Project (Joshua Levy) keeps the register in which these bounds are compared. The construction code, checkers and certificates were written and run with Claude (Anthropic) as a coding and research agent, directed and reviewed by the author. Two blind language-model reviews of the proof (Claude Opus; OpenAI Codex, GPT-6 Astra) found errors that were corrected. The Squares Project's review \cite{Lev26}, a re-derivation by Claude from the note alone, accepted the proof and found the errors in Sections~6 and~7 that v0.3 corrects. None of these is a referee's report.
 
 \begin{thebibliography}{AMS21}
 
@@ -201,6 +201,8 @@ The L-shaped packing, its end-region framework and most of the bounds compared a
 \bibitem[Fan26a]{Fan26a} K. Fang, Packing $n^2-n+1$ unit squares in a square of side less than $n$, for every $n\ge15$, draft v0.9 (2026), doi:10.5281/zenodo.23463481.
 
 \bibitem[Fan26b]{Fan26b} K. Fang, squarepack-certs, \url{https://github.com/TheSnakeFang/squarepack-certs}, folder \texttt{theorem-a/}, commit \hash{b1b3f6bda13739c9eeecc1ceaefec9178294e0ca}.
+
+\bibitem[Lev26]{Lev26} The Squares Project (J. Levy), review of v0.2 of this note, 25 October 2026, \url{https://github.com/jlevy/squares/blob/main/docs/project/reviews/review-2026-10-25-fang-theorem-a.md}; issue \url{https://github.com/jlevy/squares/issues/797}.
 
 \bibitem[McC26]{McC26} R. McClenagan, Optimally packing a large square by unit squares, arXiv:2602.01484 (preprint, 2026).
 
