@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-31 (strip-n6: six squares in a strip)
+
+Added `strip-n6/`: the raw O2 provenance (final certificate, per-cell files, the initial search pass and the pre-verification certificate, all xz-compressed, 7.5 MB) for the theorem L ≥ F6(H) for six unit squares in a strip of height 1.87 ≤ H < 2. The proof, the certified programs O1 and O2, the lemmas, the draft note and the three blind referee reports are in https://github.com/TheSnakeFang/squarepack at 5887dec; `strip-n6/README.md` says which file is which and how to replay O2. No checker here applies to these files; they are JSON interval certificates verified by `o2cert/src/driver.py verify` in that repository.
+
 ## 2026-10-27 (v0.3 of the Theorem A note)
 
 `theorem-a/note/` is v0.3 (https://doi.org/10.5281/zenodo.23714459), after the Squares Project's review of v0.2 (jlevy/squares#797). It corrects the fixed-squeeze example of Section 6 (the 10⁻⁷ was the target passed to `band_t`; the resulting t is not close) and the comparison sentence of Section 7, labels the sharpness remark as observed, and fixes some wording. The mathematics is unchanged. The Zenodo record of v0.3 also holds the k = 300 and 600 certificates, xz-compressed, matching `LARGE.sha256`. Code and certificates here are unchanged.

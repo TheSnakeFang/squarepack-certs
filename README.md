@@ -161,3 +161,5 @@ Ellsworth's decimal checker (https://github.com/Davidebyzero/packing_squares_in_
 Credit for the construction, seeds, format and checkers: `ATTRIBUTION.md`.
 
 Search, verifier and this bundle were written and run with Claude (Anthropic) as a coding and research agent, directed and reviewed by Kevin Fang.
+
+`strip-n6/` (added 2026-10-31) is separate from the square-packing material above: it holds the raw computational provenance for the theorem that six unit squares in a strip of height 1.87 ≤ H < 2 need width at least F6(H), whose proof lives in the squarepack repository; see `strip-n6/README.md`.
