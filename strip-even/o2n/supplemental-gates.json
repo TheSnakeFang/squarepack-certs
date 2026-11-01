@@ -1,0 +1,100 @@
+{
+  "random_H_per_n_added": 1,
+  "combined_random_H_per_n": 300,
+  "combined_endpoint_H_per_n": 1,
+  "rows": [
+    {
+      "n": 8,
+      "H": 1.8942661140194252,
+      "bracket": [
+        0.928983,
+        0.931569
+      ],
+      "root": "0.93026629529883175891018996258791640439792642856067070273554313426535732310153756",
+      "trial_upper_minus_minimum": 4.1476414714262626e-14,
+      "violations": 0
+    },
+    {
+      "n": 6,
+      "H": 1.8963241441081826,
+      "bracket": [
+        0.899575,
+        0.902787
+      ],
+      "root": "0.90116646289460169901713673154531726406952176007358030927315137015116183162707362",
+      "trial_upper_minus_minimum": 2.7027645895306628e-14,
+      "violations": 0
+    },
+    {
+      "n": 10,
+      "H": 1.9946181367384748,
+      "bracket": [
+        0.99196,
+        0.997613
+      ],
+      "root": "0.9947322551504711435492955563131265425139129310516730419835082415519012279917117",
+      "trial_upper_minus_minimum": 5.804806445246515e-14,
+      "violations": 0
+    }
+  ],
+  "hashes": {
+    "SPEC.md": "8f71727ebff46cb2b213a8010d4bb2dbffef9ba68164f2b5df558a51c122f73f",
+    "LEMMAS.md": "93987270271bf9cbc2090ca24d9d3a7f0b46a41420ba1de948408e97a3811db5",
+    "src/kernel.c": "881b0fca4110efe0e5316b40d310d7a2aea4e6612f5e6336f716554fe97889bb",
+    "src/block.c": "05db79207e25c6a886b505076743421f3ea17ce29ad6e3e0cd9afe4ac3d682d6",
+    "src/driver.py": "1b3eea75f2e0ce9e9a451de16cfc9e742fb3f0f4721680e07721c766e9d14adc",
+    "src/gates.py": "635bfb22987d700bf037e2791259b1919109c38e760900f06a252bba8463ce92",
+    "src/kernel.dylib": "abb136f3d4fab1a19801efbfa35e0d2da6b98a77720900f019e3a03cda92705f"
+  },
+  "supplement_source_sha256": "b6689ee718e76b14c90287a5abb072047a5101a120f8a2d4272dbd3666c46cf8",
+  "legacy_G1_dual_hull": {
+    "triples": 2000,
+    "max_error": 6.661338147750939e-16,
+    "violations": 0
+  },
+  "hull_reference_sha256": "0b855975aba940b50f8430b6d918e0ce47d301c6b7d5856f5d9c14df5ad19af3",
+  "exact_cap_checks": [
+    {
+      "n": 8,
+      "five": false,
+      "j": 1,
+      "minimum_cap_slack_exact": "343235868527/1125899906842624"
+    },
+    {
+      "n": 8,
+      "five": false,
+      "j": 2,
+      "minimum_cap_slack_exact": "343235868527/1125899906842624"
+    },
+    {
+      "n": 6,
+      "five": false,
+      "j": 1,
+      "minimum_cap_slack_exact": "576162392495/1125899906842624"
+    },
+    {
+      "n": 10,
+      "five": false,
+      "j": 1,
+      "minimum_cap_slack_exact": "801063904587/2251799813685248"
+    },
+    {
+      "n": 10,
+      "five": false,
+      "j": 2,
+      "minimum_cap_slack_exact": "801063904587/2251799813685248"
+    },
+    {
+      "n": 10,
+      "five": true,
+      "j": 1,
+      "minimum_cap_slack_exact": "97573757275/140737488355328"
+    }
+  ],
+  "provenance_refresh_2026_11_01": {
+    "old_hash": "5c7419ef27595f6d6c8b083c02475a718bde3341f0bdfda10f8faa9c0a568b3a",
+    "new_hash": "93987270271bf9cbc2090ca24d9d3a7f0b46a41420ba1de948408e97a3811db5",
+    "date": "2026-11-01",
+    "reason": "Three wording-only corrections from the second lemma referee pass, recorded in LEMMAS.md section 14: the normal-slope remark assumes (L), stored-box containment is explicitly checked after rounding, and the minimiser statement at H* is conditional. No mathematical obligation or computation changed."
+  }
+}

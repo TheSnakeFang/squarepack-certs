@@ -1,0 +1,47 @@
+{
+  "8": {
+    "proved": 145,
+    "unproved": 0,
+    "lowest_proved_H": 1.8549999999999998,
+    "upper_H_excluded": 2,
+    "min_margin": 0.00012543447209534261,
+    "max_cells": 464,
+    "run_wall_seconds": 114.68670433299849,
+    "gates_through_run_wall_seconds": 186.99659419059753,
+    "gates_through_replay_wall_seconds": 605.3869149684906,
+    "max_worker_rss_bytes": 78020608,
+    "max_rounds": 3,
+    "H_bisections": 0
+  },
+  "10": {
+    "proved": 150,
+    "unproved": 0,
+    "lowest_proved_H": 1.8499999999999999,
+    "upper_H_excluded": 2,
+    "min_margin": 0.0002703568496915664,
+    "max_cells": 464,
+    "run_wall_seconds": 202.7773637920036,
+    "gates_through_run_wall_seconds": 601.5926060676575,
+    "gates_through_replay_wall_seconds": 767.7155935764313,
+    "max_worker_rss_bytes": 77840384,
+    "max_rounds": 3,
+    "H_bisections": 0
+  },
+  "6": {
+    "proved": 16,
+    "unproved": 0,
+    "lowest_proved_H": 1.8619999999999999,
+    "upper_H_included": 1.87,
+    "min_margin": 0.00020493122752718304,
+    "max_cells": 310,
+    "run_wall_seconds": 18.143944459035993,
+    "gates_through_run_wall_seconds": 46.75040102005005,
+    "gates_through_replay_wall_seconds": 82.12939214706421,
+    "max_worker_rss_bytes": 77856768,
+    "max_rounds": 4,
+    "H_bisections": 0,
+    "workers": 6,
+    "hard_stop_seconds": 7200,
+    "replay_pass": true
+  }
+}
