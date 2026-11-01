@@ -1,0 +1,9 @@
+{"id": "H1", "rectangles": 20409, "pending": 0, "discards": 0, "minimum_replayed_margin": 6.417923108514855e-07, "seconds": 269.93463983302354, "partition": "PASS", "replay": "PASS", "full_cell": true}
+{"id": "H2", "rectangles": 19736, "pending": 0, "discards": 0, "minimum_replayed_margin": 1.8995145456557336e-07, "seconds": 270.1928755840054, "partition": "PASS", "replay": "PASS", "full_cell": true}
+{"id": "H3", "rectangles": 20304, "pending": 0, "discards": 0, "minimum_replayed_margin": 8.738316531697874e-06, "seconds": 284.5473891250149, "partition": "PASS", "replay": "PASS", "full_cell": true}
+{"id": "H0", "rectangles": 22818, "pending": 0, "discards": 0, "minimum_replayed_margin": 4.5093924772032773e-07, "seconds": 295.8428394579969, "partition": "PASS", "replay": "PASS", "full_cell": true}
+{"id": "H4", "rectangles": 21316, "pending": 0, "discards": 0, "minimum_replayed_margin": 1.0355866179700966e-05, "seconds": 304.70677241601516, "partition": "PASS", "replay": "PASS", "full_cell": true}
+{"id": "H5", "rectangles": 23191, "pending": 0, "discards": 0, "minimum_replayed_margin": 3.158408188319583e-06, "seconds": 337.7856398339791, "partition": "PASS", "replay": "PASS", "full_cell": true}
+{"id": "H6", "rectangles": 26390, "pending": 0, "discards": 7, "minimum_replayed_margin": 4.5183895380773715e-07, "seconds": 434.1785289160034, "partition": "PASS", "replay": "PASS", "full_cell": true}
+{"id": "H7", "rectangles": 31991, "pending": 0, "discards": 3693, "minimum_replayed_margin": 9.376187737331064e-08, "seconds": 496.7203695829958, "partition": "PASS", "replay": "PASS", "full_cell": true}
+REPLAY PASS {"complete_domain": true, "certified_rectangles": 186155, "seconds": 498.2768846670224, "verifier_sha256": "374847b134035099183cbd587b654289c53f40f3fb24841a2e8e734aca8f93c1"}

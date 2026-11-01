@@ -1,0 +1,18 @@
+{
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "clang": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.5.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "source_and_binary_sha256": {
+    "src/kernel.c": "cf5acf24716e208449ceeefc8a88f560a608c7bb8f009b6eaa1b394cc2d04d57",
+    "src/kernel.dylib": "40112db7bcebe7fc5728ce5eec834bcb0c227a2d2b6cbe55e0fa7cfb9259ccb3",
+    "src/driver.py": "d8edf85e99b11290c2a4a31444457e6d188b0b96178a1abf73b8b848f4ccc545",
+    "SPEC.md": "591be5819e7219981c3325c918dd672ae7a977181553c3a7bb9f69177027112e"
+  },
+  "auxiliary_sha256": {
+    "src/report.py": "db2c14dd77ab01f5d916dff121f87d0af7231b7158a1b207b3f07303c64f159b",
+    "src/regression_target.py": "edc0e97e95b659f932fdbc9369f6edd499aec934c38c48fac9d24bc2bb89ff9e",
+    "src/verify_parallel.py": "27327d6eadf51b865877a1d7e4717c0af2d0c4af7dc0c26a911fca990f81d4be"
+  }
+}

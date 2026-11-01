@@ -1,0 +1,21 @@
+[project]
+name = "squarepack"
+version = "0.0.1"
+description = "Square packing: search, exact certification, and (later) lower-bound certificates"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest"]
+tools = ["mpmath"]
+search = ["numpy", "scipy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["squarepack*"]

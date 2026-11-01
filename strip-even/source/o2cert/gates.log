@@ -1,0 +1,82 @@
+START seed=20261031 workers=8 source_hashes={"src/kernel.c": "b466f786e1c9d2d92131a9fb78fd6cb6a90b59c4da61e1fbfa9c13ef8301b2e3", "src/kernel.dylib": "5a2fd6a62751fa9aef3fecad4eb51c495335a3adb5ca5e6c593cc7b2ca586811", "src/driver.py": "12050337c879e45a9974dbbee5a38a9bfd0b00ab597cfd514b65474a0f1d0fa5", "SPEC.md": "632534c4b51e6631383472a75c362b466e8b8de9de806801bdd6952ee2c91d68", "LEMMAS.md": "55ed35656d590d4cec65932dd5b22d1a3aeb39ac781b07074f916141f12ff63d"}
+G1 {"pairs": 200000, "dense_points": 20001, "dual_triples": 2000, "violations": 0, "max_A_gap": 4.8276862090536084e-14, "min_A_gap": 4.440892098500626e-16, "max_m_gap": 2.220446049250313e-15, "dual_max_error": 6.661338147750939e-16, "elapsed_seconds": 1.5956097920134198, "passed": true}
+G2 progress boxes=20000 violations=0
+G2 progress boxes=40000 violations=0
+G2 progress boxes=60000 violations=0
+G2 progress boxes=80000 violations=0
+G2 progress boxes=100000 violations=0
+G2 {"boxes": 100000, "samples_per_box": 20, "straddling_boxes": 50000, "violations": 0, "max_excess_plain_centered_A_m": [-8.451905841866392e-12, -6.490757264998592e-09, -1.9984014443252818e-15, -8.881784197001252e-14], "elapsed_seconds": 6.659302874992136, "passed": true}
+G3 progress boxes=5000 violations=0
+G3 progress boxes=10000 violations=0
+G3 progress boxes=15000 violations=0
+G3 progress boxes=20000 violations=0
+G3 {"boxes": 20000, "samples_per_box": 10, "violations": 0, "max_excess": -0.7503009638170868, "elapsed_seconds": 13.629898250015685, "passed": true}
+G4 {"identity_H": [1.87, 1.9, 1.95, 1.99, 2], "identity_errors": [0.0, 8.881784197001252e-16, 8.881784197001252e-16, 1.7763568394002505e-15, 2.6645352591003757e-15], "H_samples_per_cell": 50, "violations": 0, "max_minimum_minus_trial": -8.871126055964851e-12, "elapsed_seconds": 13.650088541995501, "passed": true}
+G5 {"H_samples": 10000, "max_sup_distance": 0.2724264214723131, "inward_inclusion": true, "J_odd": [0.7409, 1.15], "J_even": [-1.2724604332697271, -0.8500000000000001], "violations": 0, "elapsed_seconds": 13.982514542003628, "passed": true}
+ALL PASS seconds=13.983827
+START seed=20261031 workers=8 source_hashes={"src/kernel.c": "60106e3f05875ceceeef43b11e9da6a637681617da325a8beb9dae5e2fd8b577", "src/kernel.dylib": "9b7af1b533a5901be632e2c8a2b557c0d0c9ecaa5a76b2d7a70013494d59e83b", "src/driver.py": "a9c27c07194fd4ca1642b082bdea0c44e41f7893499e30bae2225021b4a7557d", "SPEC.md": "632534c4b51e6631383472a75c362b466e8b8de9de806801bdd6952ee2c91d68", "LEMMAS.md": "55ed35656d590d4cec65932dd5b22d1a3aeb39ac781b07074f916141f12ff63d"}
+G1 {"pairs": 200000, "dense_points": 20001, "dual_triples": 2000, "violations": 5299, "max_A_gap": 4.8276862090536084e-14, "min_A_gap": 4.440892098500626e-16, "max_m_gap": 2.4424906541753444e-15, "dual_max_error": 6.661338147750939e-16, "elapsed_seconds": 2.3249262919998728, "passed": false}
+START seed=20261031 workers=8 source_hashes={"src/kernel.c": "354caef8e991491cf966d677eb1ea6908aaebf03f9c9469d8b469c1ec5b1f16a", "src/kernel.dylib": "235d5ee8d6ed55e49787519bc68b67df95ccf67a7ceacc30f7a3361cb3294dd2", "src/driver.py": "a9c27c07194fd4ca1642b082bdea0c44e41f7893499e30bae2225021b4a7557d", "SPEC.md": "632534c4b51e6631383472a75c362b466e8b8de9de806801bdd6952ee2c91d68", "LEMMAS.md": "55ed35656d590d4cec65932dd5b22d1a3aeb39ac781b07074f916141f12ff63d"}
+G1 {"pairs": 200000, "dense_points": 20001, "dual_triples": 2000, "violations": 0, "max_A_gap": 4.8276862090536084e-14, "min_A_gap": 4.440892098500626e-16, "max_m_gap": 1.3145040611561853e-13, "dual_max_error": 6.661338147750939e-16, "elapsed_seconds": 2.2964947080181446, "passed": true}
+G2 progress boxes=20000 violations=0
+G2 progress boxes=40000 violations=0
+G2 progress boxes=60000 violations=0
+G2 progress boxes=80000 violations=0
+G2 progress boxes=100000 violations=0
+G2 {"boxes": 100000, "samples_per_box": 20, "straddling_boxes": 50000, "violations": 0, "max_excess_plain_centered_A_m": [-8.451905841866392e-12, -6.490757264998592e-09, -1.63202784619898e-14, -1.580957587066223e-13], "elapsed_seconds": 7.290832124999724, "passed": true}
+G3 progress boxes=5000 violations=0
+G3 progress boxes=10000 violations=0
+G3 progress boxes=15000 violations=0
+G3 progress boxes=20000 violations=0
+G3 {"boxes": 20000, "samples_per_box": 10, "violations": 0, "max_excess": -0.7503009638171436, "elapsed_seconds": 14.328060333005851, "passed": true}
+G4 {"identity_H": [1.87, 1.9, 1.95, 1.99, 2], "identity_errors": [0.0, 8.881784197001252e-16, 8.881784197001252e-16, 1.7763568394002505e-15, 2.6645352591003757e-15], "H_samples_per_cell": 50, "violations": 0, "max_minimum_minus_trial": -8.871126055964851e-12, "elapsed_seconds": 14.342084166011773, "passed": true}
+G5 {"H_samples": 10000, "max_sup_distance": 0.2724264214723131, "inward_inclusion": true, "J_odd": [0.7409, 1.15], "J_even": [-1.2724604332697271, -0.8500000000000001], "violations": 0, "elapsed_seconds": 14.655664791003801, "passed": true}
+ALL PASS seconds=14.657331
+START seed=20261031 workers=8 source_hashes={"src/kernel.c": "881b0fca4110efe0e5316b40d310d7a2aea4e6612f5e6336f716554fe97889bb", "src/kernel.dylib": "9e877b84c93c7da7945f7ced8c24114dee67d9ea7e3e982b5193b6665d86a4f9", "src/driver.py": "0758384676e76fe72863d62b9cf14171c6689a46b9b34a14ce242511568858a2", "SPEC.md": "632534c4b51e6631383472a75c362b466e8b8de9de806801bdd6952ee2c91d68", "LEMMAS.md": "55ed35656d590d4cec65932dd5b22d1a3aeb39ac781b07074f916141f12ff63d"}
+G1 {"pairs": 200000, "dense_points": 20001, "dual_triples": 2000, "violations": 0, "max_A_gap": 4.8276862090536084e-14, "min_A_gap": 4.440892098500626e-16, "max_m_gap": 1.3145040611561853e-13, "dual_max_error": 6.661338147750939e-16, "elapsed_seconds": 9.723361375014065, "passed": true}
+G2 progress boxes=20000 violations=0
+G2 progress boxes=40000 violations=0
+G2 progress boxes=60000 violations=0
+G2 progress boxes=80000 violations=0
+G2 progress boxes=100000 violations=0
+G2 {"boxes": 100000, "samples_per_box": 20, "straddling_boxes": 50000, "violations": 0, "max_excess_plain_centered_A_m": [-8.451905841866392e-12, -6.490757264998592e-09, -1.63202784619898e-14, -1.580957587066223e-13], "elapsed_seconds": 24.828399916994385, "passed": true}
+G3 progress boxes=5000 violations=0
+G3 progress boxes=10000 violations=0
+G3 progress boxes=15000 violations=0
+G3 progress boxes=20000 violations=0
+G3 {"boxes": 20000, "samples_per_box": 10, "violations": 0, "max_excess": -0.3795986259682538, "elapsed_seconds": 34.19555245799711, "passed": true}
+G4 {"identity_H": [1.87, 1.9, 1.95, 1.99, 2], "identity_errors": [0.0, 8.881784197001252e-16, 8.881784197001252e-16, 1.7763568394002505e-15, 2.6645352591003757e-15], "H_samples_per_cell": 50, "violations": 0, "max_minimum_minus_trial": -8.871126055964851e-12, "elapsed_seconds": 34.213609250000445, "passed": true}
+G5 {"H_samples": 10000, "max_sup_distance": 0.2724264214723131, "inward_inclusion": true, "J_odd": [0.7409, 1.15], "J_even": [-1.2724604332697271, -0.8500000000000001], "violations": 0, "elapsed_seconds": 34.67561487501371, "passed": true}
+ALL PASS seconds=34.677778
+START seed=20261031 workers=8 source_hashes={"src/kernel.c": "881b0fca4110efe0e5316b40d310d7a2aea4e6612f5e6336f716554fe97889bb", "src/kernel.dylib": "9e877b84c93c7da7945f7ced8c24114dee67d9ea7e3e982b5193b6665d86a4f9", "src/driver.py": "5dd575172010112730c859492865506821ddf99ac77203f142b455d10d6aced2", "SPEC.md": "632534c4b51e6631383472a75c362b466e8b8de9de806801bdd6952ee2c91d68", "LEMMAS.md": "55ed35656d590d4cec65932dd5b22d1a3aeb39ac781b07074f916141f12ff63d"}
+G1 {"pairs": 200000, "dense_points": 20001, "dual_triples": 2000, "violations": 0, "max_A_gap": 4.8276862090536084e-14, "min_A_gap": 4.440892098500626e-16, "max_m_gap": 1.3145040611561853e-13, "dual_max_error": 6.661338147750939e-16, "elapsed_seconds": 6.160313458007295, "passed": true}
+G2 progress boxes=20000 violations=0
+G2 progress boxes=40000 violations=0
+G2 progress boxes=60000 violations=0
+G2 progress boxes=80000 violations=0
+G2 progress boxes=100000 violations=0
+G2 {"boxes": 100000, "samples_per_box": 20, "straddling_boxes": 50000, "violations": 0, "max_excess_plain_centered_A_m": [-8.451905841866392e-12, -6.490757264998592e-09, -1.63202784619898e-14, -1.580957587066223e-13], "elapsed_seconds": 23.979763165989425, "passed": true}
+G3 progress boxes=5000 violations=0
+G3 progress boxes=10000 violations=0
+G3 progress boxes=15000 violations=0
+G3 progress boxes=20000 violations=0
+G3 {"boxes": 20000, "samples_per_box": 10, "violations": 0, "max_excess": -0.3795986259682538, "elapsed_seconds": 48.439837040990824, "passed": true}
+G4 {"identity_H": [1.87, 1.9, 1.95, 1.99, 2], "identity_errors": [0.0, 8.881784197001252e-16, 8.881784197001252e-16, 1.7763568394002505e-15, 2.6645352591003757e-15], "H_samples_per_cell": 50, "violations": 0, "max_minimum_minus_trial": -8.871126055964851e-12, "elapsed_seconds": 48.50809095799923, "passed": true}
+G5 {"H_samples": 10000, "max_sup_distance": 0.2724264214723131, "inward_inclusion": true, "J_odd": [0.7409, 1.15], "J_even": [-1.2724604332697271, -0.8500000000000001], "violations": 0, "elapsed_seconds": 49.35801991599146, "passed": true}
+ALL PASS seconds=49.360172
+START seed=20261031 workers=8 source_hashes={"src/kernel.c": "881b0fca4110efe0e5316b40d310d7a2aea4e6612f5e6336f716554fe97889bb", "src/kernel.dylib": "9e877b84c93c7da7945f7ced8c24114dee67d9ea7e3e982b5193b6665d86a4f9", "src/driver.py": "1db257cbd38b3f25ceef686d942dbd632a2958ce795fd4878b79383cf2481ccb", "src/verify_parallel.py": "374847b134035099183cbd587b654289c53f40f3fb24841a2e8e734aca8f93c1", "SPEC.md": "632534c4b51e6631383472a75c362b466e8b8de9de806801bdd6952ee2c91d68", "LEMMAS.md": "55ed35656d590d4cec65932dd5b22d1a3aeb39ac781b07074f916141f12ff63d"}
+G1 {"pairs": 200000, "dense_points": 20001, "dual_triples": 2000, "violations": 0, "max_A_gap": 4.8276862090536084e-14, "min_A_gap": 4.440892098500626e-16, "max_m_gap": 1.3145040611561853e-13, "dual_max_error": 6.661338147750939e-16, "elapsed_seconds": 6.732704000023659, "passed": true}
+G2 progress boxes=20000 violations=0
+G2 progress boxes=40000 violations=0
+G2 progress boxes=60000 violations=0
+G2 progress boxes=80000 violations=0
+G2 progress boxes=100000 violations=0
+G2 {"boxes": 100000, "samples_per_box": 20, "straddling_boxes": 50000, "violations": 0, "max_excess_plain_centered_A_m": [-8.451905841866392e-12, -6.490757264998592e-09, -1.63202784619898e-14, -1.580957587066223e-13], "elapsed_seconds": 17.943258000013884, "passed": true}
+G3 progress boxes=5000 violations=0
+G3 progress boxes=10000 violations=0
+G3 progress boxes=15000 violations=0
+G3 progress boxes=20000 violations=0
+G3 {"boxes": 20000, "samples_per_box": 10, "violations": 0, "max_excess": -0.3795986259682538, "elapsed_seconds": 26.45163820902235, "passed": true}
+G4 {"identity_H": [1.87, 1.9, 1.95, 1.99, 2], "identity_errors": [0.0, 8.881784197001252e-16, 8.881784197001252e-16, 1.7763568394002505e-15, 2.6645352591003757e-15], "H_samples_per_cell": 50, "violations": 0, "max_minimum_minus_trial": -8.871126055964851e-12, "elapsed_seconds": 26.467200209008297, "passed": true}
+G5 {"H_samples": 10000, "max_sup_distance": 0.2724264214723131, "inward_inclusion": true, "J_odd": [0.7409, 1.15], "J_even": [-1.2724604332697271, -0.8500000000000001], "violations": 0, "elapsed_seconds": 26.774183959001675, "passed": true}
+ALL PASS seconds=26.776427

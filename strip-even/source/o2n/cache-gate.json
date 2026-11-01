@@ -1,0 +1,21 @@
+{
+  "cases": 60,
+  "violations": 0,
+  "cache_info": "CacheInfo(hits=60, misses=60, maxsize=2048, currsize=60)",
+  "source_sha256": "fd6d28bee54bf36e7f015f9d8834926211aafe0a6a71890c5a6f4d2514fb5e4a",
+  "core_hashes": {
+    "SPEC.md": "8f71727ebff46cb2b213a8010d4bb2dbffef9ba68164f2b5df558a51c122f73f",
+    "LEMMAS.md": "93987270271bf9cbc2090ca24d9d3a7f0b46a41420ba1de948408e97a3811db5",
+    "src/kernel.c": "881b0fca4110efe0e5316b40d310d7a2aea4e6612f5e6336f716554fe97889bb",
+    "src/block.c": "05db79207e25c6a886b505076743421f3ea17ce29ad6e3e0cd9afe4ac3d682d6",
+    "src/driver.py": "1b3eea75f2e0ce9e9a451de16cfc9e742fb3f0f4721680e07721c766e9d14adc",
+    "src/gates.py": "635bfb22987d700bf037e2791259b1919109c38e760900f06a252bba8463ce92",
+    "src/kernel.dylib": "abb136f3d4fab1a19801efbfa35e0d2da6b98a77720900f019e3a03cda92705f"
+  },
+  "provenance_refresh_2026_11_01": {
+    "old_hash": "5c7419ef27595f6d6c8b083c02475a718bde3341f0bdfda10f8faa9c0a568b3a",
+    "new_hash": "93987270271bf9cbc2090ca24d9d3a7f0b46a41420ba1de948408e97a3811db5",
+    "date": "2026-11-01",
+    "reason": "Three wording-only corrections from the second lemma referee pass, recorded in LEMMAS.md section 14: the normal-slope remark assumes (L), stored-box containment is explicitly checked after rounding, and the minimiser statement at H* is conditional. No mathematical obligation or computation changed."
+  }
+}

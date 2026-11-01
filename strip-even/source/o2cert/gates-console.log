@@ -1,0 +1,16 @@
+START seed=20261031 workers=8 source_hashes={"src/kernel.c": "881b0fca4110efe0e5316b40d310d7a2aea4e6612f5e6336f716554fe97889bb", "src/kernel.dylib": "9e877b84c93c7da7945f7ced8c24114dee67d9ea7e3e982b5193b6665d86a4f9", "src/driver.py": "1db257cbd38b3f25ceef686d942dbd632a2958ce795fd4878b79383cf2481ccb", "src/verify_parallel.py": "374847b134035099183cbd587b654289c53f40f3fb24841a2e8e734aca8f93c1", "SPEC.md": "632534c4b51e6631383472a75c362b466e8b8de9de806801bdd6952ee2c91d68", "LEMMAS.md": "55ed35656d590d4cec65932dd5b22d1a3aeb39ac781b07074f916141f12ff63d"}
+G1 {"pairs": 200000, "dense_points": 20001, "dual_triples": 2000, "violations": 0, "max_A_gap": 4.8276862090536084e-14, "min_A_gap": 4.440892098500626e-16, "max_m_gap": 1.3145040611561853e-13, "dual_max_error": 6.661338147750939e-16, "elapsed_seconds": 6.732704000023659, "passed": true}
+G2 progress boxes=20000 violations=0
+G2 progress boxes=40000 violations=0
+G2 progress boxes=60000 violations=0
+G2 progress boxes=80000 violations=0
+G2 progress boxes=100000 violations=0
+G2 {"boxes": 100000, "samples_per_box": 20, "straddling_boxes": 50000, "violations": 0, "max_excess_plain_centered_A_m": [-8.451905841866392e-12, -6.490757264998592e-09, -1.63202784619898e-14, -1.580957587066223e-13], "elapsed_seconds": 17.943258000013884, "passed": true}
+G3 progress boxes=5000 violations=0
+G3 progress boxes=10000 violations=0
+G3 progress boxes=15000 violations=0
+G3 progress boxes=20000 violations=0
+G3 {"boxes": 20000, "samples_per_box": 10, "violations": 0, "max_excess": -0.3795986259682538, "elapsed_seconds": 26.45163820902235, "passed": true}
+G4 {"identity_H": [1.87, 1.9, 1.95, 1.99, 2], "identity_errors": [0.0, 8.881784197001252e-16, 8.881784197001252e-16, 1.7763568394002505e-15, 2.6645352591003757e-15], "H_samples_per_cell": 50, "violations": 0, "max_minimum_minus_trial": -8.871126055964851e-12, "elapsed_seconds": 26.467200209008297, "passed": true}
+G5 {"H_samples": 10000, "max_sup_distance": 0.2724264214723131, "inward_inclusion": true, "J_odd": [0.7409, 1.15], "J_even": [-1.2724604332697271, -0.8500000000000001], "violations": 0, "elapsed_seconds": 26.774183959001675, "passed": true}
+ALL PASS seconds=26.776427

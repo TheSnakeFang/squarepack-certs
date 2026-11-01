@@ -1,0 +1,31 @@
+--- README-before.md
++++ README.md
+@@ -13,7 +13,7 @@
+ 
+ Counts are from the completed partition. Inner counts include the initial bound request and the second request that saves the accepted leaf partition. The final five-block continuation also counts exact-key cache hits; these are charged leaf counts, not counts of distinct arithmetic evaluations. Superseded H-cell attempts, if any, are separate in each certificate. Search wall time excludes gates and final replay.
+ 
+-Replay: **PASS**, 92 H-cells, 185,107 accepted outer boxes, 579.334272 seconds. All recorded cells have complete-domain coverage: True. Replay verifies source hashes, H0, tail caps, T brackets, local hypotheses, every inner leaf bound, both endpoint inequalities, and outer partition coverage. It never runs a minimization or bisection.
++Replay: **PASS**, 92 H-cells, 185,107 accepted outer boxes, 686.760388 seconds. All recorded cells have complete-domain coverage: True. Replay verifies source hashes, H0, tail caps, T brackets, local hypotheses, every inner leaf bound, both endpoint inequalities, and outer partition coverage. It never runs a minimization or bisection.
+ 
+ ## Gate results
+ 
+@@ -32,7 +32,7 @@
+ 
+ G4 supplemental check: one additional random H per n, zero violations. Combined total: 300 random H plus the explicit H=2 endpoint per n. The supplement also runs the 2,000 original o2cert G1 support-function/hull triples; see supplemental-gates.json for the maximum error.
+ 
+-Final gate wall time: {g["seconds"]:.6f} seconds.
++Final gate wall time: 27.384289 seconds.
+ 
+ ## H0, local, tail, and endpoint evidence
+ 
+@@ -122,3 +122,10 @@
+ | n6 | 29.145306 | 30.348134 | 59.493440 |
+ | n10 | 64.746643 | 54.931804 | 119.678448 |
+ | n10-five | 2678.156017 | 0.000000 | 2678.156017 |
++
++## Provenance refresh
++
++On 2026-11-01, `src/refresh_provenance.py` rebound only the LEMMAS.md pin after the three wording-only corrections recorded in its section 14. Each refreshed manifest records the old hash, new hash, date and reason in `provenance_refresh_2026_11_01`; all other active source/library pins were checked unchanged. Historical development archives retain their original pins. The unmodified six-worker replay and bundle audit were rerun against the final document. No mathematical obligation or search code changed.
++
++Referee: [blind computation review](../docs/o2n-review-codex-2026-11-01.md), verdict yes under the stated premises; 0 MAJOR, 3 MINOR fixed.
++

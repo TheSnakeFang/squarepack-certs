@@ -1,0 +1,5 @@
+Continue the o1dp job in /Volumes/Kevin_SSD/GitHub/squarepack/o1dp. Your gate 3(a) stop was correct: SPEC.md was wrong there. I have fixed SPEC.md (re-read gate 3 and the new "Note on slice width" above the Refinement section): over a slice the unconstrained DP limit is F6(Hb), not F6(Ha); the proof criterion D > F6_ub(Ha) is unchanged and sound. Answer to your question: gate 3(a) requires the unconstrained DP to stay <= F6(Hb) and increase toward it under refinement, plus a point slice [1.87,1.87] converging to F6(1.87).
+
+Reuse your existing source and logs. Finish gate 2 (50,000 boxes), then gates 3 and 4, then the full run exactly as in the original brief (BRIEF.txt): <= 6 workers, 8 hour hard stop, run.log per slice, certificate.json, README.md. Start H-slices near 1.87 at width 0.002 and adapt. No git commits; nothing outside o1dp.
+
+Final message: gate results (numbers), per-slice summary (proved/unproved, min margin, max cells), total wall time, anything you are unsure about.

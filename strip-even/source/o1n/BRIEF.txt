@@ -1,0 +1,7 @@
+Implement o1n/SPEC.md exactly (read it and ../o1dp/SPEC.md fully first; the math is fixed, do not change it — if something looks wrong, stop and report). Work only inside /Volumes/Kevin_SSD/GitHub/squarepack/o1n. Start from a copy of ../o1dp/src (do not modify ../o1dp). The reference point kernel is ../runs/openmath-2026-10-27/m4check.py (exec only its first 29 lines, dropping lines that start with "from targets", "sys.path", "import numpy", "from scipy"; see ../o1dp/README.md). Python is ../.venv/bin/python (numpy, scipy). C via clang. No network is needed.
+
+Order: (1) parameterize the kernel and driver by n; regression on n = 6 against three ../o1dp slices. (2) Gates 1, 2, lemma gate, gate 5, gate 3, gate 4 for n = 8, logged to gates-n8.log; stop and report if any gate fails after a genuine fix attempt. (3) Full run n = 8 over [1.855, 2], then the same gates and run for n = 10 over [1.850, 2]. At most 6 workers, hard stop 6 hours wall per n. (4) README.md with how to rerun, what is proved per n with the exact proved H range, what failed, every assumption (libm ulp padding included).
+
+Never round a lower bound up. Carry the flag correctly in the backward pass. No git commands.
+
+Final message: gate results (numbers), per-n summary (slices proved/unproved, lowest proved H, min margin, max cells, wall time), and anything you are unsure about.

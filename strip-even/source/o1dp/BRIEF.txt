@@ -1,0 +1,7 @@
+Implement o1dp/SPEC.md exactly (read it fully first; the math is fixed, do not change it — if something looks wrong, stop and report). Work only inside /Volumes/Kevin_SSD/GitHub/squarepack/o1dp. Use the reference point kernel ../runs/openmath-2026-10-27/m4check.py (function kappa, h) for gates; do not modify files outside o1dp. Python is ../.venv/bin/python (numpy, scipy available). C via clang.
+
+Order of work: (1) kernels + gates 1, 2, 4, logged to gates.log; stop and report if any gate fails after a genuine fix attempt. (2) DP + gate 3 on the slice [1.87, 1.875]. (3) Full run over [1.87, 2] with at most 6 worker processes, hard stop at 8 hours wall time, logging run.log as specified. (4) README.md with how to rerun and an honest statement of what is proved, what failed, and every assumption (including libm ulp padding).
+
+For the backward pass and binding test, carry the flag correctly (a partial path from position i with flag f can only finish proved if the final flag is 1). Never round a lower bound up. No git commits.
+
+Final message: gate results (numbers), per-slice summary (proved/unproved, min margin, max cells), total wall time, and anything you are unsure about.

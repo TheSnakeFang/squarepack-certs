@@ -1,0 +1,62 @@
+[
+  {
+    "run": "certificate-n10-five",
+    "cells": 6,
+    "outer": 152026,
+    "inner": 2018388334,
+    "min_margin": 4.045033398514125e-08,
+    "ranges": [
+      [
+        1.846936,
+        1.86
+      ]
+    ],
+    "seconds": 2678.156016875,
+    "complete": true
+  },
+  {
+    "run": "certificate-n10",
+    "cells": 28,
+    "outer": 12500,
+    "inner": 107606480,
+    "min_margin": 6.559275634476779e-06,
+    "ranges": [
+      [
+        1.8599999999999999,
+        2.0
+      ]
+    ],
+    "seconds": 64.74664320796728,
+    "complete": true
+  },
+  {
+    "run": "certificate-n6",
+    "cells": 28,
+    "outer": 6565,
+    "inner": 47255346,
+    "min_margin": 1.1125800777611603e-06,
+    "ranges": [
+      [
+        1.861098,
+        2.0
+      ]
+    ],
+    "seconds": 29.145306375052314,
+    "complete": true
+  },
+  {
+    "run": "certificate-n8",
+    "cells": 30,
+    "outer": 14016,
+    "inner": 118628654,
+    "min_margin": 1.4573977746429317e-06,
+    "ranges": [
+      [
+        1.8520489999999998,
+        2.0
+      ]
+    ],
+    "seconds": 73.0694413749734,
+    "complete": true
+  }
+]

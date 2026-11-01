@@ -1,0 +1,104 @@
+{
+  "complete_domain": true,
+  "rows": [
+    {
+      "id": "H1",
+      "rectangles": 20409,
+      "pending": 0,
+      "discards": 0,
+      "minimum_replayed_margin": 6.417923108514855e-07,
+      "seconds": 364.2336709579977,
+      "partition": "PASS",
+      "replay": "PASS",
+      "full_cell": true
+    },
+    {
+      "id": "H2",
+      "rectangles": 19736,
+      "pending": 0,
+      "discards": 0,
+      "minimum_replayed_margin": 1.8995145456557336e-07,
+      "seconds": 367.7217174170073,
+      "partition": "PASS",
+      "replay": "PASS",
+      "full_cell": true
+    },
+    {
+      "id": "H3",
+      "rectangles": 20304,
+      "pending": 0,
+      "discards": 0,
+      "minimum_replayed_margin": 8.738316531697874e-06,
+      "seconds": 404.8511228749994,
+      "partition": "PASS",
+      "replay": "PASS",
+      "full_cell": true
+    },
+    {
+      "id": "H0",
+      "rectangles": 22818,
+      "pending": 0,
+      "discards": 0,
+      "minimum_replayed_margin": 4.5093924772032773e-07,
+      "seconds": 430.6411120830162,
+      "partition": "PASS",
+      "replay": "PASS",
+      "full_cell": true
+    },
+    {
+      "id": "H4",
+      "rectangles": 21316,
+      "pending": 0,
+      "discards": 0,
+      "minimum_replayed_margin": 1.0355866179700966e-05,
+      "seconds": 443.5841450839944,
+      "partition": "PASS",
+      "replay": "PASS",
+      "full_cell": true
+    },
+    {
+      "id": "H5",
+      "rectangles": 23191,
+      "pending": 0,
+      "discards": 0,
+      "minimum_replayed_margin": 3.158408188319583e-06,
+      "seconds": 484.8627005419985,
+      "partition": "PASS",
+      "replay": "PASS",
+      "full_cell": true
+    },
+    {
+      "id": "H6",
+      "rectangles": 26390,
+      "pending": 0,
+      "discards": 7,
+      "minimum_replayed_margin": 4.5183895380773715e-07,
+      "seconds": 562.0112647089991,
+      "partition": "PASS",
+      "replay": "PASS",
+      "full_cell": true
+    },
+    {
+      "id": "H7",
+      "rectangles": 31991,
+      "pending": 0,
+      "discards": 3693,
+      "minimum_replayed_margin": 9.376187737331064e-08,
+      "seconds": 622.1402071249904,
+      "partition": "PASS",
+      "replay": "PASS",
+      "full_cell": true
+    }
+  ],
+  "certified_rectangles": 186155,
+  "seconds": 623.4537505419867,
+  "source_hashes": {
+    "src/kernel.c": "881b0fca4110efe0e5316b40d310d7a2aea4e6612f5e6336f716554fe97889bb",
+    "src/kernel.dylib": "9e877b84c93c7da7945f7ced8c24114dee67d9ea7e3e982b5193b6665d86a4f9",
+    "src/driver.py": "1db257cbd38b3f25ceef686d942dbd632a2958ce795fd4878b79383cf2481ccb",
+    "src/verify_parallel.py": "374847b134035099183cbd587b654289c53f40f3fb24841a2e8e734aca8f93c1",
+    "SPEC.md": "632534c4b51e6631383472a75c362b466e8b8de9de806801bdd6952ee2c91d68",
+    "LEMMAS.md": "103432b584a6250cec6a3b8adccdae994399582da966d9286f792528f433d3ff"
+  },
+  "verifier_sha256": "374847b134035099183cbd587b654289c53f40f3fb24841a2e8e734aca8f93c1"
+}

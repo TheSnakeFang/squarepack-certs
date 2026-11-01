@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "files": [
+    "certificate-n8.json",
+    "five-before-resume.json",
+    "five-before-partition-continuation.json",
+    "supplemental-gates.json",
+    "gates.json",
+    "certificate-n10-five.json",
+    "verification.json",
+    "certificate-n6.json",
+    "cache-gate.json",
+    "certificate-n10.json",
+    "build.json",
+    "bundle-audit.json"
+  ],
+  "changes": "Only LEMMAS.md pin and provenance_refresh_2026_11_01 metadata"
+}

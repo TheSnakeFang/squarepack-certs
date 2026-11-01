@@ -1,0 +1,110 @@
+[
+  {
+    "case": "verification.json missing",
+    "result": "PASS",
+    "status": "Replay: MISSING\nBundle audit: PASS"
+  },
+  {
+    "case": "verification.json stale",
+    "result": "PASS",
+    "status": "Replay: STALE (pinned hashes differ)\nBundle audit: PASS"
+  },
+  {
+    "case": "verification.json malformed",
+    "result": "PASS",
+    "status": "Replay: INVALID ('list' object has no attribute 'get')\nBundle audit: PASS"
+  },
+  {
+    "case": "bundle-audit.json missing",
+    "result": "PASS",
+    "status": "Replay: PASS\nBundle audit: MISSING"
+  },
+  {
+    "case": "bundle-audit.json stale",
+    "result": "PASS",
+    "status": "Replay: PASS\nBundle audit: STALE (pinned hashes differ)"
+  },
+  {
+    "case": "bundle-audit.json malformed",
+    "result": "PASS",
+    "status": "Replay: PASS\nBundle audit: INVALID ('list' object has no attribute 'get')"
+  },
+  {
+    "case": "cell replay",
+    "result": "PASS",
+    "status": "Replay: FAIL (cell n10-five-002b: replay=FAIL, partition=PASS, complete=True, pending_boxes=0)\nBundle audit: PASS"
+  },
+  {
+    "case": "cell partition",
+    "result": "PASS",
+    "status": "Replay: FAIL (cell n10-five-002b: replay=PASS, partition=FAIL, complete=True, pending_boxes=0)\nBundle audit: PASS"
+  },
+  {
+    "case": "cell complete",
+    "result": "PASS",
+    "status": "Replay: FAIL (cell n10-five-002b: replay=PASS, partition=PASS, complete=False, pending_boxes=0)\nBundle audit: PASS"
+  },
+  {
+    "case": "cell pending_boxes",
+    "result": "PASS",
+    "status": "Replay: FAIL (cell n10-five-002b: replay=PASS, partition=PASS, complete=True, pending_boxes=1)\nBundle audit: PASS"
+  },
+  {
+    "case": "empty replay",
+    "result": "PASS",
+    "status": "Replay: INCOMPLETE (no cell results)\nBundle audit: PASS"
+  },
+  {
+    "case": "missing replay cell",
+    "result": "PASS",
+    "status": "Replay: INCOMPLETE (cell results differ from manifests)\nBundle audit: PASS"
+  },
+  {
+    "case": "duplicate replay cell",
+    "result": "PASS",
+    "status": "Replay: INCOMPLETE (cell results differ from manifests)\nBundle audit: PASS"
+  },
+  {
+    "case": "audit failed",
+    "result": "PASS",
+    "status": "Replay: PASS\nBundle audit: FAIL (passed is not true)"
+  },
+  {
+    "case": "audit guard failed",
+    "result": "PASS",
+    "status": "Replay: PASS\nBundle audit: FAIL (missing or failed audit rows)"
+  },
+  {
+    "case": "missing audit row",
+    "result": "PASS",
+    "status": "Replay: PASS\nBundle audit: INCOMPLETE (audit rows differ from manifests)"
+  },
+  {
+    "case": "refresh rejects SPEC.md before writes",
+    "result": "PASS"
+  },
+  {
+    "case": "refresh rejects src/kernel.c before writes",
+    "result": "PASS"
+  },
+  {
+    "case": "refresh rejects src/block.c before writes",
+    "result": "PASS"
+  },
+  {
+    "case": "refresh rejects src/driver.py before writes",
+    "result": "PASS"
+  },
+  {
+    "case": "refresh rejects src/gates.py before writes",
+    "result": "PASS"
+  },
+  {
+    "case": "refresh rejects src/kernel.dylib before writes",
+    "result": "PASS"
+  },
+  {
+    "case": "refresh only lemma pin plus record; idempotent",
+    "result": "PASS"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "corner_files": {
+    "src/corner_replay.py": "722419e995b145b54f6abf38a36791e8fb5e01e9a8271bb2d059d8d89ecf0f1d",
+    "src/corner_impl/a7.py": "b1191c68d8179fe79fd71fd34b400b7f16ed6a14e8cc1737f7df9b0592224ede",
+    "src/corner_impl/iv.py": "ec55fe6d9601ac0e2ec5bdf10e939470326594017fd45647f8c13cd813cad536",
+    "src/corner_impl/run_corner.py": "5cfad2eac1e6f4d209eebf368537cf6e7ee369aebc31e24fc2a672926144294a"
+  },
+  "source_reference": "../runs/openmath-2026-10-27/handoff-routeA/pkg/proofs/m1-corner",
+  "corner_certificate_sha256": "d0705b72a545af8013e6c10c0b41e860a828981e684412f1c029a8eb6e98afea"
+}

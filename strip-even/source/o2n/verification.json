@@ -1,0 +1,842 @@
+{
+  "cells": [
+    {
+      "id": "n10-five-002b",
+      "outer_boxes": 18266,
+      "pending_boxes": 0,
+      "min_margin": 2.4428660321054725e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-five-002a",
+      "outer_boxes": 18770,
+      "pending_boxes": 0,
+      "min_margin": 4.268016987364619e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-five-001b",
+      "outer_boxes": 19863,
+      "pending_boxes": 0,
+      "min_margin": 5.107332039046285e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-five-001a",
+      "outer_boxes": 21499,
+      "pending_boxes": 0,
+      "min_margin": 3.2675427295153487e-07,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-five-000b",
+      "outer_boxes": 24309,
+      "pending_boxes": 0,
+      "min_margin": 6.397144012796479e-07,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-five-000a",
+      "outer_boxes": 49319,
+      "pending_boxes": 0,
+      "min_margin": 4.045033398514125e-08,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-005",
+      "outer_boxes": 378,
+      "pending_boxes": 0,
+      "min_margin": 0.00020883953755342075,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-004",
+      "outer_boxes": 380,
+      "pending_boxes": 0,
+      "min_margin": 0.00011111586080043977,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-002",
+      "outer_boxes": 397,
+      "pending_boxes": 0,
+      "min_margin": 7.212636121418924e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-003",
+      "outer_boxes": 395,
+      "pending_boxes": 0,
+      "min_margin": 9.11763474595456e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-001",
+      "outer_boxes": 423,
+      "pending_boxes": 0,
+      "min_margin": 0.00013986128729890493,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-000",
+      "outer_boxes": 459,
+      "pending_boxes": 0,
+      "min_margin": 2.4207802835952277e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-007",
+      "outer_boxes": 382,
+      "pending_boxes": 0,
+      "min_margin": 1.5936631629867578e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-006",
+      "outer_boxes": 381,
+      "pending_boxes": 0,
+      "min_margin": 8.540084526179046e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-008",
+      "outer_boxes": 389,
+      "pending_boxes": 0,
+      "min_margin": 9.74568902666617e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-009",
+      "outer_boxes": 390,
+      "pending_boxes": 0,
+      "min_margin": 0.00015511605984144802,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-010",
+      "outer_boxes": 394,
+      "pending_boxes": 0,
+      "min_margin": 4.423280869483847e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-011",
+      "outer_boxes": 392,
+      "pending_boxes": 0,
+      "min_margin": 7.480948076379888e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-012",
+      "outer_boxes": 398,
+      "pending_boxes": 0,
+      "min_margin": 0.0002958513501560011,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-013",
+      "outer_boxes": 402,
+      "pending_boxes": 0,
+      "min_margin": 6.449807285094365e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-014",
+      "outer_boxes": 412,
+      "pending_boxes": 0,
+      "min_margin": 0.00047119170413037476,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-015",
+      "outer_boxes": 419,
+      "pending_boxes": 0,
+      "min_margin": 4.0439754953519584e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-016",
+      "outer_boxes": 430,
+      "pending_boxes": 0,
+      "min_margin": 8.514120932981427e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-017",
+      "outer_boxes": 435,
+      "pending_boxes": 0,
+      "min_margin": 0.00010906576495131602,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-018",
+      "outer_boxes": 447,
+      "pending_boxes": 0,
+      "min_margin": 0.0001116200686052393,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-019",
+      "outer_boxes": 459,
+      "pending_boxes": 0,
+      "min_margin": 3.751345035812869e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-020",
+      "outer_boxes": 475,
+      "pending_boxes": 0,
+      "min_margin": 6.750292611379382e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-021",
+      "outer_boxes": 491,
+      "pending_boxes": 0,
+      "min_margin": 2.259566365286902e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-022",
+      "outer_boxes": 512,
+      "pending_boxes": 0,
+      "min_margin": 1.774492550704609e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-023",
+      "outer_boxes": 530,
+      "pending_boxes": 0,
+      "min_margin": 6.559275634476779e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-024",
+      "outer_boxes": 551,
+      "pending_boxes": 0,
+      "min_margin": 4.514847647502095e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-025",
+      "outer_boxes": 575,
+      "pending_boxes": 0,
+      "min_margin": 5.619530556461027e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-026",
+      "outer_boxes": 590,
+      "pending_boxes": 0,
+      "min_margin": 8.112281913580376e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n10-027",
+      "outer_boxes": 614,
+      "pending_boxes": 0,
+      "min_margin": 9.05853127542433e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-003",
+      "outer_boxes": 200,
+      "pending_boxes": 0,
+      "min_margin": 3.763293692091856e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-005",
+      "outer_boxes": 196,
+      "pending_boxes": 0,
+      "min_margin": 0.00014122476933571546,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-004",
+      "outer_boxes": 198,
+      "pending_boxes": 0,
+      "min_margin": 0.00022806827548647182,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-002",
+      "outer_boxes": 214,
+      "pending_boxes": 0,
+      "min_margin": 8.989594936358382e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-001",
+      "outer_boxes": 236,
+      "pending_boxes": 0,
+      "min_margin": 3.721464139515642e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-006",
+      "outer_boxes": 192,
+      "pending_boxes": 0,
+      "min_margin": 0.00010358820993427996,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-009",
+      "outer_boxes": 196,
+      "pending_boxes": 0,
+      "min_margin": 4.5736169854440616e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-008",
+      "outer_boxes": 195,
+      "pending_boxes": 0,
+      "min_margin": 0.0001410337512783438,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-007",
+      "outer_boxes": 192,
+      "pending_boxes": 0,
+      "min_margin": 6.689999480787022e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-010",
+      "outer_boxes": 200,
+      "pending_boxes": 0,
+      "min_margin": 5.822890952270065e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-000",
+      "outer_boxes": 365,
+      "pending_boxes": 0,
+      "min_margin": 1.9098382056624556e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-011",
+      "outer_boxes": 203,
+      "pending_boxes": 0,
+      "min_margin": 0.00014408989300376815,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-014",
+      "outer_boxes": 209,
+      "pending_boxes": 0,
+      "min_margin": 7.144091609437296e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-013",
+      "outer_boxes": 202,
+      "pending_boxes": 0,
+      "min_margin": 5.411016935866208e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-012",
+      "outer_boxes": 203,
+      "pending_boxes": 0,
+      "min_margin": 2.6482171638614323e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-016",
+      "outer_boxes": 219,
+      "pending_boxes": 0,
+      "min_margin": 8.338526693099645e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-015",
+      "outer_boxes": 212,
+      "pending_boxes": 0,
+      "min_margin": 1.8701861531772442e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-017",
+      "outer_boxes": 224,
+      "pending_boxes": 0,
+      "min_margin": 0.00013866169040790963,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-018",
+      "outer_boxes": 229,
+      "pending_boxes": 0,
+      "min_margin": 1.1125800777611603e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-019",
+      "outer_boxes": 237,
+      "pending_boxes": 0,
+      "min_margin": 1.7771998720134127e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-020",
+      "outer_boxes": 247,
+      "pending_boxes": 0,
+      "min_margin": 0.00013657934548563785,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-021",
+      "outer_boxes": 254,
+      "pending_boxes": 0,
+      "min_margin": 2.746485936661047e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-022",
+      "outer_boxes": 266,
+      "pending_boxes": 0,
+      "min_margin": 8.84261505749717e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-023",
+      "outer_boxes": 275,
+      "pending_boxes": 0,
+      "min_margin": 3.064711803785202e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-024",
+      "outer_boxes": 286,
+      "pending_boxes": 0,
+      "min_margin": 9.252974521151146e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-025",
+      "outer_boxes": 294,
+      "pending_boxes": 0,
+      "min_margin": 8.25019814160166e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-026",
+      "outer_boxes": 307,
+      "pending_boxes": 0,
+      "min_margin": 0.00013573337776590086,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n6-027",
+      "outer_boxes": 314,
+      "pending_boxes": 0,
+      "min_margin": 4.912806713203154e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-004",
+      "outer_boxes": 395,
+      "pending_boxes": 0,
+      "min_margin": 0.00021660908940122206,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-005",
+      "outer_boxes": 389,
+      "pending_boxes": 0,
+      "min_margin": 0.00014978609361544767,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-002",
+      "outer_boxes": 428,
+      "pending_boxes": 0,
+      "min_margin": 0.00014548214806588825,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-003",
+      "outer_boxes": 409,
+      "pending_boxes": 0,
+      "min_margin": 8.95784453027598e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-001",
+      "outer_boxes": 495,
+      "pending_boxes": 0,
+      "min_margin": 3.488673603956916e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-006",
+      "outer_boxes": 380,
+      "pending_boxes": 0,
+      "min_margin": 7.039930885668898e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-007",
+      "outer_boxes": 378,
+      "pending_boxes": 0,
+      "min_margin": 4.380840989935685e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-008",
+      "outer_boxes": 381,
+      "pending_boxes": 0,
+      "min_margin": 0.000134965700579831,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-009",
+      "outer_boxes": 388,
+      "pending_boxes": 0,
+      "min_margin": 0.00043850227858262253,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-010",
+      "outer_boxes": 387,
+      "pending_boxes": 0,
+      "min_margin": 8.545924452754704e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-011",
+      "outer_boxes": 391,
+      "pending_boxes": 0,
+      "min_margin": 0.0002141144634978109,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-012",
+      "outer_boxes": 397,
+      "pending_boxes": 0,
+      "min_margin": 1.642360247067209e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-013",
+      "outer_boxes": 398,
+      "pending_boxes": 0,
+      "min_margin": 8.791122314194542e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-014",
+      "outer_boxes": 401,
+      "pending_boxes": 0,
+      "min_margin": 0.00013058488610800942,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-000",
+      "outer_boxes": 914,
+      "pending_boxes": 0,
+      "min_margin": 1.4573977746429317e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-015",
+      "outer_boxes": 405,
+      "pending_boxes": 0,
+      "min_margin": 0.00023329532423815855,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-016",
+      "outer_boxes": 413,
+      "pending_boxes": 0,
+      "min_margin": 0.0002931583692286354,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-017",
+      "outer_boxes": 426,
+      "pending_boxes": 0,
+      "min_margin": 0.00010186770989870085,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-019",
+      "outer_boxes": 441,
+      "pending_boxes": 0,
+      "min_margin": 1.41242251943674e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-018",
+      "outer_boxes": 432,
+      "pending_boxes": 0,
+      "min_margin": 0.0001907636043351479,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-020",
+      "outer_boxes": 458,
+      "pending_boxes": 0,
+      "min_margin": 3.8048736412638056e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-021",
+      "outer_boxes": 472,
+      "pending_boxes": 0,
+      "min_margin": 8.705303437306354e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-022",
+      "outer_boxes": 484,
+      "pending_boxes": 0,
+      "min_margin": 1.4573348743329715e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-023",
+      "outer_boxes": 505,
+      "pending_boxes": 0,
+      "min_margin": 0.00011275643001579237,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-024",
+      "outer_boxes": 525,
+      "pending_boxes": 0,
+      "min_margin": 5.3424107965827075e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-025",
+      "outer_boxes": 547,
+      "pending_boxes": 0,
+      "min_margin": 8.868894627012124e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-026",
+      "outer_boxes": 566,
+      "pending_boxes": 0,
+      "min_margin": 2.4695317912826194e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-027",
+      "outer_boxes": 587,
+      "pending_boxes": 0,
+      "min_margin": 5.684771059943915e-06,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-028",
+      "outer_boxes": 606,
+      "pending_boxes": 0,
+      "min_margin": 1.343090729649665e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    },
+    {
+      "id": "n8-029",
+      "outer_boxes": 618,
+      "pending_boxes": 0,
+      "min_margin": 1.0121096624293722e-05,
+      "complete": true,
+      "replay": "PASS",
+      "partition": "PASS"
+    }
+  ],
+  "seconds": 686.760388292023,
+  "hashes": {
+    "SPEC.md": "8f71727ebff46cb2b213a8010d4bb2dbffef9ba68164f2b5df558a51c122f73f",
+    "LEMMAS.md": "93987270271bf9cbc2090ca24d9d3a7f0b46a41420ba1de948408e97a3811db5",
+    "src/kernel.c": "881b0fca4110efe0e5316b40d310d7a2aea4e6612f5e6336f716554fe97889bb",
+    "src/block.c": "05db79207e25c6a886b505076743421f3ea17ce29ad6e3e0cd9afe4ac3d682d6",
+    "src/driver.py": "1b3eea75f2e0ce9e9a451de16cfc9e742fb3f0f4721680e07721c766e9d14adc",
+    "src/gates.py": "635bfb22987d700bf037e2791259b1919109c38e760900f06a252bba8463ce92",
+    "src/kernel.dylib": "abb136f3d4fab1a19801efbfa35e0d2da6b98a77720900f019e3a03cda92705f"
+  }
+}
