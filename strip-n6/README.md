@@ -1,6 +1,6 @@
 # Six unit squares in a strip of height 1.87 ≤ H < 2
 
-Raw computational provenance for the theorem *L ≥ F6(H) for every packing of six unit squares in an L × H rectangle, 1.87 ≤ H < 2* (Kevin Fang, draft note `docs/strip-n6-note.md` in https://github.com/TheSnakeFang/squarepack, commit 5887dec, 2026-10-31). The proof itself, the certified programs, the lemmas and the three blind referee reports live in that repository:
+Raw computational provenance for the theorem *L ≥ F6(H) for every packing of six unit squares in an L × H rectangle, 1.87 ≤ H < 2* (Kevin Fang, draft note `docs/strip-n6-note.md` in https://github.com/TheSnakeFang/squarepack, commit 5887dec, 2026-10-31; archived as https://doi.org/10.5281/zenodo.23852984). The proof itself, the certified programs, the lemmas and the three blind referee reports live in that repository:
 
 - `docs/strip-n6-reduction.md`: packings → chain functions (centre-x ordering, pair constraint, vertex reduction, mirror lemma).
 - `o1dp/`: O1, the 62 non-alternating role patterns, certified min-plus dynamic program; its `certificate.json` (1.2 MB) is committed there.
