@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-10 (wedge: checks on the last step)
+
+Added to `wedge/`: three checkers for Proposition 7.5, the last step of the claimed proof of Theorem 1.5, which no simulator ran when the note was written; their reports (`wedge/reports/`); and a summary (`wedge/notes/prop75-checks.md`). `wedge_constants.py` checks the 70 numerical claims of Sections 5 to 7 in exact rational arithmetic, all pass. `wedge_prop75_check.py` brings Lemma 7.4 to 0.997 of its bound on two sheared stacks with no violation. `wedge_prop75_a2.py` checks every line of the proof on a 715,290-square staircase in which 78.6% of the floor paths arrive; all hold. The hypothesis of the proposition itself (waste below about L/84500) is still met by no test packing, the lines that carry the waste are slack by about a million there, and no person has read the proof. The note is unchanged (v0.1). No existing file changed apart from README.md, ATTRIBUTION.md (one licence sentence), wedge/README.md, MANIFEST.sha256 and this file.
+
 ## 2026-11-09 (wedge: claimed lower bounds for slabs and trapezoids)
 
 Added `wedge/`: the note *Lower bounds for the waste of unit-square packings in slabs and trapezoids* (v0.1, https://doi.org/10.5281/zenodo.24099178) as PDF and LaTeX, the two working notes it was typeset from, four simulators (Python standard library, floating point) and six blind review reports by language models. The main claim is Conjecture 1 of H. D. Bui's paper arXiv:2508.04603 with a constant: waste at least 7·10⁻⁶·√(LR) for a trapezoid of height L whose bases differ by R ≥ 1, slope at most 1. The proofs were found and written by Claude (Anthropic) and have not been read by a person. Nothing in this folder is a certificate and no checker here applies to it; `wedge/README.md` says what was and was not checked. No existing file changed apart from README.md, ATTRIBUTION.md, .gitignore, MANIFEST.sha256 and this file.

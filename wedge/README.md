@@ -34,6 +34,11 @@ bounds imply for the constructions of Bui, McClenagan and Ryu, given the decompo
 | `tools/slab_flow_check.py` | the vertical flow of Section 3 on 22 packings (about 30 s) |
 | `tools/wedge_flow_check.py` | the straight flow of Sections 5 to 7 on 31 packings (about 8 min) |
 | `tools/wedge_staircase_check.py` | the straight flow on staircase packings of up to 199,030 squares, where most paths arrive (about 4 min) |
+| `notes/prop75-checks.md` | added 2026-11-10: what was checked about the last step (Proposition 7.5) after the note, with the results |
+| `tools/wedge_constants.py` | added 2026-11-10: the 70 numerical claims of Sections 5 to 7 and the proof of Theorem 1.5 in exact rational arithmetic (instant) |
+| `tools/wedge_prop75_check.py` | added 2026-11-10: the lines of the proof of Proposition 7.5 with measured values; its two sheared-stack cases bring Lemma 7.4 to 0.997 of its bound (about 5 min) |
+| `tools/wedge_prop75_a2.py` | added 2026-11-10: the same lines on a 715,290-square staircase where 78.6% of the paths arrive, window by window (about 100 min, 4.3 GB, resumable) |
+| `reports/` | added 2026-11-10: the reports written by those three tools |
 | `reviews/` | the six blind language-model reviews, unedited apart from a local scratch path removed from three of them |
 
 Numbering: Theorem S and Theorem B of the working notes are Theorems 1.1 and 1.5 of the note. Slab Lemmas 2.1, 2.2,
@@ -52,11 +57,23 @@ python3 -I tools/slab_constants.py
 python3 -I tools/slab_flow_check.py
 python3 -I tools/wedge_flow_check.py
 python3 -I tools/wedge_staircase_check.py
+python3 -I tools/wedge_constants.py
+python3 -I tools/wedge_prop75_check.py
+python3 -I tools/wedge_prop75_a2.py --selftest
+python3 -I tools/wedge_prop75_a2.py --run --alpha 0.03 --L 320 --width 1
 ```
 
-The last three write their reports under `runs/` (not tracked; the two wedge reports are 4 to 5 MB each). They are
-floating point and are not certificates. No test packing satisfies the hypothesis of Proposition 7.5, which needs a
-waste below about L/34000, so the last step of Theorem 1.5 is not exercised by any of them.
+All but the first write their reports under `runs/` (not tracked; the reports of `wedge_flow_check.py` and
+`wedge_staircase_check.py` are 4 to 5 MB each, and the long run leaves a 407 MB checkpoint). Apart from
+`wedge_constants.py`, which is exact arithmetic on constants, they are floating point. None is a certificate.
+
+No test packing satisfies the hypothesis of Proposition 7.5, which needs a waste below about L/84500 (the note says
+L/34000, which is what remains once τ is chosen as in the proof of Theorem 1.5). When the note was written no
+simulator ran that step at all. Since 2026-11-10 it is tested this far: the hypothesis is used only to get that 3/4 of
+the floor paths arrive, and on a staircase where 78.6% arrive every later line of the proof holds with measured
+values. The lines that carry the waste hold there with a factor of about a million to spare, so they are not tested
+sharply, and the step from small waste to 3/4 arrival is still only the written argument. `notes/prop75-checks.md`
+has the numbers and the limits.
 
 ## Reviews
 
