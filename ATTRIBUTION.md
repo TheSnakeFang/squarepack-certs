@@ -22,10 +22,14 @@ An independent review of an early draft of the note by another language model, G
 
 For Theorem A (`theorem-a/`), two blind reviews of the proof by other language models (Claude Opus; OpenAI Codex with GPT-6 Astra) found one gap in a lemma and two code defects, all corrected before this bundle. That is not an external mathematical review.
 
+For `wedge/`, the only review is by language models: six blind passes (Claude Opus; OpenAI Codex), reports in `wedge/reviews/`. No person has read those proofs.
+
 ## AI assistance
+
+The proofs in `wedge/` were found and written by Claude (Anthropic) as a research agent under Kevin Fang's direction, and its simulators were written with OpenAI Codex. The method there is Roth and Vaughan's and Sungjoon Ryu's, the conjecture is H. D. Bui's, and the question came from Evan Daniel's notes on the exponent of c*(k); see `wedge/README.md`.
 
 Search, verifier and this bundle were written and run with Claude (Anthropic) as a coding and research agent, directed and reviewed by Kevin Fang.
 
 ## Licence
 
-The code (`verify.py`, `tools/glue.py`, `tools/rectcheck.py`, the shell scripts) is MIT, see LICENSE. The certificates, text files, tables and drawings in `nNNNN/`, `rectangles/`, `composites/` and `theorem-a/certs/` are released under CC0 1.0; `theorem-a/lband.py` and `theorem-a/windowed_check.py` are MIT; the note in `theorem-a/note/` is CC BY 4.0. `third_party/daniel/` and `tools/verify_cert_daniel.py` are Evan Daniel's, under the MIT licence in `third_party/daniel/LICENSE`.
+The code (`verify.py`, `tools/glue.py`, `tools/rectcheck.py`, the shell scripts) is MIT, see LICENSE. The certificates, text files, tables and drawings in `nNNNN/`, `rectangles/`, `composites/` and `theorem-a/certs/` are released under CC0 1.0; `theorem-a/lband.py` and `theorem-a/windowed_check.py` are MIT; the note in `theorem-a/note/` is CC BY 4.0. In `wedge/`, the simulators in `wedge/tools/` are MIT and the note, working notes and review reports are CC BY 4.0. `third_party/daniel/` and `tools/verify_cert_daniel.py` are Evan Daniel's, under the MIT licence in `third_party/daniel/LICENSE`.

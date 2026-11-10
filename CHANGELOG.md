@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-09 (wedge: claimed lower bounds for slabs and trapezoids)
+
+Added `wedge/`: the note *Lower bounds for the waste of unit-square packings in slabs and trapezoids* (v0.1, https://doi.org/10.5281/zenodo.24099178) as PDF and LaTeX, the two working notes it was typeset from, four simulators (Python standard library, floating point) and six blind review reports by language models. The main claim is Conjecture 1 of H. D. Bui's paper arXiv:2508.04603 with a constant: waste at least 7·10⁻⁶·√(LR) for a trapezoid of height L whose bases differ by R ≥ 1, slope at most 1. The proofs were found and written by Claude (Anthropic) and have not been read by a person. Nothing in this folder is a certificate and no checker here applies to it; `wedge/README.md` says what was and was not checked. No existing file changed apart from README.md, ATTRIBUTION.md, .gitignore, MANIFEST.sha256 and this file.
+
 ## 2026-10-31 (strip-n6: six squares in a strip)
 
 Added `strip-n6/`: the raw O2 provenance (final certificate, per-cell files, the initial search pass and the pre-verification certificate, all xz-compressed, 7.5 MB) for the theorem L ≥ F6(H) for six unit squares in a strip of height 1.87 ≤ H < 2. The proof, the certified programs O1 and O2, the lemmas, the draft note and the three blind referee reports are in https://github.com/TheSnakeFang/squarepack at 5887dec; `strip-n6/README.md` says which file is which and how to replay O2. No checker here applies to these files; they are JSON interval certificates verified by `o2cert/src/driver.py verify` in that repository.

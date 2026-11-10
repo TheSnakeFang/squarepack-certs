@@ -1,0 +1,489 @@
+\documentclass[11pt,letterpaper]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{xurl}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+
+\DeclareUrlCommand\hash{\urlstyle{rm}}
+\hypersetup{pdftitle={Lower bounds for the waste of unit-square packings in slabs and trapezoids},pdfauthor={Kevin Fang}}
+\emergencystretch=1.5em
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\cs}{c^{*}}
+\newcommand{\fl}[1]{\lfloor #1 \rfloor}
+
+\begin{document}
+\title{Lower bounds for the waste of unit-square packings in slabs and trapezoids}
+\author{Kevin Fang}
+\email{me@kevinfang.tech}
+\date{2026-11-09}
+\thanks{Draft v0.1, 2026-11-09, doi:10.5281/zenodo.24099178. Simulators and review reports: \cite{Fan26c}.}
+\begin{abstract}
+\input{front-abstract}
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+\input{front-intro}
+Let $g$ be a concave function on $[0,L]$ with $0\le g\le M$, and $\Omega=\{(x,y):0\le x\le L,\ 0\le y\le g(x)\}$. A packing is a finite set of closed unit squares in $\Omega$ with pairwise disjoint interiors; its waste $W$ is the area of $\Omega$ minus the number of squares. For $0<\delta,\delta'$ put
+\[
+A(\delta,\delta')=\{x\in[0,L]:N-\delta'\le g(x)\le N+\delta\text{ for some integer }N\}.
+\]
+
+\begin{theorem}[Theorem S]\label{thm:S}
+Let $0<\delta\le 2/5$, $\delta'>0$ and $0<\tau\le 0.08$ with $0.502\cdot M\cdot\tau^2\le\delta'$. Every packing of $\Omega$ satisfies
+\[
+L-|A(\delta,\delta')|\le W/\delta+1350\cdot W/\tau+\sqrt{21\cdot\tau\cdot M\cdot L\cdot W}.
+\]
+\end{theorem}
+The proof is in Section~\ref{sec:proofS}.
+
+\begin{corollary}[Sloped ceiling]\label{cor:slope}
+Let $g(x)=w+\zeta x$ with $w\ge0$, $\zeta>0$, rise $\zeta L\ge1$ and $M=w+\zeta L$. Then $W\ge4\cdot10^{-5}\cdot L/\sqrt M$, and $W\ge1.5\cdot10^{-4}\cdot L/\sqrt M$ if $M\ge13$.
+\end{corollary}
+The proof is in Section~\ref{sec:corollaries}.
+
+\begin{corollary}[Rectangles]\label{cor:rect}
+\textup{(a)}\label{cor:half} Every packing of an $L\times(m+\tfrac12)$ rectangle with integer $m\ge125$ has $W\ge5\cdot10^{-4}\cdot L/\sqrt{m+\tfrac12}$. In particular a square of side $n+\tfrac12$, $n\ge125$, has waste $\ge5\cdot10^{-4}\cdot\sqrt{n+\tfrac12}$.
+
+\textup{(b)}\label{cor:fraction} Every packing of an $L\times M$ rectangle, $M\ge1$ with fractional part $f\in(0,1)$, has $W\ge5\cdot10^{-5}\cdot L\cdot\min(f,\sqrt{(1-f)/M})$. For a square of side $x$ with $f=x-\lfloor x\rfloor\le\tfrac12$ this is $W(x)\ge c\cdot\min(xf,\sqrt x)$.
+\end{corollary}
+The proofs of both parts are in Section~\ref{sec:corollaries}.
+
+\begin{corollary}[Wall trapezoid]\label{cor:wall}
+A right trapezoid of height $h$ whose parallel sides have lengths $w$ and $w+r$, $r\ge1$, has waste $\ge4\cdot10^{-5}\cdot h/\sqrt{w+r}$. If $w,r\le C\sqrt h$ this is $\ge c(C)\cdot h^{3/4}$.
+\end{corollary}
+The proof is in Section~\ref{sec:corollaries}.
+
+\begin{theorem}[Theorem B]\label{thm:B}
+Let $w\ge0$, $0<\zeta\le1$, $L>0$, $g(x)=w+\zeta x$ and $\Omega=\{(x,y):0\le x\le L,\ 0\le y\le g(x)\}$. Put $R=\zeta L$ (the rise). If $R\ge1$, every packing of $\Omega$ has $W\ge7\cdot10^{-6}\cdot\sqrt{LR}$.
+\end{theorem}
+The proof is in Section~\ref{sec:proofB}.
+
+\section{Conventions and the fundamental lemma}\label{sec:conventions}
+A unit square $Z$ has an orientation $\varphi_Z\in(-\pi/4,\pi/4]$: its sides make the angles $\varphi_Z+j\pi/2$ with the $x$-axis. Its inclination is $a(Z)=|\varphi_Z|$. For two squares $\theta(Z,Z')\in[0,\pi/4]$ is the distance of $\varphi_Z$ and $\varphi_{Z'}$ in $\mathbb R/(\pi/2)\mathbb Z$; the floor has orientation $0$, so $\theta(Z,\text{floor})=a(Z)$. $\theta$ is a metric.
+
+If $a(Z)<\pi/4$ write $u_Z=(\cos\varphi_Z,\sin\varphi_Z)$, $n_Z=(-\sin\varphi_Z,\cos\varphi_Z)$ and $Z=\{P+s\cdot u_Z+t\cdot n_Z:0\le s,t\le1\}$. The bottom side is $t=0$, the top side $t=1$, the lateral sides $s=0$ and $s=1$. For $x$ in the projection of the top side, $\operatorname{top}_Z(x)$ is the height of the top side above $x$; its slope is $\tan\varphi_Z$.
+
+Waste also denotes the set of points of $\Omega$ in no square. Squares of a packing have centres at pairwise distance $\ge1$. A unit square that meets a set $X$ lies in the $\sqrt2$-neighbourhood of $X$, so at most $\operatorname{area}(N_{\sqrt2}(X))$ squares of a packing meet $X$; for an $a\times b$ rectangle that area is $ab+2\sqrt2(a+b)+2\pi$.
+
+\begin{lemma}[Convex gaps; Ryu \cite{Ryu26b}]\label{lem:convex}
+Let $I$ be an interval of length $\lambda$, $0\le\varphi\le1$, and $\gamma\ge0$ a continuous, convex, piecewise linear function on $I$ such that $|\gamma'|\ge\varphi$ off the break points and the slope of $\gamma$ increases by at least $2$ at every break point. Then $\int_I\gamma\ge\varphi(2-\varphi)\lambda^2/4$.
+\end{lemma}
+\begin{proof}
+If $\varphi=0$ the claim is $\int_I\gamma\ge0$, true as $\gamma\ge0$; let $\varphi>0$. Let $y^*$ be a minimum point of $\gamma$ on the closure of $I$, at distances $a$ and $b=\lambda-a$ from the two ends. If $y^*$ is an end point, $\gamma(y)\ge\varphi|y-y^*|$ and $\int\gamma\ge\varphi\lambda^2/2$. Otherwise $y^*$ is a break point with slopes $-p<0<q$, $p,q\ge\varphi$, $p+q\ge2$, and by convexity $\int\gamma\ge(pa^2+qb^2)/2\ge\lambda^2/(2(1/p+1/q))$ (Cauchy--Schwarz). Under the constraints, $1/p+1/q\le1/\varphi+1/(2-\varphi)=2/(\varphi(2-\varphi))$: if say $p\le q$ and $q\ge2-\varphi$ this is clear; if $q<2-\varphi$ then $q\ge1$, $p\ge2-q$, and $1/(2-q)+1/q$ is convex and symmetric about $1$, so it is at most its value at $q=2-\varphi$.
+\end{proof}
+
+\begin{lemma}[Fundamental lemma; Roth and Vaughan \cite{RV78}]\label{lem:fundamental}
+Let $S_1$ be a square of a packing of $\Omega$, with centre $c_1$. Let $S_2$ be either another square of the packing, with centre $c_2$, or the floor, in which case $c_2$ is the foot of the perpendicular from $c_1$. Let $\ell=|c_1-c_2|$, $u=(c_2-c_1)/\ell$, $n\perp u$ a unit vector, and
+\[
+R=R(S_1,S_2)=\{c_1+s\cdot u+t\cdot n:0\le s\le\ell,\ |t|\le\tfrac12\}.
+\]
+Then $R\subset\Omega$. If at most $m'$ squares other than $S_1,S_2$ meet $R$, the waste inside $R$ has area at least $\theta(2-\theta)/(4(m'+1))$, where $\theta=\theta(S_1,S_2)$.
+\end{lemma}
+The proof is the one in Ryu's \cite{Ryu26b} Proposition~3.3, for packings whose squares may touch.
+\begin{proof}
+\emph{$R\subset\Omega$.} Centres of squares lie in $\Omega_- =\{p:B(p,\tfrac12)\subset\Omega\}$, which is convex. In the first case the segment $c_1c_2$ lies in $\Omega_-$ and $R$ within $\tfrac12$ of it. In the floor case $R=[x_1-\tfrac12,x_1+\tfrac12]\times[0,y_1]$ for $c_1=(x_1,y_1)$; it lies in $\Omega$ because $(x_1\pm\tfrac12,y_1)\in\Omega$ and $\Omega$ contains the vertical segment from each of its points down to the floor.
+
+\emph{Coordinates.} Use $(s,t)$ as in the definition of $R$, $\Sigma=\{|t|<\tfrac12\}$, and for $|t|<\tfrac12$ let $\ell_t$ be the chord of $R$ at height $t$. For a square $Z$ let $[\tau^-(Z),\tau^+(Z)]$ be its $t$-projection (of length $\ge1$), and for $t$ in it let $l_Z(t),r_Z(t)$ be the least and largest $s$ on $Z$ at height $t$. $l_Z$ is convex, $r_Z$ concave, each piecewise linear with at most one break point (at a vertex), where the slope changes by $\tan\gamma+\cot\gamma\ge2$ for some $\gamma\in(0,\pi/2)$; off the break point the slope is $\tan\psi$, $\psi\in(-\pi/2,\pi/2)$ being the angle from the $t$-axis to the side in question.
+
+\emph{Squares in the strip.} The points $c_1+t\cdot n$, $|t|<\tfrac12$, are interior points of $S_1$, and $c_2+t\cdot n$ are interior points of $S_2$ in the first case. Let $Z\ne S_1,S_2$ meet some chord $\ell_t$. $Z\cap\Sigma$ is convex and misses the open segment $\Sigma\cap\{s=0\}$, and misses $\Sigma\cap\{s=\ell\}$ in the first case; in the floor case $Z\subset\{s\le\ell\}$. So $Z\cap\Sigma\subset R$. Hence for $|t|<\tfrac12$ such a $Z$ meets $\ell_t$ exactly when $\tau^-(Z)\le t\le\tau^+(Z)$, and its chord at height $t$ then lies in $\ell_t$. At most one of $\tau^\pm(Z)$ lies in $(-\tfrac12,\tfrac12)$. Let $T$ be the set of these values over all such $Z$; $|T|\le m'$. $T$ cuts $(-\tfrac12,\tfrac12)$ into $q\le m'+1$ open intervals $I_r$ of lengths $\lambda_r$, $\sum\lambda_r=1$.
+
+\emph{Gaps.} Fix $r$. For $t\in I_r$ the chord $\ell_t$ meets the same squares, each in a segment of positive length, and (their interiors being disjoint, by continuity in $t$) in the same order $Z_0=S_1,Z_1,\ldots,Z_K$, followed by $Z_{K+1}=S_2$ or the floor. Put $\gamma_i(t)=l_{Z_i}(t)-r_{Z_{i-1}}(t)\ge0$ for $1\le i\le K+1$ (with $l\equiv\ell$ for the floor). The sets $\{(s,t):t\in I_r,\ r_{Z_{i-1}}(t)<s<l_{Z_i}(t)\}$ are pairwise disjoint parts of the waste in $R$. Each $\gamma_i$ is convex and piecewise linear, its slope increases by $\ge2$ at break points, and off them $\gamma_i'=\tan\psi'-\tan\psi$, where $\psi,\psi'$ are the directions of the two sides bounding the gap; so $|\gamma_i'|\ge|\psi'-\psi|\ge\varphi_i:=\theta(Z_{i-1},Z_i)$, because the direction of a side is congruent to the orientation of its square modulo $\pi/2$ (and the floor line $s=\ell$ has $\psi'=0$, orientation $0$). By Lemma~\ref{lem:convex}, $\int_{I_r}\gamma_i\ge\varphi_i(2-\varphi_i)\lambda_r^2/4$.
+
+\emph{Summation.} $\sum_i\varphi_i\ge\theta$ by the triangle inequality. With $\varphi_i'=\min(\varphi_i,\theta)$ also $\sum\varphi_i'\ge\theta$, and since $x(2-x)$ is increasing on $[0,1]$, $\sum_i\varphi_i(2-\varphi_i)\ge(2-\theta)\sum\varphi_i'\ge\theta(2-\theta)$. Hence the waste in $R$ is at least $(\theta(2-\theta)/4)\cdot\sum_r\lambda_r^2\ge\theta(2-\theta)/(4q)$.
+\end{proof}
+
+\begin{corollary}\label{cor:local}
+In Lemma~\ref{lem:fundamental} suppose $\ell\le\sqrt2+2/5$. Then at most $14$ other squares meet $R$, and the waste in $R$ has area $\ge\theta(S_1,S_2)/50$. Every point of $R$ is within $1.9$ of $c_1$.
+\end{corollary}
+\begin{proof}
+$R$ lies in a $1\times1.82$ rectangle. If $S_2$ is a square, $\operatorname{area}(N_{\sqrt2}(R))\le1.82+2\sqrt2\cdot2.82+2\pi<16.1$, so at most $16$ squares meet $R$, two of which are $S_1,S_2$. If $S_2$ is the floor, $R=[x_1-\tfrac12,x_1+\tfrac12]\times[0,\ell]$ and every square lies in $y\ge0$; the part of $N_{\sqrt2}(R)$ below $y=0$ is a $1\times\sqrt2$ rectangle and two quarter discs of radius $\sqrt2$, of area $\sqrt2+\pi$, so the rest has area $<16.08-\sqrt2-\pi<11.53$: at most $11$ squares, one of which is $S_1$. The same holds for any line with the whole packing on one side of it (a side wall). Either way at most $14$ others. Then $(2-\pi/4)/(4\cdot15)>1/50$ and $\sqrt{1.82^2+\tfrac14}<1.9$.
+\end{proof}
+
+\subsection*{Side walls}\label{sec:walls}
+For the affine ceiling of Theorem~\ref{thm:B}, the two side walls have orientation $0$. Lemma~\ref{lem:fundamental} treats the floor; the same proof gives the right wall, because the horizontal segment from any point of $\Omega$ to the right wall lies in $\Omega$ ($g$ is increasing) and every square lies to the left of the wall. So for a square $S$ with centre $(x_c,y_c)$, $R(S,\text{right wall})=[x_c,L]\times[y_c-\tfrac12,y_c+\tfrac12]\subset\Omega$ carries waste $\ge a(S)/50$ when $L-x_c\le\sqrt2+2/5$. For the left wall, $R(S,\text{left wall})=[0,x_c]\times[y_c-\tfrac12,y_c+\tfrac12]$ lies in $\Omega$ exactly when $y_c+\tfrac12\le w$, and then the same holds. The squares for which it fails and which can emit towards the left wall within length $\delta$ are at most two: such a flat square has its top left vertex at $x\le\delta\cdot\sin\tau$, so $x_c\in[0.5,0.55]$, and $w-\tfrac12<y_c\le w-\tfrac12+1.1\cdot\zeta$ because its top right vertex is under the ceiling; centres are at distance $\ge1$.
+
+\section{Thin regions: the vertical flow}\label{sec:vertical}
+\subsection{The flow}
+Fix a packing, $\delta\in(0,2/5]$ and $\tau\in(0,0.08]$. A square is \emph{steep} if $a(Z)\ge\tau$ and \emph{flat} otherwise. A flat square has a bottom side, a top side and two lateral sides; a vertical ray going up can enter it only through the bottom side or, if $\varphi_Z\ne0$, through the one lateral side whose outward normal points downwards.
+
+For $x\in[0,L]$ the \emph{path} of $x$ is built as follows. It starts at $p=(x,0)$ with gap count $G=0$ and $N=0$.
+\begin{enumerate}
+\item\label{step:v1} The current point $p$ is on the floor or on the top side of a flat square. Let $q$ be the first point of the closed upward vertical ray from $p$ that lies on the ceiling or in a square other than the one just left ($q=p$ is possible). The open segment $(p,q)$, if non-empty, is a \emph{gap segment}; it lies in the waste. Add its length to $G$. If $G$ would exceed $\delta$, stop at the point where $G=\delta$: \textbf{gap death}.
+\item\label{step:v2} If $q$ is on the ceiling (and in no square): \textbf{arrival} at $q$.
+\item\label{step:v3} If $q$ is in a steep square: \textbf{tilt death}.
+\item If $q$ is in a flat square $Z'$, in the relative interior of a lateral side: \textbf{lateral death}.
+\item\label{step:v5} If $q$ is in a flat square $Z'$, in the relative interior of its bottom side: move along the segment from $q$ to $p'=q+n_{Z'}$, a point of the relative interior of the top side, increase $N$ by one, and go to step~\ref{step:v1} with $p=p'$.
+\item\label{step:v6} If $q$ is a vertex of any square, $x$ is \emph{exceptional}; this takes precedence over \ref{step:v3}--\ref{step:v5}.
+\end{enumerate}
+In step~\ref{step:v1} the case $q=p$ occurs when another square touches the current point. If $p$ is in the relative interior of the top side of $Z$ and of a side of $Z'\ne Z$, the two squares lie on opposite sides of the common line, so that side is parallel to the top side of $Z$ with outward normal $-n_Z$: $Z'$ is flat and it is its bottom side. So steps~\ref{step:v2}--\ref{step:v6} cover all cases. Heights strictly increase along a path, each square is visited at most once (proof of Lemma~\ref{lem:vstructure}(a)), and the construction ends.
+
+\begin{lemma}\label{lem:vstructure}
+\textup{(a)} The set $E$ of exceptional $x$ is finite. There is a finite set $E'\supseteq E\cup\{0,L\}$ such that on each open interval of $[0,L]\setminus E'$ the itinerary (the sequence of squares and sides met, and the kind of ending) is constant. The points of $E'\setminus E$ are non-exceptional and have their paths, but are not assigned to any interval; being finitely many they do not affect any measure below.
+
+\textup{(b)} (Height identity.) If the path of $x$ arrives after passing $Z_1,\ldots,Z_N$, at the ceiling point of abscissa $x'$, then
+\begin{equation}\label{eq:vheight}
+g(x')=N-D+G,\qquad D=\sum_j(1-\cos\varphi_{Z_j}),\qquad x'=x-\sum_j\sin\varphi_{Z_j},
+\end{equation}
+where $G\le\delta$ is the total length of its gap segments.
+
+\textup{(c)} (Translation.) On an interval of constant itinerary, the abscissa of the path at each of its stages is $x$ minus a constant.
+
+\textup{(d)} (Injectivity.) Paths of distinct non-exceptional $x$ are disjoint.
+\end{lemma}
+\begin{proof}
+(b) and (c): a gap segment is vertical, and crossing $Z$ from $q$ to $q+n_Z$ adds $\cos\varphi_Z$ to the height and $-\sin\varphi_Z$ to the abscissa. (a): No square is crossed twice: for a flat $Z$ every point of the top side is higher than every point of the bottom side, by $\cos\varphi_Z-|\sin\varphi_Z|>0$, so a path that has left $Z$ through its top side never again reaches its bottom side. Hence a path crosses distinct squares, and there are finitely many possible prefixes (sequences of squares crossed so far). Induct on the number of steps. On an open interval where a prefix is fixed, the horizontal coordinate of the current point is $x$ minus a constant (by Lemma~\ref{lem:vstructure}(c)), so the vertical ray from it passes through a given vertex for at most one $x$; over all prefixes and vertices that is finitely many $x$. Away from them the first object hit is locally constant, since it can change only where the ray passes a vertex. On a fixed prefix each gap segment that ends on a square has affine length in $x$ (both ends lie on straight sides), and the final gap to the ceiling has length $g(x-\text{constant})$ minus an affine function, which is concave. So the total $G$ at a given stage is affine or concave, the set where it exceeds $\delta$ is an interval, and the set where it equals $\delta$ is at most two points or a closed interval; this adds finitely many end points. A concave $g$ is continuous on $(0,L)$; a jump at $0$ or $L$ affects only the finitely many $x$ whose translated abscissa is that end. Collect all these points with $0$ and $L$ in $E'$.
+
+(d): A non-exceptional path consists of gap segments, whose interiors are in the waste, and crossings $[q,q+n_Z]$ from the relative interior of the bottom side of a flat square $Z$ to the relative interior of its top side, whose interiors are in the interior of $Z$. It meets the floor only at its starting point. Suppose two such paths meet and let $c$ be a common point of least height; we show that $c$ is the starting point of both, so $x_1=x_2$.
+\begin{itemize}
+\item $c$ interior to a square $Z$: both paths cross $Z$ along the segment through $c$ parallel to $n_Z$ and share its lower end.
+\item $c$ in the waste and not on the floor: on each path $c$ lies on a gap segment, which starts at a point of the floor or of a top side and runs through waste; so both contain the vertical waste segment below $c$, and its lower end.
+\item $c$ on the boundary of a square, not on the floor. A path reaches $c$ either along a gap segment of positive length ending at $c$, and then the points just below $c$ are waste, or as the upper end of a crossing of a square $Z$, and then $c$ is in the relative interior of the top side of $Z$ and the points just below $c$ are interior to $Z$. The two cases exclude each other, and in the second $Z$ is determined by $c$. So both paths share the gap segment below $c$, or both cross the same $Z$ along the same segment. Either way they share a lower point.
+\item $c$ on the floor: it is the starting point of both.
+\end{itemize}
+The first three cases contradict the choice of $c$.
+\end{proof}
+
+Consequences used below. Let $X$ be a set of non-exceptional starting points with a common itinerary up to some stage. By Lemma~\ref{lem:vstructure}(c) and (d) the abscissas of their paths at that stage form a translate of $X$, and the gap segments, entry points and arrival points of different $x$ are different. In particular: the arrival abscissas of a set $X$ of arriving paths form a set of measure $|X|$; the set of $x$ whose path crosses a given flat square $Z$ has measure $\le\cos\varphi_Z\le1$; and gap segments of different paths sweep disjoint parts of the waste, so $\int G(x)\,dx\le W$ over any set of $x$.
+
+The last point is an area statement and needs a parametrisation, not only disjointness. Fix an interval $J$ of constant itinerary and the index of a gap on it. There are a constant $c$ and functions $\beta\le\alpha$ on $J$ ($\beta$ affine, $\alpha$ affine or concave, or truncated at the level where $G$ reaches $\delta$) such that the gap segment of $x\in J$ is $\{(x-c,v):\beta(x)<v<\alpha(x)\}$. The map $(x,v)\mapsto(x-c,v)$ has Jacobian $1$, so the set swept has area $\int_J(\alpha-\beta)\,dx$, the integral of that gap's length. By Lemma~\ref{lem:vstructure}(d) the swept sets for different $(J,\text{gap index})$ are disjoint apart from boundaries of area zero, and they lie in the waste; summing gives $\int G\,dx\le W$. In the same way the arrival map is a translation on each $J$ and the images are disjoint, which gives the measure of the arrival abscissas; and the entry abscissas into a flat square $Z$ fill disjoint translates in the projection of its bottom side, of length $\cos\varphi_Z$.
+
+\subsection{Three ways to die}
+\begin{lemma}[Gap deaths]\label{lem:vgap}
+The set of $x$ with a gap death has measure $\le W/\delta$.
+\end{lemma}
+\begin{proof}
+Each such path has gap segments of total length $\delta$, and $\int G\le W$.
+\end{proof}
+
+\begin{lemma}[Tilt deaths]\label{lem:vtilt}
+The set $T$ of $x$ with a tilt death has measure $\le1350\cdot W/\tau$.
+\end{lemma}
+\begin{proof}
+Let $x\in T$, with squares $Z_1,\ldots,Z_j$ passed and steep square $Z^*$ reached; put $Z_0=\text{floor}$. Consecutive members of the chain $Z_0,Z_1,\ldots,Z_j,Z^*$ are joined by a gap segment of length $\le\delta$ (possibly $0$), so two consecutive squares have centres at distance $\le\sqrt2+\delta$, and the first square has its centre at height $\le\sqrt2/2+\delta$. By the triangle inequality the sum of $\theta$ over consecutive pairs is $\ge\theta(\text{floor},Z^*)=a(Z^*)\ge\tau$, and by Corollary~\ref{cor:local} each $\theta(S,S')$ is at most $50$ times the waste in $R(S,S')$. For a pair $(S,S')$ let $\mu(S,S')$ be the measure of the set of $x\in T$ whose chain contains it consecutively. Then
+\[
+\tau\cdot|T|\le\sum_{(S,S')}\mu(S,S')\cdot\theta(S,S')\le50\int_{\text{waste}}\sum_{(S,S'):p\in R(S,S')}\mu(S,S')\,dp.
+\]
+Fix $p$. If $S$ is a square and $p\in R(S,S')$, then $S\subset B(p,1.9+\sqrt2/2)$, a disc of area $<21.4$, so there are at most $21$ such $S$, and $\sum_{S'}\mu(S,S')\le1$ for each (paths crossing $S$). If $S$ is the floor and $p\in R(S',\text{floor})$, then $S'$ lies in a box of width $1+\sqrt2$ and height $\sqrt2+\delta$ around $p$, of area $<4.4$; there are at most $4$ such $S'$, each with $\mu\le\sqrt2$ (its horizontal extent). The inner sum is $\le21+4\sqrt2<27$, and $50\cdot27=1350$.
+\end{proof}
+
+\begin{lemma}[Lateral deaths]\label{lem:vlateral}
+The set of $x$ with a lateral death has measure $\le\sqrt{21\cdot\tau\cdot n\cdot W}$, where $n$ is the number of squares; $n\le\operatorname{area}(\Omega)\le LM$.
+\end{lemma}
+\begin{proof}
+For a flat square $Z'$ with $\varphi_{Z'}\ne0$, with entering lateral side $\sigma$, and $Z$ a flat square or the floor, let $I(Z,Z')$ be the set of $\xi$ such that the vertical segment from $(\xi,\operatorname{top}_Z(\xi))$ up to the point of $\sigma$ above $\xi$ has length in $(0,\delta]$ and its interior lies in the waste. A lateral death of $x$ ends with such a segment for some pair, and by Lemma~\ref{lem:vstructure} different $x$ give different $\xi$ for the same pair. So the measure in question is $\le\sum|I(Z,Z')|$.
+
+On $I(Z,Z')$ the length of the segment is $\gamma(\xi)=\sigma(\xi)-\operatorname{top}_Z(\xi)$, the restriction of an affine function whose slope has absolute value $\ge\cot a(Z')-\tan a(Z)\ge s:=\cot\tau-\tan\tau$: the lateral side has slope $\mp\cot a(Z')$, the top side of $Z$ slope $\tan\varphi_Z$, the floor slope $0$. Since $\gamma>0$ on $I(Z,Z')$, this set lies on one side of the zero $\xi_0$ of that affine function, where $\gamma(\xi)\ge s|\xi-\xi_0|$; hence $\int_{I(Z,Z')}\gamma\ge s\cdot|I(Z,Z')|^2/2$. The segments for different pairs sweep disjoint parts of the waste (a vertical waste segment determines the objects at its two ends). So
+\[
+\sum|I(Z,Z')|^2\le2W/s.
+\]
+For fixed $Z'$ the top side of $Z$ meets the set of points at most $\delta$ below $\sigma$, which lies in a box of width $\sin\tau\le0.08$ and height $1+\delta\le1.4$; $\operatorname{area}(N_{\sqrt2})$ of that box is $<10.6$, so at most $10$ squares meet it, one of which is $Z'$. With the floor that makes at most $10$ pairs per $Z'$, at most $10n$ pairs in all. By Cauchy--Schwarz $\sum|I|\le\sqrt{10n\cdot2W/s}$, and $s\cdot\tau\ge0.99$ for $\tau\le0.08$ ($\tau\cot\tau-\tau\tan\tau$ is decreasing). $20/0.99<21$.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:S}}\label{sec:proofS}
+\begin{proof}[Proof of Theorem~\ref{thm:S}]
+Let $x$ be non-exceptional. Its path ends by a gap death, a tilt death, a lateral death or an arrival. If it arrives, all squares it passed are flat. By \eqref{eq:vheight} the height reached is $N-D+G\le M$ with every $\cos\varphi\ge\cos\tau$, so $N\le M/\cos\tau$ and
+\[
+D\le N(1-\cos\tau)\le M(1-\cos\tau)/\cos\tau\le0.502\cdot M\cdot\tau^2\le\delta'\qquad(\tau\le0.08),
+\]
+while $0\le G\le\delta$. So $g(x')\in[N-\delta',N+\delta]$: the arrival abscissa $x'$ lies in $A(\delta,\delta')$. The arrival abscissas of the arriving $x$ form a set of the same measure (Lemma~\ref{lem:vstructure}), so the set of arriving $x$ has measure $\le|A(\delta,\delta')|$. Adding Lemmas~\ref{lem:vgap}--\ref{lem:vlateral} with $n\le LM$ gives the theorem.
+\end{proof}
+
+\section{Corollaries of Theorem~\ref{thm:S}}\label{sec:corollaries}
+\begin{proof}[Proof of Corollary~\ref{cor:slope}]
+$g=w+\zeta x$ takes each value once, so for each integer $N$ the set $\{g\in[N-\delta',N+\delta]\}$ has length $\le(\delta+\delta')/\zeta$, and at most $\zeta L+1+\delta+\delta'$ integers matter: $|A|\le(\delta+\delta')(2+\delta+\delta')\cdot L$ when $\zeta L\ge1$. Take $\delta=\delta'=1/24$, so that $|A|\le(25/144)\cdot L$, and $\tau=\min(0.08,\sqrt{\delta'/(0.502\cdot M)})$. Note $M\ge\zeta L\ge1$.
+
+The right side of Theorem~\ref{thm:S} is increasing in $W$, so it suffices to show that at $W=\kappa L/\sqrt M$ it is less than $(119/144)\cdot L\le L-|A|$; then every packing has $W>\kappa L/\sqrt M$. At that $W$ the right side divided by $L$ is
+\[
+\frac{\kappa}{\delta\sqrt M}+\frac{1350\,\kappa}{\tau\sqrt M}+\sqrt{21\,\kappa\,\tau\sqrt M}.
+\]
+Put $b=\sqrt{\delta'/0.502}=0.2880\ldots$ and $M_0=b^2/0.08^2=12.96\ldots$, so that $\tau=b/\sqrt M$ when $M\ge M_0$ and $\tau=0.08$ otherwise. If $M\ge M_0$ then $\tau\sqrt M=b$ and the sum is $\le24\kappa/\sqrt{M_0}+1350\kappa/b+\sqrt{21\kappa b}$, which is $<0.204$ for $\kappa=4\cdot10^{-5}$ and $<0.735$ for $\kappa=1.5\cdot10^{-4}$; both are below $119/144=0.826\ldots$, and $M\ge13$ implies $M\ge M_0$. If $1\le M<M_0$ then $\tau=0.08$ and $\tau\sqrt M<b$, so the sum is $\le24\kappa+1350\kappa/0.08+\sqrt{21\kappa b}<0.692$ for $\kappa=4\cdot10^{-5}$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:rect}(a)]
+$g\equiv m+\tfrac12$, $\delta=\delta'=2/5$: $A$ is empty, and $\tau=\sqrt{\delta'/(0.502\cdot M)}\le0.08$ for $M\ge125$. Put $b=\sqrt{\delta'/0.502}=0.8926\ldots$, so $\tau\sqrt M=b$, and $\kappa=5\cdot10^{-4}$. As in the proof of Corollary~\ref{cor:slope} it suffices that the right side of Theorem~\ref{thm:S} at $W=\kappa L/\sqrt M$ is less than $L$. Divided by $L$ it is $\le2.5\kappa/\sqrt{125.5}+1350\kappa/b+\sqrt{21\kappa b}<0.854$, as $M=m+\tfrac12\ge125.5$. For the square take $L=n+\tfrac12$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:rect}(b)]
+$g\equiv M$ with fractional part $f$: take $\delta=\min(f,4/5)/2$ and $\delta'=(1-f)/2$. Then $\delta<f$ and $\delta'<1-f$, so no integer $N$ has $N-\delta'\le M\le N+\delta$ and $A$ is empty. With $\tau=\min(0.08,\sqrt{\delta'/(0.502\cdot M)})$ the theorem reads $L\le W/\delta+1350\cdot W/\tau+\sqrt{21\cdot\tau\cdot M\cdot L\cdot W}$. Put $q=\min(f,\sqrt{(1-f)/M})$, $\kappa=5\cdot10^{-5}$ and suppose $W\le\kappa qL$; it suffices to show that the right side divided by $L$ is $<1$ at $W=\kappa qL$ (it is increasing in $W$, and the left side is $L$). Here $q/\delta\le2.5$ ($\delta=f/2\ge q/2$ if $f\le4/5$, $\delta=2/5$ and $q<1$ otherwise), and $\tau=\min(0.08,a)$ with $a=\sqrt{(1-f)/(1.004\cdot M)}$.
+
+If $\tau=a$: $q/\tau\le\sqrt{1.004}$ and $\tau Mq\le(1-f)/\sqrt{1.004}$, so the right side over $L$ is $\le2.5\kappa+1350\kappa\sqrt{1.004}+\sqrt{21\kappa/\sqrt{1.004}}<0.101$.
+
+If $\tau=0.08\le a$: $q/\tau\le12.5$ and $M\le(1-f)/(1.004\cdot0.08^2)$, so again $\tau Mq\le0.08\cdot\sqrt{M(1-f)}\le(1-f)/\sqrt{1.004}$ and the right side over $L$ is $\le2.5\kappa+1350\cdot12.5\kappa+\sqrt{21\kappa/\sqrt{1.004}}<0.877$.
+
+For a square of side $x$ with $f\le\tfrac12$, $q\ge\min(f,1/\sqrt x)/\sqrt2$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:wall}]
+Rotate the trapezoid so that the side of length $h$ is the floor; then $g$ is affine, $L=h$, the rise is $r\ge1$ and $M=w+r$, and Corollary~\ref{cor:slope} applies. If $w,r\le C\sqrt h$ then $M\le2C\sqrt h$.
+\end{proof}
+
+\paragraph{Question.}
+It is not proved that Theorem~\ref{thm:S} also holds when the floor is not a wall but the top edge of a row of axis-parallel squares of the packing lying below the line $y=0$ (the region being convex). Paths would start on those top sides and the floor case of Lemma~\ref{lem:fundamental} would be replaced by the square case. Missing are a hypothesis that the row's top sides cover $[0,L]$ up to a null set; a redefinition of the region and $W$ to include the waste below $y=0$ charged by $R(S,S')$ with $S$ in the row; and new multiplicity counts in Corollary~\ref{cor:local} and Lemma~\ref{lem:vtilt} ($21$ squares, $4$ floor pairs, $1350$).
+
+\section{Wide regions: the straight flow}\label{sec:straight}
+\subsection{Conventions}
+We use the affine ceiling and the notation of Theorem~\ref{thm:B}, and the orientations, inclinations and sides of Section~\ref{sec:conventions}, writing $P_Z$ for the corner in $Z=\{P_Z+s\cdot u_Z+t\cdot n_Z:0\le s,t\le1\}$. Put $\zeta'=\arctan\zeta\le\pi/4$.
+
+Fix $\delta=1/32$ and $\tau\in(0,0.08]$. A square is \emph{flat} if $a(Z)<\tau$, \emph{steep} otherwise. Two flat squares have $\theta(Z,Z')=|\varphi_Z-\varphi_{Z'}|<2\tau\le0.16$.
+
+By Corollary~\ref{cor:local}, if two squares have centres at distance $\le\sqrt2+2/5$, or one square has its centre within that distance of the floor, the waste in the rectangle $R(S_1,S_2)$ is $\ge\theta(S_1,S_2)/50$, and $R(S_1,S_2)$ lies within $1.9$ of the centre of $S_1$.
+
+\subsection{The flow}
+\emph{Emitters.} The floor $F$ emits from the points $e=(x,0)$, $0<x<L$, in the direction $n_F=(0,1)$. A flat square $Z$ emits from the points $e_Z(s)=P_Z+s\cdot u_Z+n_Z$ of its top side, $0<s<1$, in the direction $n_Z$.
+
+\emph{Probes.} For an emitter point $e$ with direction $n$ let $r^*(e)\ge0$ be the least $r$ such that $e+r\cdot n$ lies on the ceiling, on a side wall, or in a square other than the emitting one. The \emph{probe} of $e$ is the segment $\sigma(e)=\{e+r\cdot n:0\le r\le\min(r^*(e),\delta)\}$. Its points other than the two ends lie in the waste. An emitter point is \emph{conflicted} if its probe meets the probe of a point of a different emitter.
+
+\emph{Paths.} The path of $x\in(0,L)$ starts at $e=(x,0)$ with $G=0$, $N=0$ and repeats:
+\begin{enumerate}
+\item\label{step:s1} If $e$ is conflicted: \textbf{conflict death}.
+\item\label{step:s2} If $G+r^*(e)>\delta$: travel $\delta-G$ along the probe and stop: \textbf{gap death}. Otherwise travel to $q=e+r^*(e)\cdot n$ and add $r^*(e)$ to $G$.
+\item If $q$ is a vertex of a square: $x$ is \emph{exceptional}.
+\item If $q$ is on the ceiling and in no square other than the emitting one: \textbf{arrival}. If $q$ is on a side wall and in no square other than the emitting one: \textbf{wall death}.
+\item If $q$ is in a steep square: \textbf{tilt death}.
+\item\label{step:s6} If $q$ is in the relative interior of a lateral side of a flat square: \textbf{lateral death}.
+\item\label{step:s7} Otherwise $q$ is in the relative interior of the bottom side of a flat square $Z'$. Cross $Z'$ along the segment from $q$ to $q+n_{Z'}$, put $N:=N+1$, and continue from the emitter point $e:=q+n_{Z'}$ of $Z'$.
+\end{enumerate}
+Step~\ref{step:s7} covers all remaining cases: a ray with direction $n$, entering a flat square $Z'$ with $|\operatorname{angle}(n,n_{Z'})|<0.16$, enters through a side whose outward normal $\nu$ has $n\cdot\nu\le0$, that is the bottom side or a lateral side; and if $r^*=0$ for an emitter point $e$ of $Z$ in the relative interior of a side of $Z'$, the two squares lie on opposite sides of a common line, so that side is the bottom side of $Z'$ and $Z'$ is parallel to $Z$. All directions have a positive $y$-component, so heights strictly increase.
+
+\emph{Termination.} Height increase alone does not stop a path from returning to a square. For a flat $Z$, a top-side point $P_Z+s\cdot u_Z+n_Z$ is higher than a bottom-side point $P_Z+s'\cdot u_Z$ by $\cos\varphi_Z+(s-s')\cdot\sin\varphi_Z\ge\cos\varphi_Z-|\sin\varphi_Z|>0$, so every top-side point is higher than every bottom-side point. A path that has crossed $Z$ is at a point of its top side and then rises, so it never again reaches the bottom side of $Z$; a later hit of $Z$ in a lateral side stops it (step~\ref{step:s6}), a vertex makes $x$ exceptional, and the top side cannot be entered (its outward normal $n_Z$ has positive product with every direction of travel, these being within $0.16$ of $n_Z$). So each completed step~\ref{step:s7} uses a new square, there are at most $n$ of them ($n$ the number of squares), and the construction ends.
+
+The only difference from the flow of Section~\ref{sec:vertical} is that a path keeps the direction of the square it has just left while it is in a gap, instead of moving vertically. This is Ryu's rule (\cite{Ryu26b}, the preprint on the lower bound of order $k^{1/4}$, Section~3). It is what makes lateral deaths cheap (Lemma~\ref{lem:slateral}): in Section~\ref{sec:vertical} they cost the tilt of the square that is hit, here they cost the tilt \emph{difference} of two neighbouring squares, which the fundamental lemma charges to the waste. The price is that probes of different squares can cross; conflicted points are simply removed (Lemma~\ref{lem:conflicts}).
+
+Notation for a path that has crossed $Z_1,\ldots,Z_j$: $\varphi_i=\varphi_{Z_i}$; $\gamma_0$ is the length travelled from the floor to $Z_1$ and $\gamma_i$ the length travelled after leaving $Z_i$; $\theta_{0,1}=a(Z_1)$ and $\theta_{i-1,i}=\theta(Z_{i-1},Z_i)$.
+
+\subsection{Structure of the flow}
+\begin{lemma}\label{lem:sstructure}
+\textup{(a)} There is a finite set $E\subset(0,L)$, containing the exceptional $x$, such that on each interval of $(0,L)\setminus E$ the itinerary (squares, sides, kind of ending) is constant. Besides the exceptional points, $E$ contains the points where an emitter point on the path enters or leaves the conflicted set, and the end points of the sets where $G+r^*=\delta$ (that equality can hold on a whole interval, on which the path then continues). Below, ``interval of constant itinerary'' and the arriving intervals $J_k$ refer to this partition.
+
+\textup{(b)} On such an interval, the lateral coordinate $s_j$ of the path in $Z_j$ is an affine function of $x$ with slope $\kappa_j=\prod_{i\le j}\sec\theta_{i-1,i}\ge1$, and each $\gamma_i$ is affine in $x$.
+
+\textup{(c)} After crossing $Z_1,\ldots,Z_j$ and travelling $\gamma_j$, the path is at height $\gamma_0+\sum_{i\le j}(1+\gamma_i)\cdot\cos\varphi_i$. In particular the bottom entry into $Z_i$ is at height $h_i=\gamma_0+\sum_{l<i}(1+\gamma_l)\cdot\cos\varphi_l$, the crossing of $Z_i$ occupies the heights $H_i=[h_i,h_i+\cos\varphi_i]$, and an arriving path that crossed $N$ squares ends at the ceiling point of abscissa $x'$ with
+\begin{equation}\label{eq:sheight}
+g(x')=N-D+\widetilde G,\qquad D=\sum_i(1-\cos\varphi_i),\qquad\widetilde G=\gamma_0+\sum_i\gamma_i\cdot\cos\varphi_i\in[0,\delta].
+\end{equation}
+\textup{(d)} On an interval of arriving $x$, $x'$ is affine in $x$ with slope $\kappa'=\kappa_N\cdot\cos\zeta'/\cos(\varphi_N-\zeta')\ge\cos\zeta'$ ($\kappa'=1$ if $N=0$). Hence $N$ and $D$ are constant there and $\widetilde G$ is affine with slope $\zeta\kappa'\ge\sin\zeta'\ge\zeta/\sqrt2$.
+\end{lemma}
+\begin{proof}
+(a) \emph{Probe regions are polygons.} Fix an emitter (the floor, with parameter $x\in(0,L)$, or a flat square, with parameter $s\in(0,1)$); its points lie on a line and its direction $n$ is fixed and transverse to it. For each side of a square, the ceiling and each wall, the distance along $n$ from $e(s)$ to that line is affine in $s$, and whether the hit point lies in the side segment is a linear inequality in $s$. Cutting the parameter interval at the finitely many points where these inequalities switch or two candidate distances cross, or a distance crosses $\delta$, $r^*(e(s))$ and $\min(r^*,\delta)$ become affine on each piece. On a piece $I$ with $\min(r^*,\delta)=\alpha+\beta s$ the union of the probes is the image of the polygon $\{(s,r):s\in I,\ 0\le r\le\alpha+\beta s\}$ under the invertible affine map $(s,r)\mapsto e(s)+r\cdot n$. So the probe region of every emitter is a finite union of convex polygons (possibly degenerate). For a piece $I$ of one emitter and a convex polygon $Q$ of another, the set of $s\in I$ whose probe meets $Q$ is the projection to the $s$-axis of the convex polygon $\{(s,r):s\in I,\ 0\le r\le\alpha+\beta s,\ e(s)+r\cdot n\in Q\}$, an interval. Hence the conflicted set of each emitter is a finite union of intervals, and each emitter's parameter interval splits into finitely many intervals on which conflict status, the object hit, the side hit and the formula for $\min(r^*,\delta)$ are fixed.
+
+\emph{Induction.} By the termination argument a path makes at most $n$ crossings. Suppose the itinerary up to the $k$-th emitter is constant on an interval of $x$. There the emitter parameter is affine and strictly increasing in $x$ (Lemma~\ref{lem:sstructure}(b), slope $\kappa\ge1$) and $G$ is affine, so pulling back the finitely many cut points of that emitter, and the set where the affine function $G+r^*$ equals $\delta$ (one point or a whole subinterval, whose end points are cut), gives finitely many cuts. A vertex $v$ is met by the probe of at most one point of each emitter line ($n$ is transverse to it), so by at most one $x$ per interval. After at most $n+1$ stages, $E$ is finite. (b) A displacement $\Delta s\cdot u_{Z_{i-1}}$ of the emitter point moves the hit point on the line of the bottom side of $Z_i$ by $\Delta s'\cdot u_{Z_i}=\Delta s\cdot u_{Z_{i-1}}+c\cdot n_{Z_{i-1}}$; taking the product with $u_{Z_{i-1}}$ gives $\Delta s'\cdot\cos\theta_{i-1,i}=\Delta s$. For the floor, $\Delta s'\cdot\cos\varphi_1=\Delta x$. The distance between two lines along a fixed direction is affine. (c) Crossing $Z_i$ adds $\cos\varphi_i$ to the height and travelling $\gamma_i$ along $n_{Z_i}$ adds $\gamma_i\cdot\cos\varphi_i$; $\widetilde G\le\sum\gamma\le\delta$. (d) A displacement $\Delta s\cdot u_{Z_N}$ moves the ceiling point by $(\Delta x',\zeta\Delta x')=\Delta s\cdot u_{Z_N}+c\cdot n_{Z_N}$, so $\Delta x'\cdot(\cos\varphi_N+\zeta\sin\varphi_N)=\Delta s$, and $\cos\varphi_N+\zeta\sin\varphi_N=\cos(\varphi_N-\zeta')/\cos\zeta'$. Then differentiate \eqref{eq:sheight}.
+\end{proof}
+
+\begin{lemma}[Disjoint and ordered]\label{lem:ordered}
+The paths of two distinct non-exceptional points do not meet. If $x_1<x_2$, then at every height reached by both paths the first is to the left of the second. In particular $x\mapsto x'$ is increasing on the set of arriving $x$.
+\end{lemma}
+\begin{proof}
+Every probe piece travelled by a path belongs to a non-conflicted probe (steps~\ref{step:s1}, \ref{step:s2}). Let $c$ be a common point of two paths of least height.
+\begin{itemize}
+\item $c$ interior to a square $Z$: both paths cross $Z$ along the segment through $c$ parallel to $n_Z$; its lower end is common.
+\item $c$ in no square and not on the floor: $c$ lies on a travelled probe of each path, beyond its emitter point. The two probes meet, so they belong to the same emitter, are parallel, hence equal; the emitter point is common and lower.
+\item $c$ on the boundary of a square, not on the floor. A path reaches $c$ at the end of a probe of positive length, and then the points of the path just before $c$ are in the waste; or as the upper end of a crossing of a flat square $Z$, with $c$ in the relative interior of the top side of $Z$, and then the points just before $c$ are interior to $Z$. If both paths come by probes, the probes are equal as before. If both come by crossings, the two squares have $c$ in the relative interior of their top sides and lie below lines through $c$ whose normals differ by less than $0.16$, so they overlap unless they are the same square; then the crossings are equal. One probe and one crossing is impossible: the probe has direction $n$ with $n\cdot n_Z>0$, so its points just before $c$ would be interior to $Z$. In all cases there is a lower common point.
+\item $c$ on the floor: it is the starting point of both.
+\end{itemize}
+So the two paths start at the same point. Each path is a graph over the heights it reaches, because every piece has a direction with positive $y$-component; two disjoint graphs keep their order. On the ceiling, which is increasing, the order of the end points is the order of their abscissas: if $x_1'\ge x_2'$, the first path would at height $g(x_2')$ be at an abscissa $<x_2'$, where the ceiling is lower than $g(x_2')$.
+\end{proof}
+
+\begin{lemma}[Density]\label{lem:density}
+For a flat square $Z$ the set of $x$ whose path crosses $Z$ has measure $\le1$. For any square $S$ the set of $x$ whose path reaches $S$ directly from the floor has measure $\le\sqrt2$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:sstructure}(b) the map $x\mapsto s$ is affine with slope $\ge1$ on each interval of constant itinerary, and by Lemma~\ref{lem:ordered} the images of different intervals in $(0,1)$ are disjoint. The second statement is the horizontal extent of $S$.
+\end{proof}
+
+\section{Deaths}\label{sec:deaths}
+Let $B$ be the set of non-exceptional $x$ that do not arrive.
+
+\begin{lemma}[Gap deaths]\label{lem:sgap}
+Their measure is $\le W/\delta$.
+\end{lemma}
+\begin{proof}
+Such a path has travelled probe pieces of total length $\delta$. Travelled pieces of different paths are disjoint (Lemma~\ref{lem:ordered}) and lie in the waste. A family of paths of $x$-measure $dx$ in a gap after $Z_j$ has width $\kappa_j\cdot dx\ge dx$ perpendicular to its direction, so the area swept is $\ge\delta$ times the measure.
+\end{proof}
+
+\begin{lemma}[Tilt deaths]\label{lem:stilt}
+Their measure is $\le1350\cdot W/\tau$.
+\end{lemma}
+\begin{proof}
+Let $T$ be the set of such $x$. The chain floor, $Z_1,\ldots,Z_j,Z^*$ of $x\in T$ has consecutive members joined by a probe of length $\le\delta$; the probe runs from a point of the top side of one square to a point of the next, each within $\sqrt2/2$ of the centre, so consecutive centres are within $\sqrt2+\delta$, and $Z_1$ has its centre at height $\le\sqrt2/2+\delta$. So Corollary~\ref{cor:local} applies to every consecutive pair (it holds for squares of any inclination, $Z^*$ included), and by the triangle inequality $\sum\theta\ge\theta(\text{floor},Z^*)=a(Z^*)\ge\tau$ along the chain. For an ordered pair $(S,S')$ let $\mu(S,S')$ be the measure of the $x\in T$ whose chain contains $S,S'$ consecutively. Integrating over $T$,
+\[
+\tau\cdot|T|\le\sum_{(S,S')}\mu(S,S')\cdot\theta(S,S')\le50\int_{\text{waste}}\sum_{(S,S'):p\in R(S,S')}\mu(S,S')\,dp.
+\]
+Fix $p$. If $S$ is a square, it is a flat square crossed by the paths concerned; each such path has one successor of $S$, so the sets for different $S'$ are disjoint and $\sum_{S'}\mu(S,S')\le1$ by Lemma~\ref{lem:density}. If $p\in R(S,S')$ then $p$ is within $1.9$ of the centre of $S$, so $S\subset B(p,1.9+\sqrt2/2)$, a disc of area $21.35\ldots<22$; the squares have disjoint interiors, so there are at most $21$ such $S$. If $S$ is the floor, $R(S',\text{floor})=[x_1-\tfrac12,x_1+\tfrac12]\times[0,y_1]$ with $(x_1,y_1)$ the centre of $S'$ and $y_1\le\sqrt2/2+\delta$, so $S'$ lies in the box $[p_x-\tfrac12-\sqrt2/2,p_x+\tfrac12+\sqrt2/2]\times[0,\sqrt2+\delta]$, of area $(1+\sqrt2)(\sqrt2+\delta)<3.49<4$: at most $4$ such $S'$ (in fact $3$), each with $\mu(\text{floor},S')\le\sqrt2$ by Lemma~\ref{lem:density}. The inner sum is $\le21+4\sqrt2$, and $\tau\cdot|T|\le50\cdot W\cdot(21+4\sqrt2)<1333\cdot W\le1350\cdot W$.
+\end{proof}
+
+\begin{lemma}[Lateral and wall deaths]\label{lem:slateral}
+Let $Z_1$ be a flat square or the floor and $Z_2$ a flat square. The emitter points of $Z_1$ whose probe ends in the relative interior of a lateral side of $Z_2$ form a set of measure $\le2\delta\cdot\tan\theta(Z_1,Z_2)$. The emitter points of a flat square $Z$ whose probe ends on a given side wall form a set of measure $\le\delta\cdot\tan a(Z)$.
+\end{lemma}
+\begin{proof}
+Use the frame $(s,t)$ of $Z_2$, in which the lateral side is $\{s=0,\ 0<t<1\}$ (or $s=1$). In it the direction of the probes of $Z_1$ is $(\mp\sin\theta,\cos\theta)$, $\theta=\theta(Z_1,Z_2)$, and the emitter points of $Z_1$ lie on a line that makes the angle $\theta$ with the $s$-axis. A probe of length $\le\delta$ changes $s$ by at most $\delta\cdot\sin\theta$, so an emitter point whose probe ends on $\{s=0\}$ has $|s|\le\delta\cdot\sin\theta$; if $\theta=0$ no probe ends in the relative interior of the side. The emitter line meets the strip $|s|\le\delta\sin\theta$, on the side from which the lateral side can be reached, in a segment of length $\le\delta\cdot\sin\theta/\cos\theta$. There are two lateral sides. The wall is the same computation with the wall as the line $s=0$ and $\theta=a(Z)$.
+\end{proof}
+
+\begin{lemma}[Conflicts]\label{lem:conflicts}
+Floor points are never conflicted with points of squares. For two distinct flat squares $Z_1,Z_2$, the set of $s$ with $e_{Z_1}(s)$ conflicted with some point of $Z_2$ has measure $\le4.3\cdot\delta\cdot\theta(Z_1,Z_2)$.
+\end{lemma}
+\begin{proof}
+Probes from the floor stay below height $\delta$, and every point of the top side of a flat square in $\Omega$ has height $\ge\cos\tau-\sin\tau>0.9$. For the squares, use the frame $(s,t)$ of $Z_2=[0,1]^2$. All probes of $Z_2$ lie in $B_2=[0,1]\times[1,1+\delta]$. Let $\theta=\theta(Z_1,Z_2)$; if $\theta=0$ put $\varepsilon=0$ below. In the frame, $n_{Z_1}=(-\varepsilon\sin\theta,\cos\theta)$ with $\varepsilon=\pm1$. Let $e=(s^0,t^0)$ be an emitter point of $Z_1$ whose probe contains a point $c=e+r\cdot n_{Z_1}$ of $B_2$, $0\le r\le\delta$. Then $1-\delta\le t^0\le1+\delta$. The segment from $e$ to $e-n_{Z_1}$ is the crossing of $Z_1$ below $e$; its points other than the ends are interior to $Z_1$, so none of them is in $(0,1)^2$.
+\begin{itemize}
+\item $t^0<1$. Then $e\notin(0,1)\times(0,1)$, and $t^0>0$, so $s^0\notin(0,1)$: say $s^0\le0$ (the case $s^0\ge1$ is symmetric). The probe reaches $s\ge0$ within length $\delta$, so $|s^0|\le\delta\cdot\sin\theta$.
+\item $t^0\ge1$ and $s^0\notin(0,1)$: as before, $s^0$ is within $\delta\cdot\sin\theta$ of $0$ or of $1$.
+\item $t^0\ge1$ and $0<s^0<1$. For small $\eta>0$ the point $e-r'\cdot n_{Z_1}$ with $r'=(t^0-1)/\cos\theta+\eta<1$ is interior to $Z_1$ and has $0<t<1$, so its $s$-coordinate $s^0+\varepsilon\cdot r'\cdot\sin\theta$ is not in $(0,1)$. Hence $s^0$ is within $r'\cdot\sin\theta$ of $0$ or of $1$; letting $\eta\to0$, within $\delta\cdot\tan\theta$.
+\end{itemize}
+So $s^0$ lies in $[-\delta\sin\theta,\delta\tan\theta]\cup[1-\delta\tan\theta,1+\delta\sin\theta]$, two intervals of total length $\le4\delta\cdot\tan\theta$. The top side of $Z_1$ makes the angle $\theta$ with the $s$-axis, so the set of such $e$ has length $\le4\delta\cdot\tan\theta/\cos\theta\le4.3\cdot\delta\cdot\theta$ for $\theta\le0.16$. (For $\theta=0$ the set is empty.)
+\end{proof}
+
+\begin{corollary}\label{cor:deaths}
+The measure of the set $B$ of non-arriving $x$ is at most $W/\delta+1350\cdot W/\tau+134000\cdot\delta\cdot W+0.01$. With $\delta=1/32$ this is $\le4250\cdot W+1350\cdot W/\tau+0.01$.
+\end{corollary}
+\begin{proof}
+Gap and tilt deaths are Lemmas~\ref{lem:sgap}, \ref{lem:stilt}. A lateral or conflict death happens at an emitter point of some $Z_1$ because of some flat $Z_2$ at distance $\le2\delta$ from $Z_1$ ($\delta$ for a lateral death; for a conflict the two probes meet at a point within $\delta$ of each square), so that the centres are within $\sqrt2+2\delta<\sqrt2+2/5$; by Lemma~\ref{lem:density} (and Lemma~\ref{lem:sstructure}(b) for the floor) the measure of the $x$ concerned is at most the measure of the emitter points, which is $\le(2.02+4.3)\cdot\delta\cdot\theta(Z_1,Z_2)$ for an ordered pair of flat squares, $\le2.02\cdot\delta\cdot a(Z_2)$ for the floor and $Z_2$, and $\le1.01\cdot\delta\cdot a(Z)$ for $Z$ and a wall. By Corollary~\ref{cor:local} each $\theta$ is at most $50$ times the waste in the corresponding rectangle. A point $p$ of the waste lies in $R(Z_1,Z_2)$ only if both squares lie in $B(p,2.61)$, which holds for at most $21$ squares, hence for at most $420$ ordered pairs; in $R(Z_2,\text{floor})$ for at most $4$ squares; and in $R(Z,\text{wall})$ for at most $4$ squares per wall. The two exceptional squares at the left wall (Section~\ref{sec:walls}) add $\le2\cdot1.01\cdot\delta\cdot\tan\tau<0.01$. In total $50\cdot\delta\cdot W\cdot(6.32\cdot420+2.02\cdot4+1.01\cdot8)+0.01\le134000\cdot\delta\cdot W+0.01$.
+\end{proof}
+
+\section{The sideways lemma, drops, and the proof of Theorem~\ref{thm:B}}\label{sec:sideways}
+\subsection{The sideways lemma}
+Let $J_1,\ldots,J_K$ be the intervals of arriving $x$, from left to right (Lemma~\ref{lem:sstructure}(a)); $J_k=(a_k,b_k)$. For $1\le k<K$ choose arriving points $x_k^-\in J_k$ and $x_k^+\in J_{k+1}$ with $x_k^-<x_k^+$, and such that $x_k^+<x_{k+1}^-$. Let $\lambda_k$ and $\rho_k$ be their paths. The \emph{tube} $T_k$ is the set of points $(x,y)$ with $\lambda_k(y)\le x\le\rho_k(y)$, over the heights $y$ reached by both paths. By Lemma~\ref{lem:ordered} tubes with different $k$ have disjoint interiors.
+
+Write $Z_i$ and $Z_i'$ for the $i$-th squares of $\lambda_k$ and $\rho_k$, $N$ and $N'$ for their numbers, $H_i$ and $H_i'$ for the height intervals of the crossings (Lemma~\ref{lem:sstructure}(c)), $\theta_i=\theta(Z_i,Z_i')$ for $i\le\min(N,N')$, and $Y_i=H_i\cap H_i'$. All of these depend on $k$; $N,N'$, the squares and $\theta_i$ depend only on the two intervals, not on the chosen points.
+
+\begin{lemma}\label{lem:sideways}
+$\sum_k\sum_{i\le\min(N,N')}\theta_i\cdot|Y_i|\le14851\cdot W$.
+\end{lemma}
+\begin{proof}
+Fix a height $y$. For each $k$ there is at most one $i$ with $y\in Y_i$ (the $H_i$ of one path are disjoint up to end points). For such $k$ and $i$, the horizontal segment $C$ from $\lambda_k(y)$ to $\rho_k(y)$ lies in $T_k$ and in $\Omega$, starts in $Z_i$ and ends in $Z_i'$. Let $Y_0=Z_i,Y_1,\ldots,Y_r=Z_i'$ be the squares met by $C$ in order. By the triangle inequality $\theta_i\le\sum_j\theta(Y_{j-1},Y_j)$.
+
+Call $(k,y)$ \emph{bad} if the uncovered part of $C$ has length $\ge2/5$. The segments $C$ for different $k$ are disjoint apart from end points, so the number of bad $k$ at height $y$ is at most $5/2$ times the line waste at height $y$; as $\theta_i<2\tau$, the bad pairs contribute at most $2\tau\cdot(5/2)\cdot W\le0.4\cdot W$ to the sum.
+
+If $(k,y)$ is not bad, consecutive squares $Y_{j-1},Y_j$ on $C$ are separated by a gap $<2/5$ on the line of height $y$, so their centres are within $\sqrt2+2/5$. A pair of squares is consecutive on at most one of the segments $C$ at a given height. Hence the not-bad part of the sum is at most
+\[
+\int\sum_{(Y,Y')}\theta(Y,Y')\,dy\le\sqrt2\cdot\sum_{\{Y,Y'\}}\theta(Y,Y'),
+\]
+the sum on the left over the pairs that are consecutive on the line of height $y$ with a gap $<2/5$, and the sum on the right over the unordered pairs that are so at some height; a pair meets a common horizontal line on a set of heights of measure $\le\sqrt2$. By Corollary~\ref{cor:local}, $\theta(Y,Y')$ is at most $50$ times the waste in $R(Y,Y')$, and a point $p$ of the waste lies in $R(Y,Y')$ only if both squares lie in $B(p,2.61)$: at most $21$ squares, at most $210$ unordered pairs. So the right side is $\le\sqrt2\cdot50\cdot210\cdot W<14850\cdot W$.
+\end{proof}
+
+\subsection{Boundaries between arriving intervals}
+\leavevmode\par
+On $J_k$ let $N_k,D_k$ be the constants of Lemma~\ref{lem:sstructure}(d), $P_k=D_k-N_k$, and let $\widetilde G$ be the function of \eqref{eq:sheight}. Write $\widetilde G(b_k^-),\widetilde G(a_{k+1}^+)$ for its limits at the ends, $\Phi=g(x')$ for the arrival height, and for $1\le k<K$
+\[
+\begin{aligned}
+\operatorname{drop}_k&=\widetilde G(b_k^-)-\widetilde G(a_{k+1}^+),\\
+\Delta_k&=x'(a_{k+1}^+)-x'(b_k^-)\ge0.
+\end{aligned}
+\]
+Since $\Phi=-P+\widetilde G$ and $\Phi$ is increasing along the arriving points (Lemma~\ref{lem:ordered}),
+\begin{equation}\label{eq:drops}
+\operatorname{drop}_k=(P_k-P_{k+1})-\zeta\cdot\Delta_k\le P_k-P_{k+1},\qquad\text{and }\operatorname{drop}_k\le\delta.
+\end{equation}
+
+\begin{lemma}[Drops add up]\label{lem:drops}
+Let $\mathcal G$ be the set of arriving $x$. Then $\sum_k\max(\operatorname{drop}_k,0)\ge\sin\zeta'\cdot|\mathcal G|-\delta$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:sstructure}(d), $\widetilde G(b_k^-)-\widetilde G(a_k^+)\ge\sin\zeta'\cdot|J_k|$. Summing over $k$, $\sin\zeta'\cdot|\mathcal G|\le\sum_{k<K}\operatorname{drop}_k+\widetilde G(b_K^-)-\widetilde G(a_1^+)\le\sum_k\max(\operatorname{drop}_k,0)+\delta$.
+\end{proof}
+
+For a boundary $k$ call the level $i\le\min(N,N')$ \emph{aligned} if $\tau\cdot\sum_{l<i}\theta_l<\tfrac14$, and put $\Theta_k=\sum_{\text{aligned }i}\theta_i$.
+
+\begin{lemma}[Aligned levels face each other]\label{lem:aligned}
+For an aligned level, $|Y_i|\ge0.7$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:sstructure}(c), $h_i-h_i'=\sum_{l<i}(\cos\varphi_l-\cos\varphi_l')+(\widetilde G\text{-parts})$, where the two partial sums of gaps lie in $[0,\delta]$. As $|\cos\varphi_l-\cos\varphi_l'|\le\sin\tau\cdot|\varphi_l-\varphi_l'|\le\tau\cdot\theta_l$, the offset is $\le\tfrac14+\delta$, and both intervals have length $\ge\cos\tau$. So $|Y_i|\ge\cos0.08-\tfrac14-1/32>0.7$.
+\end{proof}
+
+\begin{lemma}[A drop is paid for, or it is a skip]\label{lem:skip}
+Let $\operatorname{drop}_k>0$. Then either $\operatorname{drop}_k\le\tau\cdot\Theta_k$, or $N'>N$ and $\Delta_k\ge1/(2\zeta)$.
+\end{lemma}
+\begin{proof}
+If some level $i\le\min(N,N')$ is not aligned, then $\tau\cdot\Theta_k\ge\tfrac14\ge\delta\ge\operatorname{drop}_k$ (the levels before the first non-aligned one are aligned and their sum is $\ge1/(4\tau)$). So assume all levels are aligned; then $\Theta_k$ is the sum of $\theta_i$ over all $i\le\min(N,N')$.
+\begin{itemize}
+\item $N'=N$. By \eqref{eq:drops}, $\operatorname{drop}_k\le D_k-D_{k+1}=\sum_i(\cos\varphi_i'-\cos\varphi_i)\le\tau\cdot\Theta_k$.
+\item $N'=N-j$, $j\ge1$. By \eqref{eq:drops}, $0<P_k-P_{k+1}=D_k-D_{k+1}-j$, and $D_k-D_{k+1}=\sum_{i\le N'}(\cos\varphi_i'-\cos\varphi_i)+\sum_{i>N'}(1-\cos\varphi_i)\le\tau\Theta_k+0.51\cdot j\cdot\tau^2$. So $\tau\Theta_k\ge j\cdot(1-0.51\tau^2)>\tfrac12\ge\operatorname{drop}_k$.
+\item $N'=N+j$, $j\ge1$. Then $\zeta\cdot\Delta_k=(P_k-P_{k+1})-\operatorname{drop}_k=j+D_k-D_{k+1}-\operatorname{drop}_k$, and $D_k-D_{k+1}=\sum_{i\le N}(\cos\varphi_i'-\cos\varphi_i)-\sum_{i>N}(1-\cos\varphi_i')\ge-\tau\Theta_k-0.51\cdot j\cdot\tau^2$. If $\tau\Theta_k<\tfrac14$, then $\zeta\cdot\Delta_k\ge j\cdot(1-0.51\tau^2)-\tfrac14-\delta\ge\tfrac12$. If $\tau\Theta_k\ge\tfrac14$, then $\operatorname{drop}_k\le\delta\le\tau\Theta_k$.
+\end{itemize}
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:B}}\label{sec:proofB}
+\begin{proposition}\label{prop:quantitative}
+Let $R\ge1$, $\zeta\le1$, $\delta=1/32$ and $0<\tau\le0.08$. If $4250\cdot W+1350\cdot W/\tau+0.01\le L/4$, then $0.47\cdot R\le21300\cdot\tau\cdot W$.
+\end{proposition}
+\begin{proof}
+By Corollary~\ref{cor:deaths}, $|\mathcal G|\ge3L/4$. The arrival abscissas of $\mathcal G$ form a set of measure $\ge\cos\zeta'\cdot|\mathcal G|\ge0.53\cdot L$ (Lemma~\ref{lem:sstructure}(d), Lemma~\ref{lem:ordered}), and the $\Delta_k$ are the lengths of disjoint intervals of $[0,L]$ that miss it, so $\sum_k\Delta_k\le0.47\cdot L$. Call $k$ a \emph{skip} if $\Delta_k\ge1/(2\zeta)$; there are at most $0.94\cdot\zeta L=0.94\cdot R$ skips, and each has $\operatorname{drop}_k\le\delta$. By Lemmas~\ref{lem:drops} and \ref{lem:skip},
+\[
+\sin\zeta'\cdot(3L/4)-\delta\le\sum_k\max(\operatorname{drop}_k,0)\le\tau\cdot\sum_k\Theta_k+0.94\cdot R\cdot\delta.
+\]
+The left side is $\ge(\zeta/\sqrt2)(3L/4)-1/32\ge0.499\cdot R$ for $R\ge1$. By Lemmas~\ref{lem:sideways} and \ref{lem:aligned}, $0.7\cdot\sum_k\Theta_k\le\sum_k\sum_i\theta_i\cdot|Y_i|\le14851\cdot W$. So $0.4696\cdot R\le0.499\cdot R-0.0294\cdot R\le\tau\cdot21216\cdot W$, and $0.47\cdot21216<0.4696\cdot21300$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:B}]
+Since $\zeta\le1$, $\sqrt{LR}\le L$. If $W>7\cdot10^{-6}\cdot L$ we are done. Otherwise, if $W>0$, take $\tau=10800\cdot W/L\le0.0756$. Then $1350\cdot W/\tau=L/8$, $4250\cdot W\le0.03\cdot L$ and $0.01\le0.01\cdot L$ ($L\ge R\ge1$), so the hypothesis of Proposition~\ref{prop:quantitative} holds and $0.47\cdot R\le21300\cdot10800\cdot W^2/L$, that is $W\ge4.5\cdot10^{-5}\cdot\sqrt{LR}$. If $W=0$, the proposition with $\tau=0.08$ gives $0.47\cdot R\le0$, which is false.
+\end{proof}
+
+\section{Consequences}\label{sec:consequences}
+Only the consequence for Bui's Conjecture~1 and the lower bounds in the other consequences follow from Theorem~\ref{thm:B} (with Theorem~\ref{thm:S} and its corollaries where cited). Everything about the frames of Bui, McClenagan and Ryu depends on their wall shapes, their matching upper bounds and their decomposition into separately packed pieces, as described in those papers; we cite those facts and do not re-derive them. No bound here applies to a packing whose squares cross the boundaries between the pieces.
+
+\paragraph{Bui's Conjecture 1.}
+Bui's Conjecture~1 \cite{Bui25} holds: a right trapezoid of height $x\ge1$ whose bases differ by $x^{1-\gamma}$, $0<\gamma<1$, wastes $\ge7\cdot10^{-6}\cdot x^{1-\gamma/2}$, whatever its width. Combined with Corollary~\ref{cor:slope}, the lower bound for his trapezoid (height $x$, width $x^\beta$, slope $x^{-\gamma}$, $0<\gamma<1$) is $x$ to the power $\max(1-\max(\beta,1-\gamma)/2,1-\gamma/2)$, which are the first two terms of his Conjecture~2 in that range. For $\gamma>1$ the rise is below $1$ and neither result applies.
+
+\paragraph{Walls.}
+A right trapezoid of height $m$ and lean $\asymp\sqrt m$ wastes $\ge c\cdot m^{3/4}$ at any width (Theorem~\ref{thm:B}, for $m$ large enough that $1\le R\le L$). Given that the wall fillers of Bui \cite{Bui25} and of Ryu \cite{Ryu26} (width $\asymp m^{3/4}$) are such trapezoids packed on their own with waste $O(m^{3/4})$, as those papers state, they are optimal up to a constant. Given that McClenagan's wall trapezoid \cite{McC26}, Section~4, has width of order $\sqrt h$ and is packed with waste $O(h^{3/4})$, as his paper states, Corollary~\ref{cor:wall} already gives $h^{3/4}$ and his filler is optimal up to a constant.
+
+Bui's right trapezoid has height $x$, base $x^\beta$ with $\beta=3/4$ and slope $x^{-1/2}$. Ryu's E38 sets $D_\ell=\lfloor c_D\cdot m^{3/4}\rfloor$, $D_r=\lfloor c_R\cdot m^{3/4}\rfloor$, so, as we read his hypothesis (W2), his walls $Z_L,Z_{LR},Z_{UR}$ have length $\approx m$, slope $\asymp m^{-1/2}$ and width $\asymp m^{3/4}$. For such a wall Corollary~\ref{cor:slope} gives only $c\cdot m/\sqrt{m^{3/4}}=c\cdot m^{5/8}$, against the $O(m^{3/4})$ of their fillers. Corollary~\ref{cor:slope} alone would leave open walls at $m^{5/8}$, which would give $x^{5/9}$ for Bui's frame, $b^{5/9}$ for Ryu's end and $k^{5/14}$ for $\cs(k)$. That question is Bui's Conjecture~1 at $\beta=3/4$, $\gamma=\tfrac12$, and Theorem~\ref{thm:B} answers it for walls of this shape packed on their own.
+
+\paragraph{Frames.}
+Take an outer side $x$ whose fractional part is bounded away from $0$ and $1$, say $x=n+\tfrac12$. Given that Bui's and McClenagan's frames consist of a grid, $x\times h$ strips with $h\ge1$ and end trapezoids of height $\asymp h$ and rise $\asymp\sqrt h$, each packed on its own: the strip has the fractional part of $x$ and costs $\ge c\cdot x/\sqrt h$ (Corollary~\ref{cor:rect}(b); near an integer that bound carries the factor $\min(f,\sqrt{1-f})$ and is not uniform), and each end trapezoid costs $\ge c\cdot h^{3/4}$. Thus the frame costs $\ge c\cdot\max(x/\sqrt h,h^{3/4})\ge c\cdot x^{3/5}$ for every $h\ge1$ (Corollary~\ref{cor:rect}(b) assumes $M\ge1$) and every filling of the strip and of the trapezoids. McClenagan's grid is $N\times N$ and he fills the strip with stacks spanning it, leaving the separately packed end trapezoids of width $\asymp\sqrt h$; given his matching upper bounds, both pieces of that frame are optimal as regions.
+
+Given that Ryu's frame has an end region of thickness $O(m)$ (lift $O(m)$) and wall regions of height $\asymp m$ and lean $\asymp\sqrt m$, each packed on its own, the end costs $\ge c\cdot b/\sqrt m$ (Corollary~\ref{cor:slope}) and each wall $\ge c\cdot m^{3/4}$; together $\ge c\cdot b^{3/5}$, which gives $k^{3/8}$ through his identity $\cs(k)\approx4k/b+(\text{end costs})$, which we take from his paper and have not rederived. Under those hypotheses the window $[5/14,3/8]$ left open by Corollary~\ref{cor:slope} alone closes at $3/8$ for ends of that kind. For larger lifts only the uniform bound at the end of the next paragraph applies.
+
+\paragraph{Ryu's end region.}
+In \cite{Ryu26} the band end is $\operatorname{Reg}(y)=\{0\le x'\le w,\ 0\le y'\le y+(x'-\sigma)\cdot t\}$ with $\sigma=\sin\theta$, $t=\tan\theta$, $w=b\cos\theta+\sigma$, as cited from his paper; $\tan\theta\approx2/b$ and $y$ is a lift. Any family of squares in $\operatorname{Reg}(y)$ may be used. His end cost $E$ is the uncovered area of $\operatorname{Reg}(y)$ plus $\tfrac12\tan\theta$. For $y\ge1$ this is the setting of Corollary~\ref{cor:slope} with $L=w$, rise $w\cdot\tan\theta\ge b\sin\theta>1.6$ and $M=y+b\sin\theta$, about $y+2$ for the tilts he uses. So
+\[
+E\ge4\cdot10^{-5}\cdot w/\sqrt{y+b\sin\theta}\qquad\text{for every packing of }\operatorname{Reg}(y),\text{ every lift }y\ge1.
+\]
+His Theorem~1.1 (the $k^{3/8}$ bound) uses columns of $m\asymp b^{4/5}$ squares spanning $\operatorname{Reg}(y)$, with $y\asymp b^{4/5}$; for that region his end cost $O(b^{3/5})$ is optimal up to a constant, whatever is put into it, and an end cost $b^{3/5-\varepsilon}$ needs a lift $y\ge b^{4/5+2\varepsilon}$. Lifts are free in his frame (they may be of order $k$), and for $y\gtrsim b^2$ this bound says nothing. His Section~12 asks for a direct argument that some end cost of order $b^\beta$ with $\beta>0$ is unavoidable in this frame.
+
+Assume $0<t\le1$ and $b\cdot\sin\theta\ge1$. If $y\ge\sigma t$, $\operatorname{Reg}(y)$ is a right trapezoid with floor length $L=w$, slope $t\le1$ and rise $R=wt\ge b\sin\theta\ge1$. If $0\le y<\sigma t$, the ceiling meets the floor at $x_0=\sigma-y/t\in(0,\sigma]$ and $\operatorname{Reg}(y)$ is, after translating by $x_0$, the triangle of floor length $L'=w-x_0=b\cos\theta+y/t$ and rise $R'=L't=b\sin\theta+y\ge1$. In both cases Theorem~\ref{thm:B} applies, and $LR$ (respectively $L'R'$) is $\ge b^2\sin\theta\cos\theta$, so every packing of $\operatorname{Reg}(y)$ wastes $\ge7\cdot10^{-6}\cdot b\cdot\sqrt{\sin\theta\cos\theta}$, which is $\ge c\cdot\sqrt b$ uniformly in $y\ge0$ when $\sin\theta\asymp1/b$ (his tilts, $\tan\theta\approx2/b$). Given his description of the frame and of the open problem of his Section~12, this answers it with $\beta=\tfrac12$, the value his cube-root lower bound \cite{Ryu26b} suggests.
+
+No bound for $W(x)$ or $\cs(k)$ over all packings is claimed. A packing need not contain such trapezoids (Bui makes the same remark after his conjecture).
+
+\section{Checks and status}
+\input{checks}
+
+\begin{thebibliography}{Dan26c}
+
+\bibitem[AB26]{AB26} M. Z. Arslanov, H. D. Bui, Note on ``Efficient packings of unit squares in a large square'', Discrete Comput. Geom. 76 (2026), 805--812, doi:10.1007/s00454-025-00767-w.
+
+\bibitem[Bui25]{Bui25} H. D. Bui, Square packing with $O(x^{0.6})$ wasted area, arXiv:2508.04603 (preprint; v2, 15 March 2026).
+
+\bibitem[CG20]{CG20} F. Chung, R. Graham, Efficient packings of unit squares in a large square, Discrete Comput. Geom. 64 (2020), 690--699, doi:10.1007/s00454-019-00088-9.
+
+\bibitem[Dan26c]{Dan26c} E. Daniel, \url{https://github.com/evand/square-packing}, \texttt{tasks/k2c-exponent/README.md} and \texttt{literature/waste-bounds-2026-10-12.md} at commit \texttt{bb4cc78e} (5 November 2026).
+
+\bibitem[EG75]{EG75} P. Erd\H{o}s, R. L. Graham, On packing squares with equal squares, J. Combin. Theory Ser. A 19 (1975), 119--123, doi:10.1016/0097-3165(75)90099-0.
+
+\bibitem[Fan26c]{Fan26c} K. Fang, squarepack-certs, \url{https://github.com/TheSnakeFang/squarepack-certs}, folder \texttt{wedge/}.
+
+\bibitem[McC26]{McC26} R. McClenagan, Optimally packing a large square by unit squares, arXiv:2602.01484 (preprint, 2026).
+
+\bibitem[RV78]{RV78} K. F. Roth, R. C. Vaughan, Inefficiency in packing squares with unit squares, J. Combin. Theory Ser. A 24 (1978), 170--186.
+
+\bibitem[Ryu26]{Ryu26} S. Ryu, Packing $k^2-c$ unit squares: an upper bound of order $k^{3/8}$ for the deficiency, preprint, version 1.1 (10 October 2026), doi:10.5281/zenodo.23278927 (version 1.0: doi:10.5281/zenodo.23256655).
+
+\bibitem[Ryu26b]{Ryu26b} S. Ryu, Packing $k^2-c$ unit squares: $s(k^2-c)=k$ for all large $k$, preprint, version 1.2 (2026), doi:10.5281/zenodo.23194104; and the companion preprints on lower bounds of order $k^{1/4}$ (doi:10.5281/zenodo.23212643) and $k^{1/3}$ (doi:10.5281/zenodo.23213564).
+
+\end{thebibliography}
+\end{document}

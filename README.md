@@ -71,6 +71,7 @@ tools/
   glue.py                     Lemma 3 of the note in exact arithmetic (stdlib only)
 theorem/                      theorem inventory n = 15..64 (README.md, inventory.tsv, best.tsv, PIECES.md, best/)
 theorem-a/                    Theorem A, c*(k) < 4 sqrt(2k) + 1 (README.md, lband.py, windowed_check.py, certs/, note/)
+wedge/                        claimed lower bounds for slabs and trapezoids, not certified (README.md, note/, notes/, tools/, reviews/)
 nNNNN/                        one direct square packing per folder:
   nNNNN.cert                  certificate, Daniel's text format
   nNNNN.cert.json             the same, SQUISH json
@@ -153,6 +154,7 @@ Ellsworth's decimal checker (https://github.com/Davidebyzero/packing_squares_in_
 
 - Code (`verify.py`, `tools/glue.py`, `tools/rectcheck.py`, the shell scripts): MIT, see `LICENSE`.
 - Our certificates, text files, tables and drawings (`nNNNN/`, `rectangles/`, `composites/`): CC0 1.0.
+- `wedge/`: the simulators in `wedge/tools/` are MIT; the note, working notes and review reports are CC BY 4.0.
 - `third_party/daniel/` and `tools/verify_cert_daniel.py`: Evan Daniel's, MIT, unchanged; licence
   and notice in `third_party/daniel/` and `tools/NOTICE-verify_cert_daniel`.
 - De Winter's n = 211 packing and Daniel's certificate of it: no licence, not copied; fetched by
@@ -163,3 +165,5 @@ Credit for the construction, seeds, format and checkers: `ATTRIBUTION.md`.
 Search, verifier and this bundle were written and run with Claude (Anthropic) as a coding and research agent, directed and reviewed by Kevin Fang.
 
 `strip-n6/` (added 2026-10-31) is separate from the square-packing material above: it holds the raw computational provenance for the theorem that six unit squares in a strip of height 1.87 ≤ H < 2 need width at least F6(H), whose proof lives in the squarepack repository; see `strip-n6/README.md`.
+
+`wedge/` (added 2026-11-09) is also separate, and of a different kind: it holds the note *Lower bounds for the waste of unit-square packings in slabs and trapezoids* (https://doi.org/10.5281/zenodo.24099178), the working notes it was typeset from, four floating-point simulators and six language-model review reports. The note claims that a region with floor L whose straight ceiling rises by R ≥ 1 at slope at most 1 wastes at least 7·10⁻⁶·√(LR) at any width, which is Conjecture 1 of H. D. Bui's paper arXiv:2508.04603. The proofs were written by Claude (Anthropic) and no person has checked them line by line. There is no certificate in that folder and none of the checkers here applies to it; see `wedge/README.md`.

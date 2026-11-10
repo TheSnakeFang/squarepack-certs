@@ -1,0 +1,28 @@
+\label{sec:checks}
+This section records what has been done to test the proofs, and what has not. The programs and the review reports are in the bundle \cite{Fan26c}.
+
+\subsection*{Programs}
+All four are floating point. None is a certificate.
+\begin{itemize}
+\item \texttt{slab\_constants.py} recomputes the counts behind the constants $1350$ and $21$ of Theorem~\ref{thm:S} and checks Corollaries~\ref{cor:slope} and~\ref{cor:rect} on grids of $M$ and $f$. It checks arithmetic, not geometry.
+\item \texttt{slab\_flow\_check.py} runs the vertical flow of Section~\ref{sec:vertical} by ray casting on $22$ packings and $200$ parameter settings: rows, brick rows, Erd\H{o}s--Graham stacks, a lattice with holes, rows parallel to a sloped ceiling, staircases, perturbed packings, and hand-built overhang, vertex-contact and wall-hugging cases. The height identity \eqref{eq:vheight}, injectivity, Lemmas~\ref{lem:vgap}--\ref{lem:vlateral} and Theorem~\ref{thm:S} hold in every row. The constants are far from tight on these examples.
+\item \texttt{wedge\_flow\_check.py} runs the straight flow of Section~\ref{sec:straight} on $31$ packings and $186$ parameter settings. Every inequality of Sections~\ref{sec:straight}--\ref{sec:sideways} that it tests holds, but in most of these packings no path arrives, so Section~\ref{sec:sideways} is hardly exercised.
+\item \texttt{wedge\_staircase\_check.py} runs the straight flow on staircase packings, columns of tilted squares standing on axis-parallel layers, built so that most paths arrive. The largest has $199030$ squares. The share of arriving paths is $79\%$ for the plain staircase, $74\%$ with squares removed, $63\%$ with two tilts, $99.9\%$ in a window of a small-angle staircase, and $16\%$ with brick-offset layers. No inequality fails in about $23$ million comparisons, with tolerance $2\cdot10^{-7}$. In the first three packings the lower bound of Lemma~\ref{lem:drops} is $0.69$, $0.66$ and $0.58$ of the actual sum of positive drops. In Lemma~\ref{lem:skip} the ratio $\mathrm{drop}_k/(\tau\Theta_k)$ is at most $0.36$ at every boundary. The sum in Lemma~\ref{lem:sideways} is about $0.05\,W$, against the constant $14851$. The skip alternative of Lemma~\ref{lem:skip} never occurs.
+\end{itemize}
+No test packing satisfies the hypothesis of Proposition~\ref{prop:quantitative}, which needs a waste below about $L/34000$. The last step of the proof of Theorem~\ref{thm:B} therefore rests on the written argument alone.
+
+\subsection*{Reviews}
+Six blind reviews were made by language models, each from the text alone and each told to assume that there is an error: two by Claude Opus~5.5, one of each half of an earlier draft, and four by OpenAI Codex (GPT-6.1), one of the whole wide-region proof and three with separate scopes (Sections~\ref{sec:straight}--\ref{sec:deaths}; Sections~\ref{sec:sideways}--\ref{sec:consequences}; Sections~\ref{sec:conventions}--\ref{sec:corollaries}). No review found an error in Theorem~\ref{thm:S}, Theorem~\ref{thm:B} or Lemma~\ref{lem:fundamental} that it could not repair. What they found, all corrected here:
+\begin{itemize}
+\item a claim in the first draft that Theorem~\ref{thm:S} already settles the wall trapezoids of \cite{Bui25} and \cite{Ryu26}, which are too wide for it (this is what led to Theorem~\ref{thm:B});
+\item the wall case of the fundamental lemma and the count of neighbouring squares in Corollary~\ref{cor:local} when one end is the floor or a wall;
+\item missing steps: termination of both flows, the finite partitions of Lemmas~\ref{lem:vstructure} and~\ref{lem:sstructure}, the area statements behind the measure bounds, and the tilt-death bound of Lemma~\ref{lem:stilt}, which had been cited from the thin case where it had to be redone;
+\item a rounding in Proposition~\ref{prop:quantitative}, and ranges and hypotheses in Section~\ref{sec:consequences}, where the statements about other authors' frames were unconditional and are now conditional on those papers.
+\end{itemize}
+None of these is a referee's report. Models reviewing a text written by a model can share its mistakes.
+
+\subsection*{Not done}
+No person has checked the proofs line by line. Nothing is formalised. The statements of Section~\ref{sec:consequences} about the frames of \cite{Bui25,McC26,Ryu26} rely on our reading of those papers and were not checked by their authors. We did not consult \cite{RV78}.
+
+\subsection*{Acknowledgements}
+The method is Roth and Vaughan's and Sungjoon Ryu's, and the conjecture is H.~D.~Bui's. Evan Daniel's notes on the exponent of $\cs(k)$ posed the question. The proofs were found and written with Claude (Anthropic) as a research agent, directed by the author; the simulators were written with OpenAI Codex.
